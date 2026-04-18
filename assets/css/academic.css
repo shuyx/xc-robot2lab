@@ -825,3 +825,78 @@ code, pre, .mono {
   object-fit: cover;
   border: 1px solid var(--border);
 }
+
+/* ============================================================== */
+/* 图片 Lightbox（点击 gallery 图放大到全屏）                       */
+/* ============================================================== */
+.lightbox {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  animation: lightbox-in .18s ease-out;
+}
+@keyframes lightbox-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.lightbox-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(10, 37, 64, 0.94);
+  cursor: zoom-out;
+}
+.lightbox img {
+  position: relative;
+  max-width: 94vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border: 2px solid rgba(201, 169, 97, 0.6);
+  box-shadow: 0 24px 72px rgba(0,0,0,.75);
+  cursor: zoom-out;
+}
+.lightbox-close {
+  position: absolute;
+  top: 18px; right: 24px;
+  width: 44px; height: 44px;
+  background: transparent;
+  border: 1px solid rgba(247, 243, 235, 0.4);
+  color: var(--ivory);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  font-family: 'Inter', sans-serif;
+  transition: all .15s ease;
+}
+.lightbox-close:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.lightbox-caption {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  letter-spacing: 1px;
+  background: rgba(10, 37, 64, 0.6);
+  padding: 6px 16px;
+  border: 1px solid rgba(201, 169, 97, 0.3);
+}
+.competitor-gallery img,
+.competitor-hero img,
+.doc-prose img {
+  cursor: zoom-in;
+  transition: opacity .15s ease;
+}
+.competitor-gallery img:hover {
+  opacity: 0.88;
+}
+
+/* 视频网格优化：自适应宽度，更大更清晰 */
+.video-grid {
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+}
+@media (max-width: 680px) {
+  .video-grid { grid-template-columns: 1fr; }
+}

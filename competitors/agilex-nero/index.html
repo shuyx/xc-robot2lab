@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>Reflex Robotics · 竞品分析 · Transcribe Box Lab</title>
+  <title>松灵 NERO · 竞品分析 · Transcribe Box Lab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="../../assets/js/auth-guard.js"></script>
   <link rel="stylesheet" href="../../assets/css/academic.css">
@@ -28,11 +28,11 @@
 </header>
 
 <section class="competitor-hero">
-  <img src="../_assets/reflex/reflex-hero.webp" alt="Reflex Robotics">
+  <img src="../_assets/agilex-nero/nero-hero.jpg" alt="Agilex NERO 七轴机械臂">
   <div class="inner">
-    <div class="en">COMPETITOR · REFLEX ROBOTICS</div>
-    <h1>Reflex（美国）</h1>
-    <div class="sub">Wheeled Humanoid for Logistics &amp; Warehousing</div>
+    <div class="en">COMPETITOR · AGILEX NERO</div>
+    <h1>松灵 NERO（国产）</h1>
+    <div class="sub">7-DoF Collaborative Arm for Embodied AI Research</div>
   </div>
 </section>
 
@@ -46,38 +46,42 @@
   </aside>
 
   <article class="doc-prose">
-    <!-- 视频嵌入区（2 格，待用户提供链接后填入 iframe） -->
-    <h2 id="videos">Demo 视频</h2>
-    <div class="video-grid double">
-      <div class="video-card" data-video-slot="reflex-1">
+    <h2 id="videos">官方 Demo 视频</h2>
+    <div class="video-grid">
+      <div class="video-card">
         <div class="video-aspect">
-          <div class="video-placeholder">
-            <span class="tag">VIDEO SLOT #1</span>
-            等待管理员补充 Reflex 官方 Demo 视频链接
-          </div>
+          <iframe src="//player.bilibili.com/player.html?bvid=BV14oSqBCE6W&danmaku=0&high_quality=1"
+                  scrolling="no" border="0" frameborder="no" framespacing="0"
+                  allowfullscreen="true"></iframe>
         </div>
-        <div class="video-caption">Reflex 官方 Demo（预留位）<span class="by">slot-1</span></div>
+        <div class="video-caption">松灵 NERO · 七自由度机械臂 + 灵巧手<span class="by">BV14oSqBCE6W</span></div>
       </div>
-      <div class="video-card" data-video-slot="reflex-2">
+      <div class="video-card">
         <div class="video-aspect">
-          <div class="video-placeholder">
-            <span class="tag">VIDEO SLOT #2</span>
-            等待管理员补充物流场景演示视频链接
-          </div>
+          <iframe src="//player.bilibili.com/player.html?bvid=BV1sdUBBuEJw&danmaku=0&high_quality=1"
+                  scrolling="no" border="0" frameborder="no" framespacing="0"
+                  allowfullscreen="true"></iframe>
         </div>
-        <div class="video-caption">物流 / 仓储 Demo（预留位）<span class="by">slot-2</span></div>
+        <div class="video-caption">松灵七轴臂 NERO 遥操展示<span class="by">BV1sdUBBuEJw</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-aspect">
+          <iframe src="//player.bilibili.com/player.html?bvid=BV1TxKseRENn&danmaku=0&high_quality=1"
+                  scrolling="no" border="0" frameborder="no" framespacing="0"
+                  allowfullscreen="true"></iframe>
+        </div>
+        <div class="video-caption">ALOHA 还能这样用 · 松灵分体式 ALOHA 遥操<span class="by">BV1TxKseRENn</span></div>
       </div>
     </div>
 
-    <!-- 画廊（额外图片） -->
     <h2 id="gallery">产品图集</h2>
     <div class="competitor-gallery">
-      <img src="../_assets/reflex/reflex-1.jpg" alt="Reflex · 1">
-      <img src="../_assets/reflex/reflex-2.jpeg" alt="Reflex · 2">
-      <img src="../_assets/reflex/reflex-hero.webp" alt="Reflex · 封面">
+      <img src="../_assets/agilex-nero/nero-hero.jpg" alt="NERO · 产品主图">
+      <img src="../_assets/agilex-nero/nero-dimensions.jpg" alt="NERO · 尺寸参数">
+      <img src="../_assets/agilex-nero/nero-humanoid-app.jpg" alt="NERO · 人形上肢应用">
+      <img src="../_assets/agilex-nero/nero-teleop.jpg" alt="NERO · 具身遥操应用">
     </div>
 
-    <!-- Memo 正文（doc.md 渲染到这里） -->
     <div id="doc-root">加载中…</div>
   </article>
 </main>
@@ -95,21 +99,15 @@
 <script src="../../assets/js/lightbox.js"></script>
 <script>
   mermaid.initialize({
-    startOnLoad: false,
-    theme: 'base',
+    startOnLoad: false, theme: 'base',
     themeVariables: {
-      primaryColor: '#F7F3EB',
-      primaryBorderColor: '#0A2540',
-      primaryTextColor: '#2B3340',
-      lineColor: '#8B95A8',
-      secondaryColor: '#E5DFD0',
-      tertiaryColor: '#C9A961',
-      background: '#FFFFFF',
-      mainBkg: '#F7F3EB',
+      primaryColor: '#F7F3EB', primaryBorderColor: '#0A2540',
+      primaryTextColor: '#2B3340', lineColor: '#8B95A8',
+      secondaryColor: '#E5DFD0', tertiaryColor: '#C9A961',
+      background: '#FFFFFF', mainBkg: '#F7F3EB',
       fontFamily: "'Source Han Sans SC','PingFang SC','Inter',sans-serif"
     },
-    securityLevel: 'loose',
-    flowchart: { htmlLabels: true, curve: 'basis' }
+    securityLevel: 'loose', flowchart: { htmlLabels: true, curve: 'basis' }
   });
   renderDoc('doc.md', document.getElementById('doc-root'));
 </script>
