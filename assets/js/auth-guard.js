@@ -21,7 +21,7 @@
   // 找到站点根：如果 URL 是 /xc-robot2lab/reports/x/index.html，则根目录是 /xc-robot2lab/
   // 我们通过查找已知的根标记文件不可行；改为约定：
   //   约定栏目目录名仅这几个：reports / repos / dev
-  var siteSections = ['reports', 'repos', 'dev'];
+  var siteSections = ['reports', 'repos', 'dev', 'competitors'];
   var depth = 0;
   for (var i = dirParts.length - 1; i >= 0; i--) {
     if (siteSections.indexOf(dirParts[i]) >= 0) {
