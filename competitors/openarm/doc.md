@@ -184,12 +184,12 @@ graph TB
 
 ```mermaid
 flowchart LR
-    P1[PREEMPT_RT<br/>实时内核<br/>cyclictest P99 &lt; 100μs]
+    P1[PREEMPT_RT<br/>实时内核<br/>cyclictest P99 lt 100us]
     P2[500 Hz<br/>更新率]
     P3[effort 接口<br/>+ 三项前馈<br/>重力/科氏/摩擦]
     P4[Ruckig<br/>jerk-limited<br/>整形]
 
-    P1 --> P2 --> P3 --> P4 --> OK[末端绘圆 10cm<br/>偏差 &lt; 5 mm]
+    P1 --> P2 --> P3 --> P4 --> OK[末端绘圆 10cm<br/>偏差 5mm 内]
 
     style OK fill:#C9A961,color:#0A2540
 ```

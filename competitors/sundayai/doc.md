@@ -80,15 +80,15 @@ source_url: https://sundayrobotics.com
 flowchart TB
     U[500+ 真实家庭用户<br/>佩戴 Skill Capture Glove]
     G[Skill Capture Glove<br/>3 指 · 2 手腕相机 · 与 Memo 末端 1:1 对应]
-    D[&gt;1000 万条人类技能轨迹]
-    ST[Skill Transform 模块<br/>人手运动学 + 视觉观测<br/>→ 机器人坐标系对齐]
-    ACT[ACT-1<br/>端到端观测→动作策略]
+    D["超过1000万条人类技能轨迹"]
+    ST["Skill Transform 模块<br/>人手运动学 + 视觉观测<br/>映射到机器人坐标系"]
+    ACT["ACT-1<br/>端到端观测到动作策略"]
     M[Memo 机器人]
 
     U --> G
     G -->|采集| D
     D --> ST
-    ST -->|跨身高用户迁移成功率 &gt;90%| ACT
+    ST -->|跨身高迁移成功率超90%| ACT
     ACT --> M
 
     style G fill:#C9A961,color:#0A2540
