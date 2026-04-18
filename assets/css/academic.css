@@ -633,3 +633,195 @@ code, pre, .mono {
     margin-bottom: 12px;
   }
 }
+
+/* ============================================================== */
+/* 竞品分析栏目                                                    */
+/* ============================================================== */
+.competitor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  margin-top: 28px;
+}
+.competitor-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  display: block;
+  color: var(--char);
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.competitor-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-bottom: 1px solid var(--border);
+}
+.competitor-card .cover {
+  aspect-ratio: 16/10;
+  background: #0A2540;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.competitor-card .cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(10,37,64,.4) 100%);
+}
+.competitor-card .body {
+  padding: 20px 22px 22px;
+}
+.competitor-card .en {
+  color: var(--gold);
+  font-family: 'Merriweather', Georgia, serif;
+  letter-spacing: 3px;
+  font-size: 0.68rem;
+}
+.competitor-card h3 {
+  font-size: 1.3rem;
+  margin: 6px 0 8px;
+  color: var(--navy);
+}
+.competitor-card p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+.competitor-card .arrow {
+  color: var(--gold);
+  margin-top: 12px;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  font-family: 'Merriweather', Georgia, serif;
+}
+
+/* 竞品子页 header 大图 */
+.competitor-hero {
+  position: relative;
+  height: 340px;
+  background: var(--navy);
+  overflow: hidden;
+  border-bottom: 3px solid var(--gold);
+}
+.competitor-hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+}
+.competitor-hero .inner {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 72px 24px 32px;
+  color: var(--ivory);
+  height: 100%;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.competitor-hero .en {
+  color: var(--gold);
+  font-family: 'Merriweather', Georgia, serif;
+  letter-spacing: 4px;
+  font-size: 0.78rem;
+}
+.competitor-hero h1 {
+  color: var(--ivory);
+  font-size: 2.4rem;
+  margin: 8px 0 6px;
+}
+.competitor-hero .sub {
+  color: var(--muted);
+  font-family: 'Merriweather', Georgia, serif;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+/* 视频嵌入容器（供用户提供 URL 后填入） */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin: 18px 0 28px;
+}
+@media (min-width: 900px) {
+  .video-grid.double { grid-template-columns: 1fr 1fr; }
+}
+.video-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  overflow: hidden;
+}
+.video-aspect {
+  position: relative;
+  padding-bottom: 56.25%;   /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  background: #091E33;
+}
+.video-aspect iframe,
+.video-aspect video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+.video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-family: 'Merriweather', Georgia, serif;
+  font-style: italic;
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 24px;
+  font-size: 0.95rem;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(247,243,235,.02),
+    rgba(247,243,235,.02) 12px,
+    rgba(247,243,235,.05) 12px,
+    rgba(247,243,235,.05) 24px
+  );
+}
+.video-placeholder .tag {
+  color: var(--gold);
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+  font-style: normal;
+}
+.video-caption {
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: var(--char);
+  background: var(--surface);
+}
+.video-caption .by {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  margin-left: 8px;
+}
+
+/* 竞品页"画廊"缩略图（额外上传的图片） */
+.competitor-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0 24px;
+}
+.competitor-gallery img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>竞品分析 · Transcribe Box Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../assets/js/auth-guard.js"></script>
+  <link rel="stylesheet" href="../assets/css/academic.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      Transcribe Box Lab
+      <span class="sub">祥承智能机器人实验室</span>
+    </a>
+    <nav>
+      <a href="../index.html">首页</a>
+      <a href="../reports/index.html">汇报资料</a>
+      <a href="../repos/index.html">代码仓库</a>
+      <a href="../dev/index.html">开发内容</a>
+      <a href="index.html" class="current">竞品分析</a>
+      <a href="../competitors/index.html">竞品分析</a>
+      <a href="../about.html">关于</a>
+    </nav>
+    <button class="logout" onclick="sessionStorage.removeItem('tbl_auth');location.reload()">登出</button>
+  </div>
+</header>
+
+<main class="container">
+  <div class="page-title">
+    <span class="en">COMPETITOR ANALYSIS · 竞品分析</span>
+    <h1>同类机器人技术剖析</h1>
+  </div>
+  <p class="page-intro">
+    对行业中与 XC-Robot 相关或对标的机器人项目进行结构化技术分析。
+    每个子页含硬件架构、软件栈、构型原理、数据采集方式、以及与我们的差异。
+    视频素材容器已预留，后续补充 Demo 视频直接嵌入（YouTube / Bilibili / 本地 MP4 均支持）。
+  </p>
+
+  <div class="competitor-grid">
+
+    <a href="reflex/index.html" class="competitor-card">
+      <div class="cover" style="background-image: url('_assets/reflex/reflex-hero.webp')"></div>
+      <div class="body">
+        <div class="en">REFLEX ROBOTICS</div>
+        <h3>Reflex（美国）</h3>
+        <p>轮式双臂协作机器人，主打物流与仓储场景的"移动 + 操作"一体化方案。</p>
+        <div class="arrow">技术分析 →</div>
+      </div>
+    </a>
+
+    <a href="openarm/index.html" class="competitor-card">
+      <div class="cover" style="background-image: url('_assets/openarm/openarm-hero.webp')"></div>
+      <div class="body">
+        <div class="en">OPENARM · ENACTIC</div>
+        <h3>OpenArm（开源）</h3>
+        <p>enactic 组织维护的双臂机械臂开源方案，OpenArm 是 XC-Robot 自研 OpenArm-X 的上游基础。</p>
+        <div class="arrow">技术分析 →</div>
+      </div>
+    </a>
+
+    <a href="sundayai/index.html" class="competitor-card">
+      <div class="cover" style="background-image: url('_assets/sundayai/sundayai-hero.jpg')"></div>
+      <div class="body">
+        <div class="en">SUNDAY ROBOTICS</div>
+        <h3>Sunday Memo</h3>
+        <p>家用场景具身智能机器人，聚焦长时序任务记忆与日常家务 Demo，自研 Policy 模型闭环。</p>
+        <div class="arrow">技术分析 →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <p style="margin-top:36px;font-size:0.82rem;color:var(--muted)">
+    本栏目中 Memo 的原始备份位于 Obsidian Vault ·
+    <span class="mono">临时调研/01｜竞品分析/</span>。
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="line">— TRANSCRIBE BOX LAB —</div>
+    <div class="mini">© 2026 Transcribe Box Lab · 祥承智能机器人实验室</div>
+  </div>
+</footer>
+
+</body>
+</html>
