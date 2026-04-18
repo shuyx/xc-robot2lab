@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- ===== 顶部标题区 ===== -->
+  <text x="56" y="54" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 2 · 机械臂关节稳定与低成本控制
+  </text>
+  <text x="56" y="98" font-size="32" font-weight="700" fill="#0A2540" class="serif-title">
+    关节抖动的四重机理
+  </text>
+  <text x="56" y="124" font-size="15" fill="#8B95A8" font-style="italic" class="en-serif">
+    Four-Layer Amplification Mechanism
+  </text>
+  <line x1="56" y1="140" x2="220" y2="140" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="140" x2="560" y2="140" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 顶部现象框 ===== -->
+  <rect x="56" y="156" width="1168" height="60" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+  <text x="74" y="178" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">PHENOMENON · 现象</text>
+  <text x="74" y="202" font-size="14" fill="#2B3340" class="sans-body">
+    OpenArm 原版 100 Hz + position-only + joint_trajectory_controller (JTC) <tspan fill="#0A2540" font-weight="600">在准直驱 QDD 电机上必抖</tspan>
+  </text>
+
+  <!-- ===== 主体 2x2 机理矩阵 ===== -->
+  <!-- 单元格：574x194，间距 20；第一行 y=232，第二行 y=438 -->
+
+  <!-- ========== 机理 1 · JTC 段间速度跳变 ========== -->
+  <g>
+    <rect x="56" y="232" width="574" height="194" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="610" y="416" font-size="64" font-weight="700" fill="#C9A961" opacity="0.2" text-anchor="end" class="en-serif">1.</text>
+    <rect x="56" y="232" width="42" height="26" fill="#C9A961"/>
+    <text x="77" y="251" text-anchor="middle" font-size="12" font-weight="700" fill="#0A2540" class="en-sans">M-1</text>
+    <text x="76" y="286" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">JTC 段间速度跳变</text>
+    <text x="76" y="304" font-size="10" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Trajectory Segment Jump</text>
+    <line x1="76" y1="314" x2="600" y2="314" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <text x="76" y="336" font-size="12" fill="#2B3340" class="sans-body">
+      <tspan x="76" dy="0">· JTC 按离散航点下发 · 段间速度不连续</tspan>
+      <tspan x="76" dy="17">· 100 Hz 周期 / 每段 10 ms / 速度突变</tspan>
+    </text>
+    <!-- 小波形图：阶梯型速度曲线 -->
+    <g transform="translate(320, 340)">
+      <text x="0" y="-2" font-size="9" fill="#8B95A8" class="en-sans">v(t) · step velocity</text>
+      <line x1="0" y1="56" x2="240" y2="56" stroke="#8B95A8" stroke-width="0.5"/>
+      <line x1="0" y1="4" x2="0" y2="56" stroke="#8B95A8" stroke-width="0.5"/>
+      <polyline points="0,46 38,46 38,28 80,28 80,50 124,50 124,20 170,20 170,38 240,38" fill="none" stroke="#0A2540" stroke-width="1.5"/>
+      <line x1="38" y1="20" x2="38" y2="56" stroke="#C9A961" stroke-width="0.5" stroke-dasharray="2 2"/>
+      <line x1="80" y1="20" x2="80" y2="56" stroke="#C9A961" stroke-width="0.5" stroke-dasharray="2 2"/>
+      <line x1="124" y1="20" x2="124" y2="56" stroke="#C9A961" stroke-width="0.5" stroke-dasharray="2 2"/>
+      <line x1="170" y1="20" x2="170" y2="56" stroke="#C9A961" stroke-width="0.5" stroke-dasharray="2 2"/>
+      <text x="240" y="68" font-size="8" fill="#8B95A8" text-anchor="end" class="mono">t · 10 ms/seg</text>
+    </g>
+  </g>
+
+  <!-- ========== 机理 2 · 有限差分噪声放大 ========== -->
+  <g>
+    <rect x="650" y="232" width="574" height="194" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="1204" y="416" font-size="64" font-weight="700" fill="#C9A961" opacity="0.2" text-anchor="end" class="en-serif">2.</text>
+    <rect x="650" y="232" width="42" height="26" fill="#C9A961"/>
+    <text x="671" y="251" text-anchor="middle" font-size="12" font-weight="700" fill="#0A2540" class="en-sans">M-2</text>
+    <text x="670" y="286" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">有限差分噪声放大</text>
+    <text x="670" y="304" font-size="10" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Finite Difference Noise</text>
+    <line x1="670" y1="314" x2="1194" y2="314" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <text x="670" y="336" font-size="12" fill="#2B3340" class="sans-body">
+      <tspan x="670" dy="0">· 离散点求速度 v = delta q/delta t 引入高频噪声</tspan>
+      <tspan x="670" dy="17">· 噪声能量 正比于 1/delta t^2 · 频率越低越炸</tspan>
+    </text>
+    <g transform="translate(920, 340)">
+      <text x="0" y="-2" font-size="9" fill="#8B95A8" class="en-sans">q vs dq/dt · noise amp</text>
+      <line x1="0" y1="56" x2="260" y2="56" stroke="#8B95A8" stroke-width="0.5"/>
+      <line x1="0" y1="4" x2="0" y2="56" stroke="#8B95A8" stroke-width="0.5"/>
+      <path d="M 0,46 Q 65,16 130,30 T 260,18" fill="none" stroke="#8B95A8" stroke-width="1.2"/>
+      <text x="260" y="16" font-size="8" fill="#8B95A8" text-anchor="end" class="mono">q(t)</text>
+      <polyline points="0,52 14,34 28,48 42,30 56,50 70,28 84,46 98,30 112,52 126,26 140,50 154,34 168,46 182,28 196,48 210,32 224,46 238,30 252,48" fill="none" stroke="#0A2540" stroke-width="1.5"/>
+      <text x="260" y="54" font-size="8" fill="#0A2540" text-anchor="end" font-weight="600" class="mono">dq/dt</text>
+    </g>
+  </g>
+
+  <!-- ========== 机理 3 · MIT 力矩阶跃 ========== -->
+  <g>
+    <rect x="56" y="438" width="574" height="194" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="610" y="622" font-size="64" font-weight="700" fill="#C9A961" opacity="0.2" text-anchor="end" class="en-serif">3.</text>
+    <rect x="56" y="438" width="42" height="26" fill="#C9A961"/>
+    <text x="77" y="457" text-anchor="middle" font-size="12" font-weight="700" fill="#0A2540" class="en-sans">M-3</text>
+    <text x="76" y="492" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">MIT 力矩阶跃</text>
+    <text x="76" y="510" font-size="10" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Torque Step via Kd</text>
+    <line x1="76" y1="520" x2="600" y2="520" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <text x="76" y="542" font-size="12" fill="#2B3340" class="sans-body">
+      <tspan x="76" dy="0">· 速度跳变 x Kd 直接变成力矩阶跃</tspan>
+    </text>
+    <text x="76" y="566" font-size="12" fill="#0A2540" font-weight="600" class="mono">T_sudden = Kd * delta v</text>
+    <g transform="translate(320, 548)">
+      <text x="0" y="-2" font-size="9" fill="#8B95A8" class="en-sans">pos step / vel pulse / torque impact</text>
+      <line x1="0" y1="56" x2="260" y2="56" stroke="#8B95A8" stroke-width="0.5"/>
+      <line x1="0" y1="4" x2="0" y2="56" stroke="#8B95A8" stroke-width="0.5"/>
+      <!-- 位置阶跃 -->
+      <polyline points="0,46 35,46 35,26 80,26" fill="none" stroke="#8B95A8" stroke-width="1.3"/>
+      <text x="85" y="30" font-size="9" fill="#8B95A8" class="mono">q</text>
+      <!-- 速度脉冲 -->
+      <polyline points="100,46 130,46 130,14 136,14 136,46 170,46" fill="none" stroke="#2B3340" stroke-width="1.3"/>
+      <text x="175" y="20" font-size="9" fill="#2B3340" class="mono">v</text>
+      <!-- 力矩冲击 -->
+      <polyline points="190,46 220,46 220,8 226,8 226,46 260,46" fill="none" stroke="#0A2540" stroke-width="1.8"/>
+      <text x="232" y="18" font-size="10" fill="#0A2540" font-weight="700" class="mono">T</text>
+    </g>
+  </g>
+
+  <!-- ========== 机理 4 · 低减速比无机械低通 ========== -->
+  <g>
+    <rect x="650" y="438" width="574" height="194" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="1204" y="622" font-size="64" font-weight="700" fill="#C9A961" opacity="0.2" text-anchor="end" class="en-serif">4.</text>
+    <rect x="650" y="438" width="42" height="26" fill="#C9A961"/>
+    <text x="671" y="457" text-anchor="middle" font-size="12" font-weight="700" fill="#0A2540" class="en-sans">M-4</text>
+    <text x="670" y="492" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">低减速比 · 无机械低通</text>
+    <text x="670" y="510" font-size="10" fill="#8B95A8" letter-spacing="0.5" class="en-sans">No Mechanical LPF</text>
+    <line x1="670" y1="520" x2="1194" y2="520" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <text x="670" y="542" font-size="12" fill="#2B3340" class="sans-body">
+      <tspan x="670" dy="0">· 9:1 行星减速 &lt;&lt; 100:1 谐波减速</tspan>
+      <tspan x="670" dy="17">· 抖动不衰减 / 直达末端</tspan>
+    </text>
+    <g transform="translate(910, 548)">
+      <text x="0" y="-2" font-size="9" fill="#8B95A8" class="en-sans">input / output · no filtering</text>
+      <line x1="0" y1="56" x2="280" y2="56" stroke="#8B95A8" stroke-width="0.5"/>
+      <line x1="0" y1="4" x2="0" y2="56" stroke="#8B95A8" stroke-width="0.5"/>
+      <!-- 输入方波 -->
+      <polyline points="0,46 18,46 18,14 46,14 46,46 74,46 74,14 102,14 102,46 120,46" fill="none" stroke="#8B95A8" stroke-width="1.2"/>
+      <text x="60" y="8" font-size="9" fill="#8B95A8" text-anchor="middle" class="mono">input</text>
+      <!-- 箭头 -->
+      <path d="M 130,30 L 152,30 M 147,26 L 152,30 L 147,34" fill="none" stroke="#2B3340" stroke-width="1"/>
+      <!-- 输出方波 -->
+      <polyline points="160,46 178,46 178,16 206,16 206,46 234,46 234,16 262,16 262,46 280,46" fill="none" stroke="#0A2540" stroke-width="1.6"/>
+      <text x="220" y="10" font-size="9" fill="#0A2540" text-anchor="middle" font-weight="600" class="mono">output</text>
+    </g>
+  </g>
+
+  <!-- ===== 底部根因的根因 ===== -->
+  <rect x="56" y="644" width="1168" height="36" fill="none" stroke="#C9A961" stroke-width="1.3" rx="2"/>
+  <text x="74" y="661" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">ROOT OF ROOT · 根因的根因</text>
+  <text x="74" y="673" font-size="12" fill="#0A2540" class="sans-body">
+    JTC 假设 <tspan fill="#C9A961" font-weight="700">高减速 + 不可背驱 + 刚性输出</tspan> / 准直驱反之 <tspan fill="#C9A961" font-weight="700">低惯量 + 可背驱 + 柔性</tspan>
+  </text>
+
+  <!-- ===== 页脚 ===== -->
+  <line x1="56" y1="690" x2="1224" y2="690" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="708" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="708" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">16 / 34</text>
+
+</svg>

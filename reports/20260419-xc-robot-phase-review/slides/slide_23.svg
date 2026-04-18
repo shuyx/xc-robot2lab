@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <!-- 背景：象牙米白 -->
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+
+  <!-- 左侧章节竖线（学院金） -->
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- ===== 顶部标题区 ===== -->
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 3 · 协调控制、任务理解与交互
+  </text>
+
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    整体控制链 · 5 层架构
+  </text>
+
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    5-Layer Control Stack — From Application to Driver
+  </text>
+
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 左侧 5 层横条（x=56, 宽860, 间距 10） ===== -->
+  <!-- Layer 5 · Application -->
+  <g>
+    <rect x="56" y="195" width="860" height="72" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <!-- 数字徽章 -->
+    <rect x="56" y="195" width="48" height="72" fill="#C9A961"/>
+    <text x="80" y="238" text-anchor="middle" font-size="16" font-weight="700" fill="#0A2540" class="en-sans">L5</text>
+    <!-- 标题 -->
+    <text x="120" y="222" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">Application · 应用层</text>
+    <!-- 内容 -->
+    <text x="120" y="248" font-size="13" fill="#2B3340" class="sans-body">Skill 编排 · Scenario FSM · VLA Agent · Voice Intent</text>
+    <!-- 右侧小字 -->
+    <text x="906" y="234" text-anchor="end" font-size="11" fill="#8B95A8" class="mono">PC-A · 10-30 Hz</text>
+    <text x="906" y="252" text-anchor="end" font-size="11" fill="#8B95A8" class="sans-body">事件驱动</text>
+  </g>
+
+  <!-- 箭头 L5/L4 -->
+  <path d="M 486 270 L 486 282 L 482 278 M 486 282 L 490 278" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+  <!-- Layer 4 · Planning -->
+  <g>
+    <rect x="56" y="285" width="860" height="72" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="56" y="285" width="48" height="72" fill="#C9A961"/>
+    <text x="80" y="328" text-anchor="middle" font-size="16" font-weight="700" fill="#0A2540" class="en-sans">L4</text>
+    <text x="120" y="312" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">Planning · 规划层</text>
+    <text x="120" y="338" font-size="13" fill="#2B3340" class="sans-body">MoveIt 2 OMPL + CHOMP · Nav2 BT · 安全包络</text>
+    <text x="906" y="324" text-anchor="end" font-size="11" fill="#8B95A8" class="mono">PC-A · 事件驱动</text>
+    <text x="906" y="342" text-anchor="end" font-size="11" fill="#8B95A8" class="sans-body">全局规划</text>
+  </g>
+
+  <!-- 箭头 L4/L3 -->
+  <path d="M 486 360 L 486 372 L 482 368 M 486 372 L 490 368" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+  <!-- Layer 3 · Servo -->
+  <g>
+    <rect x="56" y="375" width="860" height="72" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="56" y="375" width="48" height="72" fill="#C9A961"/>
+    <text x="80" y="418" text-anchor="middle" font-size="16" font-weight="700" fill="#0A2540" class="en-sans">L3</text>
+    <text x="120" y="402" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">Servo · 伺服层</text>
+    <text x="120" y="428" font-size="13" fill="#2B3340" class="sans-body">MoveIt Servo (P2 延后) · Ruckig jerk-limited</text>
+    <text x="906" y="414" text-anchor="end" font-size="11" fill="#8B95A8" class="mono">PC-A / PC-B via DDS</text>
+    <text x="906" y="432" text-anchor="end" font-size="11" fill="#C9A961" font-weight="600" class="mono">500 Hz</text>
+  </g>
+
+  <!-- 箭头 L3/L2 -->
+  <path d="M 486 450 L 486 462 L 482 458 M 486 462 L 490 458" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+  <!-- Layer 2 · Realtime Control（学院金边框强调） -->
+  <g>
+    <rect x="56" y="465" width="860" height="72" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <rect x="56" y="465" width="48" height="72" fill="#0A2540"/>
+    <text x="80" y="508" text-anchor="middle" font-size="16" font-weight="700" fill="#F7F3EB" class="en-sans">L2</text>
+    <!-- CORE 标识 -->
+    <rect x="878" y="465" width="38" height="24" fill="#C9A961"/>
+    <text x="897" y="482" text-anchor="middle" font-size="10" font-weight="700" fill="#0A2540" class="en-sans">CORE</text>
+    <text x="120" y="492" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">Realtime Control · 实时控制层</text>
+    <text x="120" y="518" font-size="13" fill="#2B3340" class="sans-body">ros2_control 1 kHz · compensated_impedance_controller · SafetyLayer</text>
+    <text x="870" y="508" text-anchor="end" font-size="11" fill="#0A2540" font-weight="600" class="mono">PC-B PREEMPT_RT</text>
+    <text x="870" y="526" text-anchor="end" font-size="11" fill="#C9A961" font-weight="700" class="mono">1 kHz</text>
+  </g>
+
+  <!-- 箭头 L2/L1 -->
+  <path d="M 486 540 L 486 552 L 482 548 M 486 552 L 490 548" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+  <!-- Layer 1 · Driver -->
+  <g>
+    <rect x="56" y="555" width="860" height="72" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="56" y="555" width="48" height="72" fill="#C9A961"/>
+    <text x="80" y="598" text-anchor="middle" font-size="16" font-weight="700" fill="#0A2540" class="en-sans">L1</text>
+    <text x="120" y="582" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">Driver · 驱动层</text>
+    <text x="120" y="608" font-size="13" fill="#2B3340" class="sans-body">openarm_can (C++) · SocketCAN · 原子双臂写入</text>
+    <text x="906" y="594" text-anchor="end" font-size="11" fill="#8B95A8" class="mono">PC-B</text>
+    <text x="906" y="612" text-anchor="end" font-size="11" fill="#8B95A8" class="sans-body">硬件接口</text>
+  </g>
+
+  <!-- ===== 右侧关键洞察框（x=940, 宽290, 高432） ===== -->
+  <g>
+    <rect x="940" y="195" width="290" height="432" fill="none" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <rect x="940" y="195" width="290" height="36" fill="#C9A961"/>
+    <text x="956" y="218" font-size="13" font-weight="700" fill="#0A2540" letter-spacing="1" class="sans-body">KEY INSIGHT · 关键洞察</text>
+
+    <!-- 小标题 -->
+    <text x="956" y="262" font-size="15" font-weight="700" fill="#0A2540" class="sans-body">一条贯通的速度 / 位置流</text>
+    <text x="956" y="282" font-size="11" fill="#8B95A8" font-style="italic" class="en-serif">A Continuous Velocity/Position Flow</text>
+
+    <line x1="956" y1="298" x2="1214" y2="298" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+
+    <!-- 4 条要点 -->
+    <g>
+      <circle cx="964" cy="328" r="3" fill="#C9A961"/>
+      <text x="976" y="332" font-size="13" fill="#2B3340" class="sans-body">不是离散航点</text>
+      <text x="976" y="350" font-size="11" fill="#8B95A8" class="sans-body">Not discrete waypoints</text>
+    </g>
+
+    <g>
+      <circle cx="964" cy="386" r="3" fill="#C9A961"/>
+      <text x="976" y="390" font-size="13" fill="#2B3340" class="sans-body">与 JTC 二段式形成对照</text>
+      <text x="976" y="408" font-size="11" fill="#8B95A8" class="sans-body">vs. JTC two-stage</text>
+    </g>
+
+    <g>
+      <circle cx="964" cy="444" r="3" fill="#C9A961"/>
+      <text x="976" y="448" font-size="13" fill="#2B3340" class="sans-body">是解决顿挫的核心</text>
+      <text x="976" y="466" font-size="11" fill="#8B95A8" class="sans-body">Key to smoothness</text>
+    </g>
+
+    <g>
+      <circle cx="964" cy="502" r="3" fill="#C9A961"/>
+      <text x="976" y="506" font-size="13" fill="#2B3340" class="sans-body">MIT 模式绕开电机内置</text>
+      <text x="976" y="524" font-size="13" fill="#2B3340" class="sans-body">位置环</text>
+      <text x="976" y="542" font-size="11" fill="#8B95A8" class="sans-body">Bypass motor's internal loop</text>
+    </g>
+
+    <!-- 底部强调 -->
+    <line x1="956" y1="570" x2="1214" y2="570" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <text x="1085" y="594" text-anchor="middle" font-size="14" font-weight="700" fill="#C9A961" class="sans-body">避免嵌套震荡</text>
+    <text x="1085" y="614" text-anchor="middle" font-size="11" fill="#8B95A8" font-style="italic" class="en-serif">Avoid Nested Oscillation</text>
+  </g>
+
+  <!-- ===== 页脚 ===== -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">23 / 34</text>
+
+</svg>

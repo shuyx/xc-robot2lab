@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 大问题 1 · 底盘 · 自动充电
+  </text>
+
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    自动充电方案 · 工程参数
+  </text>
+
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Engineering Parameters — Tag / Timeout / Recovery / Complete / Safety / Monitor
+  </text>
+
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 2x3 参数卡片矩阵 ===== -->
+  <!-- 每卡 380x180，间距 14，起点 x=56，行起点 y=200 / 400 -->
+
+  <!-- 卡 1 · Tag 编码规则 -->
+  <g>
+    <rect x="56" y="200" width="380" height="180" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <circle cx="80" cy="224" r="12" fill="#C9A961"/>
+    <text x="80" y="229" font-size="13" font-weight="700" fill="#0A2540" text-anchor="middle" class="en-sans">01</text>
+    <text x="102" y="222" font-size="10" fill="#8B95A8" letter-spacing="1" class="en-sans">TAG ENCODING</text>
+    <text x="102" y="236" font-size="9" fill="#C9A961" letter-spacing="1" class="en-sans">编码规则</text>
+    <text x="76" y="268" font-size="17" font-weight="700" fill="#0A2540" class="sans-body">Tag 编码规则</text>
+    <line x1="76" y1="280" x2="160" y2="280" stroke="#C9A961" stroke-width="1"/>
+    <text x="76" y="302" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="76" dy="0"><tspan class="mono" fill="#C9A961" font-weight="700">0x00</tspan> · 充电桩</tspan>
+      <tspan x="76" dy="22"><tspan class="mono" fill="#0A2540" font-weight="700">0x01 - 0x1F</tspan> · 工位</tspan>
+      <tspan x="76" dy="22"><tspan class="mono" fill="#8B95A8">0x20+</tspan> · 保留段</tspan>
+    </text>
+  </g>
+
+  <!-- 卡 2 · 对接超时策略 -->
+  <g>
+    <rect x="450" y="200" width="380" height="180" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <circle cx="474" cy="224" r="12" fill="#C9A961"/>
+    <text x="474" y="229" font-size="13" font-weight="700" fill="#0A2540" text-anchor="middle" class="en-sans">02</text>
+    <text x="496" y="222" font-size="10" fill="#8B95A8" letter-spacing="1" class="en-sans">TIMEOUT POLICY</text>
+    <text x="496" y="236" font-size="9" fill="#C9A961" letter-spacing="1" class="en-sans">超时策略</text>
+    <text x="470" y="268" font-size="17" font-weight="700" fill="#0A2540" class="sans-body">对接超时策略</text>
+    <line x1="470" y1="280" x2="554" y2="280" stroke="#C9A961" stroke-width="1"/>
+    <text x="470" y="302" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="470" dy="0"><tspan class="mono" fill="#C9A961" font-weight="700">30s</tspan> 未锁定 · 告警</tspan>
+      <tspan x="470" dy="22">自动重试 <tspan class="mono" fill="#C9A961" font-weight="700">3</tspan> 次</tspan>
+      <tspan x="470" dy="22">失败 · 切手动模式上报</tspan>
+    </text>
+  </g>
+
+  <!-- 卡 3 · 中断恢复 -->
+  <g>
+    <rect x="844" y="200" width="380" height="180" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <circle cx="868" cy="224" r="12" fill="#C9A961"/>
+    <text x="868" y="229" font-size="13" font-weight="700" fill="#0A2540" text-anchor="middle" class="en-sans">03</text>
+    <text x="890" y="222" font-size="10" fill="#8B95A8" letter-spacing="1" class="en-sans">RECOVERY</text>
+    <text x="890" y="236" font-size="9" fill="#C9A961" letter-spacing="1" class="en-sans">中断恢复</text>
+    <text x="864" y="268" font-size="17" font-weight="700" fill="#0A2540" class="sans-body">中断恢复</text>
+    <line x1="864" y1="280" x2="948" y2="280" stroke="#C9A961" stroke-width="1"/>
+    <text x="864" y="302" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="864" dy="0">电流 <tspan class="mono">&lt;1 A</tspan> 持续 <tspan class="mono" fill="#C9A961" font-weight="700">5s</tspan></tspan>
+      <tspan x="864" dy="22">触发 · BMS 告警</tspan>
+      <tspan x="864" dy="22">重新规划路径 + 对接</tspan>
+    </text>
+  </g>
+
+  <!-- 卡 4 · 完成判据 -->
+  <g>
+    <rect x="56" y="400" width="380" height="180" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <circle cx="80" cy="424" r="12" fill="#C9A961"/>
+    <text x="80" y="429" font-size="13" font-weight="700" fill="#0A2540" text-anchor="middle" class="en-sans">04</text>
+    <text x="102" y="422" font-size="10" fill="#8B95A8" letter-spacing="1" class="en-sans">COMPLETION</text>
+    <text x="102" y="436" font-size="9" fill="#C9A961" letter-spacing="1" class="en-sans">完成判据</text>
+    <text x="76" y="468" font-size="17" font-weight="700" fill="#0A2540" class="sans-body">完成判据</text>
+    <line x1="76" y1="480" x2="160" y2="480" stroke="#C9A961" stroke-width="1"/>
+    <text x="76" y="502" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="76" dy="0">SOC <tspan class="mono" fill="#C9A961" font-weight="700">&gt;=95%</tspan></tspan>
+      <tspan x="76" dy="22">AND 电流 <tspan class="mono">&lt;0.1 A</tspan></tspan>
+      <tspan x="76" dy="22">持续 <tspan class="mono" fill="#C9A961" font-weight="700">60s</tspan></tspan>
+    </text>
+  </g>
+
+  <!-- 卡 5 · 安全冗余 -->
+  <g>
+    <rect x="450" y="400" width="380" height="180" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <circle cx="474" cy="424" r="12" fill="#C9A961"/>
+    <text x="474" y="429" font-size="13" font-weight="700" fill="#0A2540" text-anchor="middle" class="en-sans">05</text>
+    <text x="496" y="422" font-size="10" fill="#8B95A8" letter-spacing="1" class="en-sans">SAFETY</text>
+    <text x="496" y="436" font-size="9" fill="#C9A961" letter-spacing="1" class="en-sans">安全冗余</text>
+    <text x="470" y="468" font-size="17" font-weight="700" fill="#0A2540" class="sans-body">安全冗余</text>
+    <line x1="470" y1="480" x2="554" y2="480" stroke="#C9A961" stroke-width="1"/>
+    <text x="470" y="502" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="470" dy="0">急停硬件不切断充电</tspan>
+      <tspan x="470" dy="22">避免意外放电 / 浪涌</tspan>
+      <tspan x="470" dy="22">独立安全链路 · 双通道</tspan>
+    </text>
+  </g>
+
+  <!-- 卡 6 · 监控指标 -->
+  <g>
+    <rect x="844" y="400" width="380" height="180" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <circle cx="868" cy="424" r="12" fill="#C9A961"/>
+    <text x="868" y="429" font-size="13" font-weight="700" fill="#0A2540" text-anchor="middle" class="en-sans">06</text>
+    <text x="890" y="422" font-size="10" fill="#8B95A8" letter-spacing="1" class="en-sans">MONITORING</text>
+    <text x="890" y="436" font-size="9" fill="#C9A961" letter-spacing="1" class="en-sans">监控指标</text>
+    <text x="864" y="468" font-size="17" font-weight="700" fill="#0A2540" class="sans-body">监控指标</text>
+    <line x1="864" y1="480" x2="948" y2="480" stroke="#C9A961" stroke-width="1"/>
+    <text x="864" y="502" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="864" dy="0">· 充电时长 · 对接成功率</tspan>
+      <tspan x="864" dy="22">· Tag 识别置信度</tspan>
+      <tspan x="864" dy="22">· Grafana 看板实时可视</tspan>
+    </text>
+  </g>
+
+  <!-- 底部提示 -->
+  <line x1="56" y1="620" x2="1224" y2="620" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="648" font-size="13" fill="#2B3340" class="sans-body">
+    所有参数落地为 <tspan class="mono" fill="#0A2540" font-weight="700">ros2 params / auto_dock_config.yaml</tspan> · 可远程调整、可版本化、可灰度下发
+  </text>
+  <text x="56" y="670" font-size="12" fill="#8B95A8" font-style="italic" class="sans-body">
+    参数配置纳入 Portainer + Ansible 流水线 · 变更全程审计
+  </text>
+
+  <!-- 页脚 -->
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">13 / 34</text>
+
+</svg>

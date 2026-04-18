@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 大问题 1 · 底盘 · 双电源热插拔
+  </text>
+
+  <text x="56" y="112" font-size="36" font-weight="700" fill="#0A2540" class="serif-title">
+    双电源热插拔 · 电路拓扑
+  </text>
+
+  <text x="56" y="142" font-size="15" fill="#8B95A8" font-style="italic" class="en-serif">
+    Hot-Swap Circuit Topology — OR-ing Diodes + Bulk Cap + Supercap
+  </text>
+
+  <line x1="56" y1="162" x2="220" y2="162" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="162" x2="560" y2="162" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 顶部提问框 ===== -->
+  <rect x="56" y="180" width="1168" height="56" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+  <text x="76" y="202" font-size="11" fill="#8B95A8" letter-spacing="2" class="en-sans">CURRENT PAIN · 现状痛点</text>
+  <text x="76" y="224" font-size="14" fill="#2B3340" class="sans-body">
+    单电池停机充电 · 换电期间业务中断 <tspan fill="#C9A961" font-weight="700">~30 分钟</tspan>
+    <tspan dx="40">产线利用率下降</tspan> <tspan fill="#C9A961" font-weight="700">~15%</tspan>
+  </text>
+
+  <!-- ===== 左侧：工业方案对比（表格） ===== -->
+  <g>
+    <rect x="56" y="256" width="340" height="420" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="56" y="256" width="340" height="36" fill="#0A2540"/>
+    <text x="76" y="280" font-size="13" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="en-sans">INDUSTRY OPTIONS · 工业方案对比</text>
+
+    <!-- 表头 -->
+    <line x1="56" y1="320" x2="396" y2="320" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+    <text x="76" y="314" font-size="10" fill="#8B95A8" letter-spacing="1" class="en-sans">OPTION / PROS / CONS</text>
+
+    <!-- 选项 1 -->
+    <g>
+      <text x="76" y="346" font-size="11" fill="#8B95A8" letter-spacing="1" class="en-sans">OPTION A</text>
+      <text x="76" y="366" font-size="14" font-weight="700" fill="#2B3340" class="sans-body">Spot · 波士顿动力</text>
+      <text x="76" y="386" font-size="12" fill="#2B3340" class="sans-body">单电池外接续电</text>
+      <text x="76" y="402" font-size="11" fill="#8B95A8" class="sans-body">简单 · 但需中转换电</text>
+    </g>
+    <line x1="76" y1="418" x2="376" y2="418" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+
+    <!-- 选项 2（推荐） -->
+    <g>
+      <rect x="56" y="430" width="340" height="120" fill="#FFFDF5" stroke="none"/>
+      <rect x="56" y="430" width="4" height="120" fill="#C9A961"/>
+      <rect x="330" y="434" width="60" height="20" fill="#C9A961"/>
+      <text x="360" y="448" font-size="10" font-weight="700" fill="#0A2540" text-anchor="middle" letter-spacing="1" class="en-sans">推荐</text>
+      <text x="76" y="448" font-size="11" fill="#C9A961" letter-spacing="1" class="en-sans">OPTION B</text>
+      <text x="76" y="470" font-size="14" font-weight="700" fill="#0A2540" class="sans-body">ADI LT1641 OR-ing</text>
+      <text x="76" y="490" font-size="12" fill="#2B3340" class="sans-body">双电池无缝切换</text>
+      <text x="76" y="510" font-size="12" font-weight="700" fill="#C9A961" class="mono">毫秒级 · &lt;1 ms</text>
+      <text x="76" y="530" font-size="11" fill="#8B95A8" class="sans-body">行业成熟 · 芯片可采</text>
+    </g>
+    <line x1="76" y1="560" x2="376" y2="560" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+
+    <!-- 选项 3 -->
+    <g>
+      <text x="76" y="586" font-size="11" fill="#8B95A8" letter-spacing="1" class="en-sans">OPTION C</text>
+      <text x="76" y="606" font-size="14" font-weight="700" fill="#2B3340" class="sans-body">UPS 超级电容</text>
+      <text x="76" y="626" font-size="12" fill="#2B3340" class="sans-body">换电桥接 2 - 5 秒</text>
+      <text x="76" y="646" font-size="11" fill="#8B95A8" class="sans-body">容量有限 · 体积大</text>
+    </g>
+  </g>
+
+  <!-- ===== 右侧：推荐电路图 ===== -->
+  <g>
+    <rect x="420" y="256" width="804" height="420" fill="none" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <rect x="420" y="256" width="804" height="36" fill="#C9A961"/>
+    <text x="440" y="280" font-size="13" font-weight="700" fill="#0A2540" letter-spacing="1" class="en-sans">RECOMMENDED CIRCUIT · 推荐电路图</text>
+    <text x="1208" y="280" font-size="11" fill="#0A2540" text-anchor="end" font-weight="600" class="en-sans">LT4320 + LT1641</text>
+
+    <!-- Battery A -->
+    <g>
+      <rect x="460" y="316" width="150" height="52" fill="none" stroke="#2B3340" stroke-width="1.2" rx="2"/>
+      <text x="535" y="336" font-size="12" fill="#0A2540" text-anchor="middle" font-weight="700" class="sans-body">Battery A</text>
+      <text x="535" y="356" font-size="11" fill="#8B95A8" text-anchor="middle" class="mono">48V / 20 Ah</text>
+    </g>
+    <!-- Battery B -->
+    <g>
+      <rect x="1034" y="316" width="150" height="52" fill="none" stroke="#2B3340" stroke-width="1.2" rx="2"/>
+      <text x="1109" y="336" font-size="12" fill="#0A2540" text-anchor="middle" font-weight="700" class="sans-body">Battery B</text>
+      <text x="1109" y="356" font-size="11" fill="#8B95A8" text-anchor="middle" class="mono">48V / 20 Ah</text>
+    </g>
+
+    <!-- 连线下到 BMS -->
+    <line x1="535" y1="368" x2="535" y2="386" stroke="#2B3340" stroke-width="1"/>
+    <line x1="1109" y1="368" x2="1109" y2="386" stroke="#2B3340" stroke-width="1"/>
+
+    <!-- BMS A / B -->
+    <g>
+      <rect x="475" y="388" width="120" height="34" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+      <text x="535" y="410" font-size="12" fill="#2B3340" text-anchor="middle" class="sans-body">BMS A</text>
+    </g>
+    <g>
+      <rect x="1049" y="388" width="120" height="34" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+      <text x="1109" y="410" font-size="12" fill="#2B3340" text-anchor="middle" class="sans-body">BMS B</text>
+    </g>
+
+    <!-- 连线下到 Hot-Swap Ctrl -->
+    <line x1="535" y1="422" x2="535" y2="440" stroke="#2B3340" stroke-width="1"/>
+    <line x1="1109" y1="422" x2="1109" y2="440" stroke="#2B3340" stroke-width="1"/>
+
+    <!-- Hot-Swap Ctrl（学院金边框强调） -->
+    <g>
+      <rect x="460" y="442" width="150" height="50" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="2"/>
+      <text x="535" y="462" font-size="12" fill="#0A2540" text-anchor="middle" font-weight="700" class="sans-body">Hot-Swap Ctrl A</text>
+      <text x="535" y="480" font-size="10" fill="#C9A961" text-anchor="middle" class="mono">LT4320 + MOSFET</text>
+    </g>
+    <g>
+      <rect x="1034" y="442" width="150" height="50" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="2"/>
+      <text x="1109" y="462" font-size="12" fill="#0A2540" text-anchor="middle" font-weight="700" class="sans-body">Hot-Swap Ctrl B</text>
+      <text x="1109" y="480" font-size="10" fill="#C9A961" text-anchor="middle" class="mono">LT4320 + MOSFET</text>
+    </g>
+
+    <!-- 合并线 -->
+    <line x1="535" y1="492" x2="535" y2="510" stroke="#2B3340" stroke-width="1"/>
+    <line x1="1109" y1="492" x2="1109" y2="510" stroke="#2B3340" stroke-width="1"/>
+    <line x1="535" y1="510" x2="1109" y2="510" stroke="#2B3340" stroke-width="1"/>
+    <!-- OR-ing 节点 -->
+    <circle cx="822" cy="510" r="5" fill="#C9A961"/>
+    <line x1="822" y1="510" x2="822" y2="530" stroke="#C9A961" stroke-width="2"/>
+
+    <!-- Common Bus 48V -->
+    <rect x="490" y="538" width="664" height="34" fill="#C9A961" opacity="0.12" stroke="#C9A961" stroke-width="1.5"/>
+    <text x="822" y="560" font-size="13" fill="#0A2540" text-anchor="middle" font-weight="700" class="sans-body">Common Bus · 48V</text>
+
+    <!-- 下分支：Bulk Cap / Supercap -->
+    <line x1="600" y1="572" x2="600" y2="594" stroke="#2B3340" stroke-width="1"/>
+    <line x1="1044" y1="572" x2="1044" y2="594" stroke="#2B3340" stroke-width="1"/>
+
+    <g>
+      <rect x="530" y="596" width="140" height="26" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+      <text x="600" y="614" font-size="11" fill="#2B3340" text-anchor="middle" class="mono">Bulk Cap 10 mF</text>
+    </g>
+    <g>
+      <rect x="974" y="596" width="140" height="26" fill="none" stroke="#8B95A8" stroke-width="1" stroke-dasharray="3 2" rx="2"/>
+      <text x="1044" y="613" font-size="10" fill="#8B95A8" text-anchor="middle" class="mono">Supercap 10F 可选</text>
+    </g>
+
+    <!-- 最下游三路 -->
+    <line x1="700" y1="572" x2="700" y2="640" stroke="#2B3340" stroke-width="1"/>
+    <line x1="822" y1="572" x2="822" y2="640" stroke="#2B3340" stroke-width="1"/>
+    <line x1="944" y1="572" x2="944" y2="640" stroke="#2B3340" stroke-width="1"/>
+
+    <g>
+      <rect x="648" y="640" width="104" height="26" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+      <text x="700" y="658" font-size="10" fill="#2B3340" text-anchor="middle" class="sans-body">PC-A DC-DC</text>
+    </g>
+    <g>
+      <rect x="770" y="640" width="104" height="26" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+      <text x="822" y="658" font-size="10" fill="#2B3340" text-anchor="middle" class="sans-body">PC-B DC-DC</text>
+    </g>
+    <g>
+      <rect x="892" y="640" width="104" height="26" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+      <text x="944" y="658" font-size="10" fill="#2B3340" text-anchor="middle" class="sans-body">电机驱动器</text>
+    </g>
+
+    <!-- 右上关键参数标注 -->
+    <g>
+      <line x1="1160" y1="450" x2="1202" y2="450" stroke="#C9A961" stroke-width="0.8"/>
+      <text x="1208" y="396" font-size="10" fill="#C9A961" letter-spacing="1" class="en-sans">SPECS</text>
+      <text x="1208" y="416" font-size="11" fill="#0A2540" font-weight="600" class="mono">切换 &lt;1 ms</text>
+      <text x="1208" y="434" font-size="11" fill="#0A2540" font-weight="600" class="mono">跌落 &lt;8%  (&gt;44V)</text>
+      <text x="1208" y="452" font-size="11" fill="#0A2540" font-weight="600" class="mono">RDS(on) &lt;3 mOhm</text>
+    </g>
+  </g>
+
+  <!-- 页脚 -->
+  <line x1="56" y1="690" x2="1224" y2="690" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="708" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="708" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">14 / 34</text>
+
+</svg>

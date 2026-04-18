@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>代码仓库 · Transcribe Box Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../assets/js/auth-guard.js"></script>
+  <link rel="stylesheet" href="../assets/css/academic.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      Transcribe Box Lab
+      <span class="sub">祥承智能机器人实验室</span>
+    </a>
+    <nav>
+      <a href="../index.html">首页</a>
+      <a href="../reports/index.html">汇报资料</a>
+      <a href="index.html" class="current">代码仓库</a>
+      <a href="../dev/index.html">开发内容</a>
+      <a href="../about.html">关于</a>
+    </nav>
+    <button class="logout" onclick="sessionStorage.removeItem('tbl_auth');location.reload()">登出</button>
+  </div>
+</header>
+
+<main class="container">
+  <div class="page-title">
+    <span class="en">CODE REPOSITORIES · 代码仓库</span>
+    <h1>代码仓库索引</h1>
+  </div>
+  <p class="page-intro">
+    实验室内部与 fork 的代码仓库索引。下方链接待实际仓库上线后替换为实际 URL。
+  </p>
+
+  <ul class="item-list">
+    <li class="item">
+      <div class="date">内部自研</div>
+      <div>
+        <a class="title">openarmx_xc · 机械臂控制栈</a>
+        <p class="desc">基于 OpenArm 的祥承定制版 · 达妙 DM 电机 MIT 模式 · ros2_control + compensated_impedance_controller · 含 bringup / hardware / commander / interfaces / bimanual_moveit_config 五个包。</p>
+      </div>
+      <div class="meta"><span class="badge">ARM</span></div>
+    </li>
+
+    <li class="item">
+      <div class="date">内部自研</div>
+      <div>
+        <a class="title">xc_chassis · 底盘驱动与导航</a>
+        <p class="desc">ZLAC8015D CANopen 驱动 · robot_localization EKF 融合 · Nav2 + AprilTag 精对位 · chassis_driver / chassis_localization / chassis_nav / docking 四个包。</p>
+      </div>
+      <div class="meta"><span class="badge">CHASSIS</span></div>
+    </li>
+
+    <li class="item">
+      <div class="date">内部自研</div>
+      <div>
+        <a class="title">xc_lift · 升降轴控制</a>
+        <p class="desc">EtherCAT SOEM 软 Master · 米思米 E-MASH2 400W 伺服驱动 · arm_torso 8-DOF 规划组（二期）。</p>
+      </div>
+      <div class="meta"><span class="badge">LIFT</span></div>
+    </li>
+
+    <li class="item">
+      <div class="date">内部自研</div>
+      <div>
+        <a class="title">xc_head · 头部感知与交互</a>
+        <p class="desc">head_bringup / head_voice / head_face / head_display · Porcupine 唤醒 + Sherpa-ONNX Paraformer ASR + Piper TTS · 6 麦圆阵列硬件集成。</p>
+      </div>
+      <div class="meta"><span class="badge">HEAD</span></div>
+    </li>
+
+    <li class="item">
+      <div class="date">内部自研</div>
+      <div>
+        <a class="title">xc_safety · 安全框架</a>
+        <p class="desc">急停 Service · 心跳检测 · 软限位 · 电流门限 · GPIO/USB 急停按钮硬件桥接。</p>
+      </div>
+      <div class="meta"><span class="badge">SAFETY</span></div>
+    </li>
+
+    <li class="item">
+      <div class="date">外部参照</div>
+      <div>
+        <a class="title" href="https://github.com/enactic/openarm" target="_blank">OpenArm · 上游主仓</a>
+        <p class="desc">enactic 组织维护的 OpenArm 开源主仓 · 我们基于此做 fork 与二次开发 · 包含 URDF / ros2_control / teleop / MoveIt 配置 / Isaac Lab 训练等 13 个子仓。</p>
+      </div>
+      <div class="meta"><span class="badge">UPSTREAM</span></div>
+    </li>
+
+    <li class="item">
+      <div class="date">外部参照</div>
+      <div>
+        <a class="title" href="https://github.com/Roboparty/atom01_deploy" target="_blank">atom01_deploy · RDK X5 PREEMPT_RT 实证</a>
+        <p class="desc">RoboParty 提供的 RDK X5 实时内核部署脚本 · 为未来双 RDK 方案的兜底参考。</p>
+      </div>
+      <div class="meta"><span class="badge">REF</span></div>
+    </li>
+
+    <li class="item">
+      <div class="date">站点本身</div>
+      <div>
+        <a class="title" href="https://github.com/shuyx/xc-robot2lab" target="_blank">xc-robot2lab · 实验室门户站点</a>
+        <p class="desc">本站源码。静态 HTML + Reveal.js + GitHub Pages 部署。</p>
+      </div>
+      <div class="meta"><span class="badge">SITE</span></div>
+    </li>
+  </ul>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="line">— TRANSCRIBE BOX LAB —</div>
+    <div class="mini">© 2026 Transcribe Box Lab · 祥承智能机器人实验室</div>
+  </div>
+</footer>
+
+</body>
+</html>

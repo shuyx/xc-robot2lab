@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- 顶部 -->
+  <text x="56" y="54" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 2 · 机械臂关节稳定与低成本控制
+  </text>
+  <text x="56" y="98" font-size="32" font-weight="700" fill="#0A2540" class="serif-title">
+    手眼标定 · 精度提升路径
+  </text>
+  <text x="56" y="124" font-size="15" fill="#8B95A8" font-style="italic" class="en-serif">
+    Hand-Eye Calibration Upgrade
+  </text>
+  <line x1="56" y1="140" x2="220" y2="140" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="140" x2="560" y2="140" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- 顶部陷阱框 -->
+  <rect x="56" y="156" width="1168" height="58" fill="none" stroke="#C9A961" stroke-width="1.3" rx="2"/>
+  <text x="74" y="176" font-size="10" fill="#C9A961" letter-spacing="2" font-weight="600" class="sans-body">PITFALL · 陷阱</text>
+  <text x="74" y="200" font-size="14" fill="#2B3340" class="sans-body">
+    easy_handeye 默认 <tspan fill="#0A2540" font-weight="700">Tsai-Lenz</tspan> · PLOS ONE 2022 实测精度最差 <tspan fill="#C9A961" font-weight="700">~4.4 mm</tspan>
+  </text>
+
+  <!-- ===== 主体 2x2 四步矩阵 ===== -->
+  <!-- 单元：574x188 间距 20；第一行 y=232，第二行 y=440 -->
+
+  <!-- ========== Step 1 · 算法替换 ========== -->
+  <g>
+    <rect x="56" y="232" width="574" height="188" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <!-- 左上大编号圆 -->
+    <circle cx="96" cy="272" r="22" fill="#C9A961"/>
+    <text x="96" y="278" text-anchor="middle" font-size="18" font-weight="700" fill="#0A2540" class="en-serif">1</text>
+    <text x="140" y="270" font-size="17" font-weight="700" fill="#0A2540" class="sans-body">算法替换</text>
+    <text x="140" y="288" font-size="11" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Algorithm Replacement</text>
+    <line x1="140" y1="302" x2="610" y2="302" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+
+    <text x="76" y="328" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="76" dy="0">· 切 <tspan fill="#0A2540" font-weight="700">Daniilidis 对偶四元数</tspan> / <tspan fill="#0A2540" font-weight="700">Park-Martin</tspan></tspan>
+      <tspan x="76" dy="18">· OpenCV 原生支持 · 改一行参数即可</tspan>
+    </text>
+
+    <!-- 精度跃迁 -->
+    <g transform="translate(76, 378)">
+      <text x="0" y="0" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">ACCURACY GAIN</text>
+      <text x="140" y="2" font-size="15" fill="#8B95A8" class="mono">4.4 mm</text>
+      <path d="M 220,-3 L 244,-3 M 240,-7 L 244,-3 L 240,1" fill="none" stroke="#C9A961" stroke-width="1.3"/>
+      <text x="256" y="2" font-size="16" font-weight="700" fill="#C9A961" class="mono">3.4 mm</text>
+    </g>
+  </g>
+
+  <!-- ========== Step 2 · 标定板升级 ========== -->
+  <g>
+    <rect x="650" y="232" width="574" height="188" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <circle cx="690" cy="272" r="22" fill="#C9A961"/>
+    <text x="690" y="278" text-anchor="middle" font-size="18" font-weight="700" fill="#0A2540" class="en-serif">2</text>
+    <text x="734" y="270" font-size="17" font-weight="700" fill="#0A2540" class="sans-body">标定板升级</text>
+    <text x="734" y="288" font-size="11" fill="#8B95A8" letter-spacing="0.5" class="en-sans">ChArUco Bundle</text>
+    <line x1="734" y1="302" x2="1204" y2="302" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+
+    <text x="670" y="328" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="670" dy="0">· <tspan fill="#0A2540" font-weight="700">ChArUco bundle</tspan> · 棋盘亚像素 + ArUco 编码</tspan>
+      <tspan x="670" dy="18">· 不用裸 ArUco / AprilTag（无亚像素）</tspan>
+      <tspan x="670" dy="18">· A3 尺寸 · 格子 20 mm+ · 亚克力/铝板</tspan>
+    </text>
+
+    <g transform="translate(670, 396)">
+      <text x="0" y="0" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">ONLINE ACCURACY</text>
+      <text x="440" y="2" text-anchor="end" font-size="16" font-weight="700" fill="#C9A961" class="mono">0.4 - 0.6 mm</text>
+    </g>
+  </g>
+
+  <!-- ========== Step 3 · 姿态采集 ========== -->
+  <g>
+    <rect x="56" y="440" width="574" height="188" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <circle cx="96" cy="480" r="22" fill="#C9A961"/>
+    <text x="96" y="486" text-anchor="middle" font-size="18" font-weight="700" fill="#0A2540" class="en-serif">3</text>
+    <text x="140" y="478" font-size="17" font-weight="700" fill="#0A2540" class="sans-body">姿态采集</text>
+    <text x="140" y="496" font-size="11" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Pose Acquisition</text>
+    <line x1="140" y1="510" x2="610" y2="510" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+
+    <text x="76" y="536" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="76" dy="0">· 至少 <tspan fill="#C9A961" font-weight="700">30 组</tspan> 有效姿态</tspan>
+      <tspan x="76" dy="18">· 旋转角 <tspan fill="#0A2540" font-weight="700">&gt;= 60 度</tspan> 均匀分布（Tsai 原论文）</tspan>
+      <tspan x="76" dy="18">· 避免退化 · 两姿态方向不得平行</tspan>
+    </text>
+
+    <!-- 姿态球状示意（小图） -->
+    <g transform="translate(460, 520)">
+      <circle cx="70" cy="50" r="42" fill="none" stroke="#8B95A8" stroke-width="0.6" stroke-dasharray="2 2"/>
+      <!-- 均匀分布点（模拟 30 点） -->
+      <circle cx="70" cy="8" r="2" fill="#C9A961"/>
+      <circle cx="100" cy="18" r="2" fill="#C9A961"/>
+      <circle cx="110" cy="42" r="2" fill="#C9A961"/>
+      <circle cx="105" cy="68" r="2" fill="#C9A961"/>
+      <circle cx="88" cy="88" r="2" fill="#C9A961"/>
+      <circle cx="56" cy="90" r="2" fill="#C9A961"/>
+      <circle cx="32" cy="78" r="2" fill="#C9A961"/>
+      <circle cx="28" cy="52" r="2" fill="#C9A961"/>
+      <circle cx="36" cy="24" r="2" fill="#C9A961"/>
+      <circle cx="54" cy="14" r="2" fill="#C9A961"/>
+      <circle cx="82" cy="32" r="2" fill="#0A2540"/>
+      <circle cx="60" cy="60" r="2" fill="#0A2540"/>
+      <circle cx="92" cy="58" r="2" fill="#0A2540"/>
+      <text x="70" y="116" text-anchor="middle" font-size="9" fill="#8B95A8" class="mono">30 poses / sphere</text>
+    </g>
+  </g>
+
+  <!-- ========== Step 4 · 在线校验 ========== -->
+  <g>
+    <rect x="650" y="440" width="574" height="188" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <circle cx="690" cy="480" r="22" fill="#C9A961"/>
+    <text x="690" y="486" text-anchor="middle" font-size="18" font-weight="700" fill="#0A2540" class="en-serif">4</text>
+    <text x="734" y="478" font-size="17" font-weight="700" fill="#0A2540" class="sans-body">在线校验</text>
+    <text x="734" y="496" font-size="11" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Online Verification</text>
+    <line x1="734" y1="510" x2="1204" y2="510" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+
+    <text x="670" y="536" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="670" dy="0">· <tspan fill="#0A2540" font-weight="700">10 个已知 Tag 点</tspan> 做 FK / IK 对比</tspan>
+      <tspan x="670" dy="18">· 误差 <tspan fill="#C9A961" font-weight="700">&gt; 1 mm</tspan> 则重新标定</tspan>
+      <tspan x="670" dy="18">· 连续 2 小时工作退化 <tspan fill="#C9A961" font-weight="700">&lt; 0.3 mm</tspan></tspan>
+    </text>
+  </g>
+
+  <!-- ========== 底部精度阶梯 ========== -->
+  <g>
+    <rect x="56" y="648" width="1168" height="40" fill="none" stroke="#C9A961" stroke-width="1.3" rx="2"/>
+    <text x="74" y="664" font-size="10" fill="#C9A961" letter-spacing="2" font-weight="600" class="sans-body">ACCURACY LADDER · 精度阶梯</text>
+
+    <!-- 三段色条 -->
+    <g transform="translate(360, 656)">
+      <!-- 入门段（暖灰） -->
+      <rect x="0" y="8" width="200" height="16" fill="#8B95A8" opacity="0.6"/>
+      <text x="100" y="20" text-anchor="middle" font-size="10" fill="#F7F3EB" font-weight="600" class="sans-body">入门 ±2 mm</text>
+      <text x="100" y="38" text-anchor="middle" font-size="9" fill="#8B95A8" class="mono">Tsai + ArUco</text>
+
+      <!-- 工程段（学院金 · 本项目） -->
+      <rect x="202" y="4" width="260" height="24" fill="#C9A961"/>
+      <rect x="202" y="4" width="260" height="24" fill="none" stroke="#0A2540" stroke-width="1.3"/>
+      <text x="332" y="20" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="700" class="sans-body">工程 ±0.6 mm · 本项目目标</text>
+      <text x="332" y="38" text-anchor="middle" font-size="9" fill="#0A2540" class="mono">Daniilidis + ChArUco + 30 pose</text>
+
+      <!-- 精密段（深靛蓝） -->
+      <rect x="464" y="8" width="180" height="16" fill="#0A2540" opacity="0.85"/>
+      <text x="554" y="20" text-anchor="middle" font-size="10" fill="#F7F3EB" font-weight="600" class="sans-body">精密 ±0.1 mm</text>
+      <text x="554" y="38" text-anchor="middle" font-size="9" fill="#8B95A8" class="mono">结构光 + 离线 BA · 不做</text>
+    </g>
+  </g>
+
+  <!-- 页脚 -->
+  <line x1="56" y1="696" x2="1224" y2="696" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="712" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="712" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">21 / 34</text>
+
+</svg>

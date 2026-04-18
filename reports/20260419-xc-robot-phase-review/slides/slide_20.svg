@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- 顶部 -->
+  <text x="56" y="54" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 2 · 机械臂关节稳定与低成本控制
+  </text>
+  <text x="56" y="98" font-size="32" font-weight="700" fill="#0A2540" class="serif-title">
+    ±0.1 mm 精度承诺 · 任务层
+  </text>
+  <text x="56" y="124" font-size="15" fill="#8B95A8" font-style="italic" class="en-serif">
+    Task-Level Multi-Modal Closure
+  </text>
+  <line x1="56" y1="140" x2="220" y2="140" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="140" x2="560" y2="140" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- 顶部关键洞察框 -->
+  <rect x="56" y="156" width="1168" height="70" fill="none" stroke="#C9A961" stroke-width="1.3" rx="2"/>
+  <text x="74" y="178" font-size="10" fill="#C9A961" letter-spacing="2" font-weight="600" class="sans-body">KEY INSIGHT · 关键洞察</text>
+  <text x="74" y="202" font-size="15" fill="#2B3340" class="sans-body">
+    揭榜挂帅验收场景 <tspan fill="#0A2540" font-weight="700">全部是接触任务</tspan>
+  </text>
+  <text x="74" y="220" font-size="13" fill="#8B95A8" class="sans-body">
+    SMT 料盘分拣 / 螺丝插拔 / 上下料 / 锁付装配 · 无纯自由空间点到点
+  </text>
+
+  <!-- ========== 主体：三层闭环架构 ========== -->
+  <!-- 每节点 340x340，x: 56, 420, 784；y=246 -->
+
+  <!-- ===== Layer 1 · 视觉粗定位 ===== -->
+  <g>
+    <rect x="56" y="246" width="340" height="320" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <!-- 层号徽章 -->
+    <rect x="56" y="246" width="90" height="32" fill="#C9A961"/>
+    <text x="101" y="267" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" letter-spacing="1" class="en-sans">LAYER 1</text>
+    <text x="76" y="310" font-size="20" font-weight="700" fill="#0A2540" class="sans-body">视觉粗定位</text>
+    <text x="76" y="330" font-size="11" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Visual Coarse Localization</text>
+    <line x1="76" y1="342" x2="376" y2="342" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+
+    <!-- 要点 -->
+    <text x="76" y="368" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="76" dy="0">· YOLO 6D 位姿估计</tspan>
+      <tspan x="76" dy="22">· ChArUco 锚点融合</tspan>
+      <tspan x="76" dy="22">· 海康 RGB-D + IMU</tspan>
+    </text>
+
+    <!-- 底部指标 -->
+    <rect x="76" y="458" width="300" height="92" fill="#FFFDF5" stroke="#C9A961" stroke-width="0.8" rx="2"/>
+    <text x="86" y="478" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">METRICS</text>
+    <text x="86" y="506" font-size="12" fill="#2B3340" class="sans-body">精度</text>
+    <text x="366" y="506" text-anchor="end" font-size="17" fill="#C9A961" font-weight="700" class="mono">±5 mm</text>
+    <text x="86" y="534" font-size="12" fill="#2B3340" class="sans-body">频率</text>
+    <text x="366" y="534" text-anchor="end" font-size="17" fill="#C9A961" font-weight="700" class="mono">10 - 30 Hz</text>
+  </g>
+
+  <!-- 箭头 1 to 2 -->
+  <g>
+    <line x1="400" y1="406" x2="418" y2="406" stroke="#0A2540" stroke-width="1.2"/>
+    <path d="M 414,401 L 420,406 L 414,411" fill="none" stroke="#0A2540" stroke-width="1.2"/>
+  </g>
+
+  <!-- ===== Layer 2 · 力控柔顺接触 ===== -->
+  <g>
+    <rect x="420" y="246" width="340" height="320" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="420" y="246" width="90" height="32" fill="#C9A961"/>
+    <text x="465" y="267" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" letter-spacing="1" class="en-sans">LAYER 2</text>
+    <text x="440" y="310" font-size="20" font-weight="700" fill="#0A2540" class="sans-body">力控柔顺接触</text>
+    <text x="440" y="330" font-size="11" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Force-Compliant Contact</text>
+    <line x1="440" y1="342" x2="740" y2="342" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+
+    <text x="440" y="368" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="440" dy="0">· 力阈值 · 5 N 接触检测</tspan>
+      <tspan x="440" dy="22">· Kp 动态降低 · 接触柔顺</tspan>
+      <tspan x="440" dy="22">· 关节级阻抗控制</tspan>
+    </text>
+
+    <rect x="440" y="458" width="300" height="92" fill="#FFFDF5" stroke="#C9A961" stroke-width="0.8" rx="2"/>
+    <text x="450" y="478" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">METRICS</text>
+    <text x="450" y="506" font-size="12" fill="#2B3340" class="sans-body">反馈精度</text>
+    <text x="730" y="506" text-anchor="end" font-size="17" fill="#C9A961" font-weight="700" class="mono">±0.1 N</text>
+    <text x="450" y="534" font-size="12" fill="#2B3340" class="sans-body">环路延迟</text>
+    <text x="730" y="534" text-anchor="end" font-size="17" fill="#C9A961" font-weight="700" class="mono">&lt; 2 ms</text>
+  </g>
+
+  <!-- 箭头 2 to 3 -->
+  <g>
+    <line x1="764" y1="406" x2="782" y2="406" stroke="#0A2540" stroke-width="1.2"/>
+    <path d="M 778,401 L 784,406 L 778,411" fill="none" stroke="#0A2540" stroke-width="1.2"/>
+  </g>
+
+  <!-- ===== Layer 3 · 在线微调 ===== -->
+  <g>
+    <rect x="784" y="246" width="440" height="320" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <rect x="784" y="246" width="90" height="32" fill="#0A2540"/>
+    <text x="829" y="267" text-anchor="middle" font-size="13" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="en-sans">LAYER 3</text>
+    <!-- CORE 徽章 -->
+    <rect x="1178" y="246" width="46" height="32" fill="#C9A961"/>
+    <text x="1201" y="267" text-anchor="middle" font-size="11" font-weight="700" fill="#0A2540" letter-spacing="1" class="en-sans">CORE</text>
+    <text x="804" y="310" font-size="20" font-weight="700" fill="#0A2540" class="sans-body">在线微调</text>
+    <text x="804" y="330" font-size="11" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Online Fine-Tuning</text>
+    <line x1="804" y1="342" x2="1204" y2="342" stroke="#C9A961" stroke-width="1.2"/>
+
+    <text x="804" y="368" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="804" dy="0">· 视觉 + 力觉闭环</tspan>
+      <tspan x="804" dy="22">· 迭代 2-3 次收敛</tspan>
+      <tspan x="804" dy="22">· 卡尔曼滤波融合</tspan>
+    </text>
+
+    <!-- 最终精度大字突出 -->
+    <rect x="804" y="458" width="400" height="92" fill="#F7F3EB" stroke="#C9A961" stroke-width="1.2" rx="2"/>
+    <text x="814" y="478" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">FINAL ACCURACY · 最终精度</text>
+    <text x="1004" y="530" text-anchor="middle" font-size="38" font-weight="700" fill="#C9A961" class="mono">±0.1 mm</text>
+  </g>
+
+  <!-- ========== 底部主流工业路径 ========== -->
+  <rect x="56" y="584" width="1168" height="98" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+  <rect x="56" y="584" width="220" height="28" fill="#0A2540"/>
+  <text x="166" y="604" text-anchor="middle" font-size="12" fill="#F7F3EB" font-weight="700" letter-spacing="1" class="sans-body">INDUSTRY PATH · 主流工业路径</text>
+
+  <text x="74" y="638" font-size="13" fill="#2B3340" class="sans-body">
+    同款路径 · <tspan fill="#0A2540" font-weight="700">Franka libfranka impedance</tspan> &#160;/&#160; <tspan fill="#0A2540" font-weight="700">UR ForceMode</tspan> &#160;/&#160; <tspan fill="#0A2540" font-weight="700">JAKA Zu3 · 3C 装配</tspan>
+  </text>
+  <text x="74" y="664" font-size="13" fill="#0A2540" font-style="italic" font-weight="600" class="serif-title">
+    答辩统一口径 · 关节伺服层物理极限由减速器决定 / 最终装配精度由任务层多模态闭环保证
+  </text>
+
+  <!-- 页脚 -->
+  <line x1="56" y1="690" x2="1224" y2="690" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="708" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="708" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">20 / 34</text>
+
+</svg>

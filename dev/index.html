@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>开发内容 · Transcribe Box Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../assets/js/auth-guard.js"></script>
+  <link rel="stylesheet" href="../assets/css/academic.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      Transcribe Box Lab
+      <span class="sub">祥承智能机器人实验室</span>
+    </a>
+    <nav>
+      <a href="../index.html">首页</a>
+      <a href="../reports/index.html">汇报资料</a>
+      <a href="../repos/index.html">代码仓库</a>
+      <a href="index.html" class="current">开发内容</a>
+      <a href="../about.html">关于</a>
+    </nav>
+    <button class="logout" onclick="sessionStorage.removeItem('tbl_auth');location.reload()">登出</button>
+  </div>
+</header>
+
+<main class="container">
+  <div class="page-title">
+    <span class="en">DEVELOPMENT · 开发内容</span>
+    <h1>技术分析与架构决策</h1>
+  </div>
+  <p class="page-intro">
+    项目关键技术分析报告、BOM 文档、架构决策记录与专题调研。深度技术资料，用于团队成员对齐技术路线。
+  </p>
+
+  <ul class="item-list">
+    <li class="item">
+      <div class="date">2026-04-16</div>
+      <div>
+        <a class="title">技术分析报告 A · 双 X86 方案</a>
+        <p class="desc">
+          成熟工程路线 · Intel Mini PC + PREEMPT_RT + ROS 2 Humble · 7 大技术难点深度分析
+          · 机械臂运动规划 / 底盘导航 / 升降协同 / 手眼标定 / 双电源热插拔 / 语音交互 / 负载率承载率
+          · 多模态感知融合 + 柔性任务调度 + 精度分层承诺。
+        </p>
+      </div>
+      <div class="meta"><span class="badge">报告 A</span></div>
+    </li>
+
+    <li class="item">
+      <div class="date">2026-04-16</div>
+      <div>
+        <a class="title">技术分析报告 B · 双 RDK 方案</a>
+        <p class="desc">
+          国产化 + BPU 路线 · RDK S100 (128 TOPS BPU) + RDK X5 · atom01_deploy PREEMPT_RT 实证
+          · 10 个问题 + 10 个典型调试坑 + 10 个风险兜底 · Intel vs RDK 完整对比矩阵 + 决策树。
+        </p>
+      </div>
+      <div class="meta"><span class="badge">报告 B</span></div>
+    </li>
+
+    <li class="item">
+      <div class="date">2026-04-16</div>
+      <div>
+        <a class="title">两个月研发规划报告 · 周级（W1-W8）</a>
+        <p class="desc">
+          W1 验证周 · W2 底座周 · W3 流控周 · W4 柔顺周 · W5 功能周 · W6 集成周 · W7 磨刀周 · W8 交付周。
+          每周严格回答 9 个要素（技术路线 / 具体做法 / 评估标准 / 失败兜底等）。
+        </p>
+      </div>
+      <div class="meta"><span class="badge">报告 C</span></div>
+    </li>
+
+    <li class="item">
+      <div class="date">2026-04-17</div>
+      <div>
+        <a class="title">一期 P0 优先级方案</a>
+        <p class="desc">
+          RD2 阶段（2026-05 至 2026-08）"语音→导航→抓取→放置"最小闭环 Demo · 10 次 ≥ 8 次成功。
+          P0 五线并行：机械臂 7w · 底盘 4w · 视觉 4w · 语音 3w · 安全 1w。
+        </p>
+      </div>
+      <div class="meta"><span class="badge">P0</span></div>
+    </li>
+
+    <li class="item">
+      <div class="date">2025-09-24</div>
+      <div>
+        <a class="title">BOM v2.1 · 硬件基线解析</a>
+        <p class="desc">
+          六大子系统约 ¥10.7 万 · 主控 X86 Mini PC × 2（已切换，原 RDK 方案保留参考）
+          · 双臂 OpenArmX + 达妙 DM · 底盘 ZLAC8015D · 升降 米思米 EtherCAT · 视觉 ROSEB43i。
+        </p>
+      </div>
+      <div class="meta"><span class="badge">BOM</span></div>
+    </li>
+
+    <li class="item">
+      <div class="date">持续更新</div>
+      <div>
+        <a class="title">祥承项目知识库总览</a>
+        <p class="desc">
+          项目背景 · 硬件架构 · 软件栈 · 关键技术参数 · 研发进度追踪 · 代际演进（MVP1.0 → MVP2.0）的基础知识库入口。
+        </p>
+      </div>
+      <div class="meta"><span class="badge">INDEX</span></div>
+    </li>
+  </ul>
+
+  <p style="margin-top:24px;font-size:0.82rem;color:var(--muted)">
+    原文档位于 Obsidian Vault · <span class="mono">🔌 祥承电子/02｜研发进展跟踪/03｜2026-04报告三件套/</span>。
+    未来将以 PDF / 静态 HTML 形式上传本站。
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="line">— TRANSCRIBE BOX LAB —</div>
+    <div class="mini">© 2026 Transcribe Box Lab · 祥承智能机器人实验室</div>
+  </div>
+</footer>
+
+</body>
+</html>

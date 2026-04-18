@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 1 · 底盘导航
+  </text>
+
+  <text x="56" y="112" font-size="36" font-weight="700" fill="#0A2540" class="serif-title">
+    大问题 1 / 底盘 · 从半自研到商业化水平
+  </text>
+
+  <text x="56" y="142" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Chassis Navigation to Commercial Grade
+  </text>
+
+  <line x1="56" y1="162" x2="220" y2="162" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="162" x2="560" y2="162" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 三段对比纵向堆叠 ===== -->
+
+  <!-- 段 1 CURRENT -->
+  <g>
+    <rect x="56" y="186" width="1168" height="140" fill="none" stroke="#8B95A8" stroke-width="1" stroke-dasharray="4 3" rx="3"/>
+    <rect x="56" y="186" width="140" height="140" fill="none"/>
+    <text x="72" y="212" font-size="11" fill="#8B95A8" letter-spacing="2" class="en-sans">CURRENT</text>
+    <text x="72" y="248" font-size="22" font-weight="700" fill="#8B95A8" class="serif-title">现 状</text>
+    <line x1="72" y1="264" x2="150" y2="264" stroke="#8B95A8" stroke-width="1"/>
+    <text x="72" y="288" font-size="11" fill="#8B95A8" class="sans-body">半自研 · 未上工业化</text>
+
+    <!-- 分隔竖线 -->
+    <line x1="210" y1="206" x2="210" y2="306" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+    <!-- 4 条要点（横排） -->
+    <g>
+      <text x="236" y="218" font-size="11" fill="#8B95A8" letter-spacing="1" class="en-sans">01</text>
+      <text x="236" y="244" font-size="13" fill="#2B3340" class="sans-body">底盘里程计漂移</text>
+      <text x="236" y="272" font-size="22" font-weight="700" fill="#C9A961" class="mono">&gt;50 cm / 10 m</text>
+      <text x="236" y="298" font-size="11" fill="#8B95A8" class="sans-body">无 IMU 校正</text>
+    </g>
+    <line x1="470" y1="206" x2="470" y2="306" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+
+    <g>
+      <text x="496" y="218" font-size="11" fill="#8B95A8" letter-spacing="1" class="en-sans">02</text>
+      <text x="496" y="244" font-size="13" fill="#2B3340" class="sans-body">无 IMU 融合</text>
+      <text x="496" y="272" font-size="15" font-weight="600" fill="#2B3340" class="sans-body">转弯 / 打滑</text>
+      <text x="496" y="298" font-size="11" fill="#8B95A8" class="sans-body">位姿跳变明显</text>
+    </g>
+    <line x1="710" y1="206" x2="710" y2="306" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+
+    <g>
+      <text x="736" y="218" font-size="11" fill="#8B95A8" letter-spacing="1" class="en-sans">03</text>
+      <text x="736" y="244" font-size="13" fill="#2B3340" class="sans-body">Nav2 未配置</text>
+      <text x="736" y="272" font-size="15" font-weight="600" fill="#2B3340" class="sans-body">无路径规划</text>
+      <text x="736" y="298" font-size="11" fill="#8B95A8" class="sans-body">纯开环移动</text>
+    </g>
+    <line x1="950" y1="206" x2="950" y2="306" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+
+    <g>
+      <text x="976" y="218" font-size="11" fill="#8B95A8" letter-spacing="1" class="en-sans">04</text>
+      <text x="976" y="244" font-size="13" fill="#2B3340" class="sans-body">AMCL 物理极限</text>
+      <text x="976" y="272" font-size="22" font-weight="700" fill="#C9A961" class="mono">5 cm</text>
+      <text x="976" y="298" font-size="11" fill="#8B95A8" class="sans-body">打不穿 · 需外加锚点</text>
+    </g>
+  </g>
+
+  <!-- 段间箭头 1 -->
+  <path d="M 640 334 L 640 356" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+  <path d="M 634 350 L 640 356 L 646 350" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+  <!-- 段 2 TARGET -->
+  <g>
+    <rect x="56" y="364" width="1168" height="140" fill="none" stroke="#0A2540" stroke-width="1.5" rx="3"/>
+    <text x="72" y="390" font-size="11" fill="#C9A961" letter-spacing="2" class="en-sans">TARGET · 商业化目标</text>
+    <text x="72" y="426" font-size="22" font-weight="700" fill="#0A2540" class="serif-title">目 标</text>
+    <line x1="72" y1="442" x2="150" y2="442" stroke="#C9A961" stroke-width="1.5"/>
+    <text x="72" y="466" font-size="11" fill="#8B95A8" class="sans-body">静态 + 动态分层承诺</text>
+
+    <line x1="210" y1="384" x2="210" y2="484" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+    <g>
+      <circle cx="242" cy="410" r="8" fill="none" stroke="#C9A961" stroke-width="1.5"/>
+      <circle cx="242" cy="410" r="3" fill="#C9A961"/>
+      <text x="262" y="414" font-size="13" fill="#2B3340" class="sans-body">静态 SLAM 定位精度</text>
+      <text x="262" y="440" font-size="22" font-weight="700" fill="#0A2540" class="mono">&lt;= ±10 mm</text>
+    </g>
+    <line x1="470" y1="384" x2="470" y2="484" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+
+    <g>
+      <circle cx="496" cy="410" r="8" fill="none" stroke="#C9A961" stroke-width="1.5"/>
+      <circle cx="496" cy="410" r="3" fill="#C9A961"/>
+      <text x="516" y="414" font-size="13" fill="#2B3340" class="sans-body">动态相对定位</text>
+      <text x="516" y="440" font-size="22" font-weight="700" fill="#0A2540" class="mono">&lt;= ±5 mm</text>
+    </g>
+    <line x1="710" y1="384" x2="710" y2="484" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+
+    <g>
+      <circle cx="736" cy="410" r="8" fill="none" stroke="#C9A961" stroke-width="1.5"/>
+      <circle cx="736" cy="410" r="3" fill="#C9A961"/>
+      <text x="756" y="414" font-size="13" fill="#2B3340" class="sans-body">点选位点偏差</text>
+      <text x="756" y="440" font-size="22" font-weight="700" fill="#0A2540" class="mono">&lt;5 cm</text>
+    </g>
+    <line x1="950" y1="384" x2="950" y2="484" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+
+    <g>
+      <circle cx="976" cy="410" r="8" fill="none" stroke="#C9A961" stroke-width="1.5"/>
+      <circle cx="976" cy="410" r="3" fill="#C9A961"/>
+      <text x="996" y="414" font-size="13" fill="#2B3340" class="sans-body">工位对接偏差</text>
+      <text x="996" y="440" font-size="22" font-weight="700" fill="#0A2540" class="mono">&lt;3 cm</text>
+    </g>
+  </g>
+
+  <!-- 段间箭头 2 -->
+  <path d="M 640 512 L 640 534" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+  <path d="M 634 528 L 640 534 L 646 528" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+  <!-- 段 3 BENCHMARK -->
+  <g>
+    <rect x="56" y="542" width="1168" height="100" fill="none" stroke="#C9A961" stroke-width="1" rx="3"/>
+    <text x="72" y="568" font-size="11" fill="#C9A961" letter-spacing="2" class="en-sans">BENCHMARK · 参照</text>
+    <text x="72" y="604" font-size="22" font-weight="700" fill="#0A2540" class="serif-title">标 杆</text>
+    <line x1="72" y1="620" x2="150" y2="620" stroke="#C9A961" stroke-width="1.5"/>
+    <line x1="210" y1="562" x2="210" y2="622" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+    <text x="236" y="580" font-size="14" fill="#2B3340" class="sans-body">商用 AGV · 亚马逊 Kiva · 海康移动机器人</text>
+    <text x="236" y="608" font-size="13" fill="#8B95A8" class="sans-body">通过 Tag 阵列 · <tspan fill="#C9A961" font-weight="700">±1 - 3 cm</tspan> · 已工业化量产</text>
+  </g>
+
+  <!-- 底部总结 -->
+  <text x="640" y="674" font-size="14" fill="#0A2540" text-anchor="middle" font-style="italic" class="sans-body">
+    需要的不是算法革命 · 是工程闭环 · 四步可达 ±3 cm
+  </text>
+
+  <!-- 页脚 -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">10 / 34</text>
+
+</svg>

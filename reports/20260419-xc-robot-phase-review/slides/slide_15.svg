@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 大问题 1 · 底盘 · 双电源热插拔
+  </text>
+
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    双电源热插拔 · 本期务实路径
+  </text>
+
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Pragmatic Path for RD2 — Buy, Not Build
+  </text>
+
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 3 阶段时间轴（横向） ===== -->
+  <!-- 阶段节点：宽 360 高 320，起点 x=56，间隙 20 -->
+
+  <!-- 连接时间线（穿过三节点顶部） -->
+  <line x1="200" y1="210" x2="1080" y2="210" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- 阶段 1 · W1-W2 临时方案 -->
+  <g>
+    <circle cx="236" cy="210" r="6" fill="#8B95A8"/>
+    <text x="236" y="196" font-size="11" fill="#8B95A8" text-anchor="middle" letter-spacing="1" class="en-sans">W1 - W2</text>
+
+    <rect x="56" y="232" width="360" height="320" fill="none" stroke="#8B95A8" stroke-width="1" stroke-dasharray="4 3" rx="3"/>
+    <text x="76" y="268" font-size="11" fill="#8B95A8" letter-spacing="2" class="en-sans">PHASE 1 · 过渡</text>
+    <text x="76" y="300" font-size="20" font-weight="700" fill="#0A2540" class="sans-body">单电池 + 小型 UPS</text>
+    <line x1="76" y1="316" x2="176" y2="316" stroke="#8B95A8" stroke-width="1"/>
+
+    <text x="76" y="348" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="76" dy="0">· 保当期 Demo 验收</tspan>
+      <tspan x="76" dy="24">· 不改硬件 · 零成本</tspan>
+      <tspan x="76" dy="24">· 换电窗口 &lt;30 min</tspan>
+      <tspan x="76" dy="24">· 仅作临时方案</tspan>
+    </text>
+
+    <line x1="76" y1="476" x2="396" y2="476" stroke="#8B95A8" stroke-width="0.3" opacity="0.4"/>
+    <text x="76" y="502" font-size="11" fill="#8B95A8" letter-spacing="1" class="en-sans">COST</text>
+    <text x="76" y="528" font-size="22" font-weight="700" fill="#8B95A8" class="mono">0 元</text>
+  </g>
+
+  <!-- 阶段 2 · W6 前 商用模块 -->
+  <g>
+    <circle cx="636" cy="210" r="8" fill="#C9A961"/>
+    <circle cx="636" cy="210" r="12" fill="none" stroke="#C9A961" stroke-width="1" opacity="0.4"/>
+    <text x="636" y="196" font-size="11" fill="#C9A961" text-anchor="middle" letter-spacing="1" font-weight="700" class="en-sans">W6 前</text>
+
+    <rect x="456" y="232" width="360" height="320" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <rect x="746" y="240" width="60" height="20" fill="#C9A961"/>
+    <text x="776" y="254" font-size="10" font-weight="700" fill="#0A2540" text-anchor="middle" letter-spacing="1" class="en-sans">正式</text>
+    <text x="476" y="268" font-size="11" fill="#C9A961" letter-spacing="2" class="en-sans">PHASE 2 · 上线</text>
+    <text x="476" y="300" font-size="20" font-weight="700" fill="#0A2540" class="sans-body">商用 48V 双路模块</text>
+    <line x1="476" y1="316" x2="576" y2="316" stroke="#C9A961" stroke-width="1.5"/>
+
+    <text x="476" y="348" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="476" dy="0">· 淘宝现货 · 即到即用</tspan>
+      <tspan x="476" dy="24">· 内含 LT4320 + MOSFET</tspan>
+      <tspan x="476" dy="24">· 集成软启动 + 过流保护</tspan>
+      <tspan x="476" dy="24">· 硬件毫秒级切换</tspan>
+    </text>
+
+    <line x1="476" y1="476" x2="796" y2="476" stroke="#C9A961" stroke-width="0.6" opacity="0.5"/>
+    <text x="476" y="502" font-size="11" fill="#8B95A8" letter-spacing="1" class="en-sans">COST</text>
+    <text x="476" y="528" font-size="22" font-weight="700" fill="#C9A961" class="mono">300 - 500 元/路</text>
+  </g>
+
+  <!-- 阶段 3 · 软件侧并行 -->
+  <g>
+    <circle cx="1036" cy="210" r="6" fill="#0A2540"/>
+    <text x="1036" y="196" font-size="11" fill="#0A2540" text-anchor="middle" letter-spacing="1" class="en-sans">并行</text>
+
+    <rect x="856" y="232" width="360" height="320" fill="none" stroke="#0A2540" stroke-width="1" rx="3"/>
+    <text x="876" y="268" font-size="11" fill="#C9A961" letter-spacing="2" class="en-sans">PHASE 3 · 软件</text>
+    <text x="876" y="300" font-size="20" font-weight="700" fill="#0A2540" class="sans-body">软件侧全程并行</text>
+    <line x1="876" y1="316" x2="976" y2="316" stroke="#0A2540" stroke-width="1"/>
+
+    <text x="876" y="348" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="876" dy="0">· 双 BMS CAN 接入主控</tspan>
+      <tspan x="876" dy="24">· CAN ID 段 · <tspan class="mono" fill="#C9A961" font-weight="700">0x700-0x7FF</tspan></tspan>
+      <tspan x="876" dy="18" font-size="11" fill="#8B95A8" class="sans-body">  电机占用 0x100-0x6FF</tspan>
+      <tspan x="876" dy="30">· SOC 差 &gt;30% 拒换电</tspan>
+      <tspan x="876" dy="24">· 强制均衡算法介入</tspan>
+    </text>
+
+    <line x1="876" y1="492" x2="1196" y2="492" stroke="#8B95A8" stroke-width="0.3" opacity="0.4"/>
+    <text x="876" y="518" font-size="11" fill="#8B95A8" letter-spacing="1" class="en-sans">IMPACT</text>
+    <text x="876" y="540" font-size="13" fill="#0A2540" font-weight="600" class="sans-body">无硬件依赖 · 可独立验证</text>
+  </g>
+
+  <!-- 时间线箭头（连接三阶段） -->
+  <path d="M 420 388 L 450 388" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+  <path d="M 442 381 L 450 388 L 442 395" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+  <path d="M 820 388 L 850 388" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+  <path d="M 842 381 L 850 388 L 842 395" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+  <!-- ===== 底部验收演示 ===== -->
+  <g>
+    <rect x="56" y="578" width="920" height="80" fill="none" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <text x="76" y="604" font-size="11" fill="#C9A961" letter-spacing="2" class="en-sans">ACCEPTANCE DEMO · 验收演示</text>
+    <text x="76" y="636" font-size="15" fill="#2B3340" class="sans-body">
+      拔 A 电不断电 <tspan fill="#8B95A8">/</tspan> 换 B 电不丢失控制 <tspan fill="#8B95A8">/</tspan>
+      <tspan fill="#C9A961" font-weight="700">全程无误动作</tspan>
+    </text>
+  </g>
+
+  <!-- 右下角 不推荐提示框 -->
+  <g>
+    <rect x="988" y="578" width="236" height="80" fill="none" stroke="#8B95A8" stroke-width="1" stroke-dasharray="3 2" rx="3"/>
+    <text x="1008" y="602" font-size="10" fill="#8B95A8" letter-spacing="2" class="en-sans">NOT RECOMMENDED</text>
+    <text x="1008" y="626" font-size="12" fill="#8B95A8" font-style="italic" class="sans-body">
+      从零设计双路 PCB
+    </text>
+    <text x="1008" y="646" font-size="11" fill="#8B95A8" font-style="italic" class="sans-body">
+      W8 做不完 · 拉长工期
+    </text>
+  </g>
+
+  <!-- 页脚 -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">15 / 34</text>
+
+</svg>

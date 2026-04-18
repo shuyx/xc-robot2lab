@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- 顶部 -->
+  <text x="56" y="54" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 2 · 机械臂关节稳定与低成本控制
+  </text>
+  <text x="56" y="98" font-size="32" font-weight="700" fill="#0A2540" class="serif-title">
+    低成本双臂 · 多相机交叉验证
+  </text>
+  <text x="56" y="124" font-size="15" fill="#8B95A8" font-style="italic" class="en-serif">
+    Cross-Validation Across Cameras
+  </text>
+  <line x1="56" y1="140" x2="220" y2="140" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="140" x2="560" y2="140" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- 顶部问题框 -->
+  <rect x="56" y="156" width="1168" height="68" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+  <text x="74" y="176" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">PROBLEM · 问题</text>
+  <text x="74" y="200" font-size="14" fill="#2B3340" class="sans-body">
+    准直驱臂 FK 误差（mm 级）直接吃进手眼变换 X 解 · 标定看似达 <tspan fill="#0A2540" font-weight="700">±0.6 mm</tspan>
+  </text>
+  <text x="74" y="218" font-size="13" fill="#C9A961" font-weight="600" class="sans-body">
+    实用恶化到 ±1 - 2 mm · 单相机方案不足以承诺稳定精度
+  </text>
+
+  <!-- ========== 左中：双臂侧视图 + 三相机 ========== -->
+  <!-- 画布区：x=56, y=244, w=740, h=380 -->
+  <g>
+    <rect x="56" y="244" width="740" height="380" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="56" y="244" width="230" height="26" fill="#0A2540"/>
+    <text x="171" y="263" text-anchor="middle" font-size="12" fill="#F7F3EB" font-weight="700" letter-spacing="1" class="sans-body">HARDWARE LAYOUT · 硬件布置</text>
+
+    <!-- ===== 机器人简笔侧视图（中央）===== -->
+    <!-- 画布原点位于 (426, 440)，即装置底部中心附近 -->
+    <g transform="translate(426, 440)">
+      <!-- 底座 -->
+      <rect x="-60" y="100" width="120" height="24" fill="#8B95A8" opacity="0.45" stroke="#0A2540" stroke-width="1"/>
+      <line x1="-60" y1="124" x2="60" y2="124" stroke="#0A2540" stroke-width="1"/>
+      <!-- 升降立柱 -->
+      <rect x="-14" y="-48" width="28" height="148" fill="none" stroke="#0A2540" stroke-width="1.2"/>
+      <line x1="-14" y1="4" x2="14" y2="4" stroke="#8B95A8" stroke-width="0.5" stroke-dasharray="2 2"/>
+      <line x1="-14" y1="52" x2="14" y2="52" stroke="#8B95A8" stroke-width="0.5" stroke-dasharray="2 2"/>
+
+      <!-- 肩部平台 -->
+      <rect x="-50" y="-60" width="100" height="14" fill="#C9A961" opacity="0.5" stroke="#0A2540" stroke-width="1"/>
+
+      <!-- 左臂（大致 3 段）-->
+      <line x1="-34" y1="-53" x2="-68" y2="-25" stroke="#0A2540" stroke-width="4"/>
+      <circle cx="-34" cy="-53" r="4" fill="#C9A961" stroke="#0A2540" stroke-width="0.8"/>
+      <line x1="-68" y1="-25" x2="-92" y2="14" stroke="#0A2540" stroke-width="4"/>
+      <circle cx="-68" cy="-25" r="4" fill="#C9A961" stroke="#0A2540" stroke-width="0.8"/>
+      <line x1="-92" y1="14" x2="-100" y2="44" stroke="#0A2540" stroke-width="3.5"/>
+      <circle cx="-92" cy="14" r="3.5" fill="#C9A961" stroke="#0A2540" stroke-width="0.8"/>
+      <!-- 左臂夹爪 -->
+      <rect x="-106" y="44" width="14" height="12" fill="#2B3340"/>
+
+      <!-- 右臂（镜像）-->
+      <line x1="34" y1="-53" x2="68" y2="-25" stroke="#0A2540" stroke-width="4"/>
+      <circle cx="34" cy="-53" r="4" fill="#C9A961" stroke="#0A2540" stroke-width="0.8"/>
+      <line x1="68" y1="-25" x2="92" y2="14" stroke="#0A2540" stroke-width="4"/>
+      <circle cx="68" cy="-25" r="4" fill="#C9A961" stroke="#0A2540" stroke-width="0.8"/>
+      <line x1="92" y1="14" x2="100" y2="44" stroke="#0A2540" stroke-width="3.5"/>
+      <circle cx="92" cy="14" r="3.5" fill="#C9A961" stroke="#0A2540" stroke-width="0.8"/>
+      <rect x="92" y="44" width="14" height="12" fill="#2B3340"/>
+
+      <!-- 颈部 -->
+      <line x1="0" y1="-60" x2="0" y2="-100" stroke="#0A2540" stroke-width="2.5"/>
+      <!-- 头部 -->
+      <rect x="-24" y="-130" width="48" height="30" fill="none" stroke="#0A2540" stroke-width="1.2" rx="3"/>
+      <circle cx="0" cy="-115" r="4" fill="#8B95A8"/>
+
+      <!-- ===== 三个相机位置 ===== -->
+      <!-- 头部相机（正上方）-->
+      <g transform="translate(0, -150)">
+        <rect x="-14" y="-10" width="28" height="16" fill="#C9A961" stroke="#0A2540" stroke-width="1"/>
+        <rect x="-5" y="-6" width="10" height="8" fill="#0A2540"/>
+        <text x="0" y="-18" text-anchor="middle" font-size="10" fill="#0A2540" font-weight="700" class="sans-body">C-HEAD</text>
+        <text x="0" y="22" text-anchor="middle" font-size="9" fill="#8B95A8" class="mono">MV-EB435i</text>
+      </g>
+
+      <!-- 左臂眼（左侧）-->
+      <g transform="translate(-120, 30)">
+        <rect x="-14" y="-8" width="28" height="16" fill="#C9A961" stroke="#0A2540" stroke-width="1"/>
+        <rect x="-5" y="-4" width="10" height="8" fill="#0A2540"/>
+        <text x="0" y="-14" text-anchor="middle" font-size="10" fill="#0A2540" font-weight="700" class="sans-body">C-LEFT</text>
+        <text x="0" y="26" text-anchor="middle" font-size="9" fill="#8B95A8" class="mono">ROSEB43i</text>
+      </g>
+
+      <!-- 右臂眼（右侧）-->
+      <g transform="translate(120, 30)">
+        <rect x="-14" y="-8" width="28" height="16" fill="#C9A961" stroke="#0A2540" stroke-width="1"/>
+        <rect x="-5" y="-4" width="10" height="8" fill="#0A2540"/>
+        <text x="0" y="-14" text-anchor="middle" font-size="10" fill="#0A2540" font-weight="700" class="sans-body">C-RIGHT</text>
+        <text x="0" y="26" text-anchor="middle" font-size="9" fill="#8B95A8" class="mono">ROSEB43i</text>
+      </g>
+
+      <!-- 工件（地面目标）-->
+      <rect x="-24" y="142" width="48" height="14" fill="#8B95A8" opacity="0.45" stroke="#0A2540" stroke-width="0.8"/>
+      <text x="0" y="168" text-anchor="middle" font-size="9" fill="#8B95A8" class="mono">target · Tag</text>
+
+      <!-- ===== 三路采集线（虚线暖灰）===== -->
+      <!-- 头部相机 to 工件 -->
+      <line x1="0" y1="-140" x2="0" y2="142" stroke="#8B95A8" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.7"/>
+      <!-- 左臂眼 to 工件 -->
+      <line x1="-120" y1="38" x2="-20" y2="148" stroke="#8B95A8" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.7"/>
+      <!-- 右臂眼 to 工件 -->
+      <line x1="120" y1="38" x2="20" y2="148" stroke="#8B95A8" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.7"/>
+    </g>
+
+    <!-- ===== 位姿融合节点（底部）===== -->
+    <g>
+      <rect x="276" y="564" width="300" height="52" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.3" rx="2"/>
+      <text x="426" y="584" text-anchor="middle" font-size="13" fill="#0A2540" font-weight="700" class="sans-body">位姿融合节点</text>
+      <text x="426" y="602" text-anchor="middle" font-size="11" fill="#8B95A8" class="en-sans">Pose Fusion · 交叉验证 · sigma &lt; 1 mm</text>
+    </g>
+
+    <!-- 融合连线（从三相机汇聚） -->
+    <line x1="160" y1="470" x2="300" y2="564" stroke="#C9A961" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.7"/>
+    <line x1="426" y1="290" x2="426" y2="564" stroke="#C9A961" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.7"/>
+    <line x1="692" y1="470" x2="552" y2="564" stroke="#C9A961" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.7"/>
+  </g>
+
+  <!-- ========== 右侧：缓解措施 3 条 ========== -->
+  <g>
+    <rect x="816" y="244" width="408" height="380" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="816" y="244" width="408" height="26" fill="#0A2540"/>
+    <text x="1020" y="263" text-anchor="middle" font-size="12" fill="#F7F3EB" font-weight="700" letter-spacing="1" class="sans-body">MITIGATION · 缓解措施 3 条</text>
+
+    <!-- 措施 1 -->
+    <g transform="translate(836, 286)">
+      <circle cx="16" cy="16" r="14" fill="#C9A961"/>
+      <text x="16" y="21" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="en-serif">1</text>
+      <text x="42" y="14" font-size="14" fill="#0A2540" font-weight="700" class="sans-body">零位校准 + DH 辨识</text>
+      <text x="42" y="30" font-size="10" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Zero-Cal &amp; DH Identification</text>
+      <line x1="0" y1="42" x2="370" y2="42" stroke="#C9A961" stroke-width="0.6" opacity="0.6"/>
+      <text x="0" y="62" font-size="12" fill="#2B3340" class="sans-body">
+        <tspan x="0" dy="0">· 高精度球头探针触若干已知点</tspan>
+        <tspan x="0" dy="17">· DH 参数迭代优化 · 减少 FK 系统偏差</tspan>
+      </text>
+    </g>
+
+    <!-- 措施 2 -->
+    <g transform="translate(836, 394)">
+      <circle cx="16" cy="16" r="14" fill="#C9A961"/>
+      <text x="16" y="21" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="en-serif">2</text>
+      <text x="42" y="14" font-size="14" fill="#0A2540" font-weight="700" class="sans-body">三路冗余校验</text>
+      <text x="42" y="30" font-size="10" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Triple Redundancy Check</text>
+      <line x1="0" y1="42" x2="370" y2="42" stroke="#C9A961" stroke-width="0.6" opacity="0.6"/>
+      <text x="0" y="62" font-size="12" fill="#2B3340" class="sans-body">
+        <tspan x="0" dy="0">· 左臂眼 + 右臂眼 + 头部</tspan>
+        <tspan x="0" dy="17">· 方差 &gt; 1 mm 丢帧重采 · 保证鲁棒</tspan>
+      </text>
+    </g>
+
+    <!-- 措施 3 -->
+    <g transform="translate(836, 502)">
+      <circle cx="16" cy="16" r="14" fill="#C9A961"/>
+      <text x="16" y="21" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="en-serif">3</text>
+      <text x="42" y="14" font-size="14" fill="#0A2540" font-weight="700" class="sans-body">在线迭代标定</text>
+      <text x="42" y="30" font-size="10" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Online Iterative Calibration</text>
+      <line x1="0" y1="42" x2="370" y2="42" stroke="#C9A961" stroke-width="0.6" opacity="0.6"/>
+      <text x="0" y="62" font-size="12" fill="#2B3340" class="sans-body">
+        <tspan x="0" dy="0">· 每次抓取前用工位 Tag 快速纠偏</tspan>
+        <tspan x="0" dy="17">· 误差积累消除 · 长时间稳定</tspan>
+      </text>
+    </g>
+  </g>
+
+  <!-- 底部验收判据 -->
+  <rect x="56" y="644" width="1168" height="40" fill="none" stroke="#C9A961" stroke-width="1.3" rx="2"/>
+  <text x="74" y="661" font-size="10" fill="#C9A961" letter-spacing="2" font-weight="600" class="sans-body">ACCEPTANCE · 验收判据</text>
+  <text x="74" y="676" font-size="13" fill="#0A2540" class="sans-body">
+    2 小时连续工作 · 精度退化 <tspan fill="#C9A961" font-weight="700">&lt; 0.3 mm</tspan> &#160;/&#160; 三路位姿方差 <tspan fill="#C9A961" font-weight="700">&lt; 1 mm</tspan>
+  </text>
+
+  <!-- 页脚 -->
+  <line x1="56" y1="690" x2="1224" y2="690" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="708" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="708" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">22 / 34</text>
+
+</svg>

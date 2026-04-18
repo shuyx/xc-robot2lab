@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <!-- 背景：象牙米白 -->
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+
+  <!-- 左侧章节竖线（学院金） -->
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- ===== 顶部章节标识 ===== -->
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    CONTENTS · 全文共 5 部分 · 34 页
+  </text>
+
+  <!-- ===== 主标题 ===== -->
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    目录 / Table of Contents
+  </text>
+
+  <!-- ===== 英文副标题 ===== -->
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Navigating through Project Background, Status, Deep Dive, Delivery and Discussion
+  </text>
+
+  <!-- ===== 标题底部装饰线 ===== -->
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 目录 5 行（y 起点 232，行高 82） ===== -->
+
+  <!-- Part A -->
+  <g>
+    <text x="56" y="252" font-size="36" font-weight="700" fill="#C9A961" class="en-serif">PART A</text>
+    <text x="260" y="246" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">项目背景</text>
+    <text x="260" y="272" font-size="24" font-weight="700" fill="#0A2540" class="serif-title">项目背景</text>
+    <text x="260" y="296" font-size="14" fill="#8B95A8" font-style="italic" class="en-serif">Project Overview</text>
+    <text x="1224" y="272" font-size="13" fill="#2B3340" text-anchor="end" class="mono">p. 02 - 05</text>
+    <line x1="56" y1="314" x2="1224" y2="314" stroke="#8B95A8" stroke-width="0.3" opacity="0.35"/>
+  </g>
+
+  <!-- Part B -->
+  <g>
+    <text x="56" y="352" font-size="36" font-weight="700" fill="#C9A961" class="en-serif">PART B</text>
+    <text x="260" y="346" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">当前现状</text>
+    <text x="260" y="372" font-size="24" font-weight="700" fill="#0A2540" class="serif-title">当前现状</text>
+    <text x="260" y="396" font-size="14" fill="#8B95A8" font-style="italic" class="en-serif">Current Status</text>
+    <text x="1224" y="372" font-size="13" fill="#2B3340" text-anchor="end" class="mono">p. 06 - 08</text>
+    <line x1="56" y1="414" x2="1224" y2="414" stroke="#8B95A8" stroke-width="0.3" opacity="0.35"/>
+  </g>
+
+  <!-- Part C（强调：左侧加 3px 学院金竖线，表示主干 60% 时长） -->
+  <g>
+    <!-- 强调竖线 -->
+    <rect x="40" y="432" width="3" height="82" fill="#C9A961"/>
+    <text x="56" y="452" font-size="36" font-weight="700" fill="#C9A961" class="en-serif">PART C</text>
+    <text x="260" y="446" font-size="11" fill="#C9A961" letter-spacing="1" class="sans-body">核心问题深度剖析 · 主干 60% 时长</text>
+    <text x="260" y="472" font-size="24" font-weight="700" fill="#0A2540" class="serif-title">核心问题深度剖析</text>
+    <text x="260" y="496" font-size="14" fill="#8B95A8" font-style="italic" class="en-serif">Deep Dive on Core Problems</text>
+    <text x="1224" y="472" font-size="13" fill="#0A2540" font-weight="600" text-anchor="end" class="mono">p. 09 - 28</text>
+    <line x1="56" y1="514" x2="1224" y2="514" stroke="#8B95A8" stroke-width="0.3" opacity="0.35"/>
+  </g>
+
+  <!-- Part D -->
+  <g>
+    <text x="56" y="552" font-size="36" font-weight="700" fill="#C9A961" class="en-serif">PART D</text>
+    <text x="260" y="546" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">一期 P0 落地</text>
+    <text x="260" y="572" font-size="24" font-weight="700" fill="#0A2540" class="serif-title">一期 P0 落地</text>
+    <text x="260" y="596" font-size="14" fill="#8B95A8" font-style="italic" class="en-serif">Phase-1 P0 Deliverables</text>
+    <text x="1224" y="572" font-size="13" fill="#2B3340" text-anchor="end" class="mono">p. 29 - 31</text>
+    <line x1="56" y1="614" x2="1224" y2="614" stroke="#8B95A8" stroke-width="0.3" opacity="0.35"/>
+  </g>
+
+  <!-- Part E -->
+  <g>
+    <text x="56" y="652" font-size="36" font-weight="700" fill="#C9A961" class="en-serif">PART E</text>
+    <text x="260" y="646" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">讨论焦点</text>
+    <text x="260" y="672" font-size="24" font-weight="700" fill="#0A2540" class="serif-title">讨论焦点</text>
+    <text x="1224" y="672" font-size="13" fill="#2B3340" text-anchor="end" class="mono">p. 32 - 33</text>
+  </g>
+
+  <!-- ===== 页脚 ===== -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">01 / 34</text>
+
+</svg>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- ===== 顶部标题区 ===== -->
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART D · 一期 P0 落地
+  </text>
+
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    验收判据矩阵 · 合同承诺对照
+  </text>
+
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Acceptance Criteria Matrix — Contract Alignment
+  </text>
+
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 主表格 ===== -->
+  <!-- 表格 x=56, y=190, w=1168, h=480 -->
+  <!-- 4 列宽度: 指标 230 / 合同要求 240 / 本期 220 / 技术路径 478 -->
+  <!-- 行高: 表头 44 / 内容行 52 -->
+
+  <!-- 外框 -->
+  <rect x="56" y="190" width="1168" height="480" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+
+  <!-- 表头背景（深靛蓝） -->
+  <rect x="56" y="190" width="1168" height="44" fill="#0A2540"/>
+
+  <!-- 表头文字 -->
+  <text x="76" y="218" font-size="13" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="sans-body">指标</text>
+  <text x="306" y="218" font-size="13" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="sans-body">合同要求</text>
+  <text x="546" y="218" font-size="13" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="sans-body">本期 · RD2 · 80% 目标</text>
+  <text x="766" y="218" font-size="13" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="sans-body">技术路径</text>
+
+  <!-- 列竖线 -->
+  <line x1="286" y1="190" x2="286" y2="670" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+  <line x1="526" y1="190" x2="526" y2="670" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+  <line x1="746" y1="190" x2="746" y2="670" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 行 1 · 移动速度控制（奇数行，无底色） ===== -->
+  <g>
+    <!-- 行分隔线 -->
+    <line x1="56" y1="234" x2="1224" y2="234" stroke="#8B95A8" stroke-width="0.4" opacity="0.4"/>
+    <text x="76" y="264" font-size="13" fill="#2B3340" class="sans-body">1. 移动速度控制</text>
+    <text x="306" y="264" font-size="12" fill="#2B3340" class="mono">0.5-1.5 m/s · 波动 &lt;=5%</text>
+    <circle cx="540" cy="260" r="4" fill="#0A2540"/>
+    <text x="552" y="264" font-size="12" fill="#0A2540" font-weight="600" class="sans-body">达标</text>
+    <text x="766" y="264" font-size="12" fill="#2B3340" class="sans-body">PREEMPT_RT + Ruckig 速度整形</text>
+  </g>
+
+  <!-- ===== 行 2 · 静态 SLAM 定位（偶数行，浅暖灰底） ===== -->
+  <g>
+    <rect x="56" y="286" width="1168" height="52" fill="#8B95A8" opacity="0.07"/>
+    <line x1="56" y1="286" x2="1224" y2="286" stroke="#8B95A8" stroke-width="0.4" opacity="0.4"/>
+    <text x="76" y="316" font-size="13" fill="#2B3340" class="sans-body">2. 静态 SLAM 定位</text>
+    <text x="306" y="316" font-size="12" fill="#2B3340" class="mono">&lt;= +/- 10 mm</text>
+    <circle cx="540" cy="312" r="4" fill="#C9A961"/>
+    <text x="552" y="316" font-size="12" fill="#C9A961" font-weight="600" class="sans-body">临界可达</text>
+    <text x="766" y="316" font-size="12" fill="#2B3340" class="sans-body">SLAM Toolbox + ChArUco 工位锚点</text>
+  </g>
+
+  <!-- ===== 行 3 · 动态相对定位 ===== -->
+  <g>
+    <line x1="56" y1="338" x2="1224" y2="338" stroke="#8B95A8" stroke-width="0.4" opacity="0.4"/>
+    <text x="76" y="368" font-size="13" fill="#2B3340" class="sans-body">3. 动态相对定位</text>
+    <text x="306" y="368" font-size="12" fill="#2B3340" class="mono">&lt;= +/- 5 mm</text>
+    <circle cx="540" cy="364" r="4" fill="#C9A961"/>
+    <text x="552" y="368" font-size="12" fill="#C9A961" font-weight="600" class="sans-body">临界可达</text>
+    <text x="766" y="368" font-size="12" fill="#2B3340" class="sans-body">视觉伺服闭环 + Tag 周期重定位</text>
+  </g>
+
+  <!-- ===== 行 4 · 单臂重复精度（关键行，学院金强调） ===== -->
+  <g>
+    <rect x="56" y="390" width="1168" height="52" fill="#C9A961" opacity="0.08"/>
+    <line x1="56" y1="390" x2="1224" y2="390" stroke="#8B95A8" stroke-width="0.4" opacity="0.4"/>
+    <text x="76" y="413" font-size="13" font-weight="700" fill="#0A2540" class="sans-body">4. 单臂重复精度</text>
+    <text x="76" y="430" font-size="10" fill="#8B95A8" class="en-sans">CRITICAL · 分层承诺</text>
+    <text x="306" y="420" font-size="12" fill="#2B3340" class="mono">&lt;= +/- 0.1 mm</text>
+    <circle cx="540" cy="416" r="4" fill="#C9A961"/>
+    <text x="552" y="420" font-size="12" fill="#C9A961" font-weight="700" class="sans-body">分层可达</text>
+    <text x="766" y="413" font-size="12" fill="#2B3340" class="sans-body">关节层 +/- 0.5mm + 任务层 +/- 0.1mm</text>
+    <text x="766" y="430" font-size="11" fill="#8B95A8" class="sans-body">（视觉 + 力控 + 微调）</text>
+  </g>
+
+  <!-- ===== 行 5 · 双臂同步误差 ===== -->
+  <g>
+    <line x1="56" y1="442" x2="1224" y2="442" stroke="#8B95A8" stroke-width="0.4" opacity="0.4"/>
+    <text x="76" y="472" font-size="13" fill="#2B3340" class="sans-body">5. 双臂同步误差</text>
+    <text x="306" y="472" font-size="12" fill="#2B3340" class="mono">&lt;= +/- 0.5 mm</text>
+    <circle cx="540" cy="468" r="4" fill="#0A2540"/>
+    <text x="552" y="472" font-size="12" fill="#0A2540" font-weight="600" class="sans-body">达标</text>
+    <text x="766" y="472" font-size="12" fill="#2B3340" class="sans-body">ros2_control 原子写入 + CM 同步</text>
+  </g>
+
+  <!-- ===== 行 6 · 视觉识别精度 ===== -->
+  <g>
+    <rect x="56" y="494" width="1168" height="52" fill="#8B95A8" opacity="0.07"/>
+    <line x1="56" y1="494" x2="1224" y2="494" stroke="#8B95A8" stroke-width="0.4" opacity="0.4"/>
+    <text x="76" y="524" font-size="13" fill="#2B3340" class="sans-body">6. 视觉识别精度</text>
+    <text x="306" y="524" font-size="12" fill="#2B3340" class="mono">&lt;= +/- 0.5 mm</text>
+    <circle cx="540" cy="520" r="4" fill="#C9A961"/>
+    <text x="552" y="524" font-size="12" fill="#C9A961" font-weight="600" class="sans-body">临界可达</text>
+    <text x="766" y="524" font-size="12" fill="#2B3340" class="sans-body">ChArUco 局部参考 + YOLO 6D 位姿</text>
+  </g>
+
+  <!-- ===== 行 7 · 升降精度 ===== -->
+  <g>
+    <line x1="56" y1="546" x2="1224" y2="546" stroke="#8B95A8" stroke-width="0.4" opacity="0.4"/>
+    <text x="76" y="576" font-size="13" fill="#2B3340" class="sans-body">7. 升降精度</text>
+    <text x="306" y="576" font-size="12" fill="#2B3340" class="mono">&lt;= +/- 1 mm</text>
+    <circle cx="540" cy="572" r="4" fill="#0A2540"/>
+    <text x="552" y="576" font-size="12" fill="#0A2540" font-weight="600" class="sans-body">已满足</text>
+    <text x="766" y="576" font-size="12" fill="#2B3340" class="sans-body">米思米绝对编码器 + EtherCAT</text>
+  </g>
+
+  <!-- ===== 行 8 · 六维力精度 ===== -->
+  <g>
+    <rect x="56" y="598" width="1168" height="52" fill="#8B95A8" opacity="0.07"/>
+    <line x1="56" y1="598" x2="1224" y2="598" stroke="#8B95A8" stroke-width="0.4" opacity="0.4"/>
+    <text x="76" y="628" font-size="13" fill="#2B3340" class="sans-body">8. 六维力精度</text>
+    <text x="306" y="628" font-size="12" fill="#2B3340" class="mono">&lt;= +/- 0.1 N</text>
+    <circle cx="540" cy="624" r="4" fill="none" stroke="#8B95A8" stroke-width="1"/>
+    <text x="552" y="628" font-size="12" fill="#8B95A8" class="sans-body">取决于传感器</text>
+    <text x="766" y="628" font-size="12" fill="#2B3340" class="sans-body">RD4 前集成国产六维力</text>
+  </g>
+
+  <!-- 下边框 -->
+  <line x1="56" y1="650" x2="1224" y2="650" stroke="#2B3340" stroke-width="0.5"/>
+
+  <!-- 状态图例（嵌入表格下方） -->
+  <g>
+    <circle cx="68" cy="664" r="3.5" fill="#0A2540"/>
+    <text x="78" y="668" font-size="10" fill="#2B3340" class="sans-body">达标</text>
+    <circle cx="118" cy="664" r="3.5" fill="#C9A961"/>
+    <text x="128" y="668" font-size="10" fill="#2B3340" class="sans-body">临界</text>
+    <circle cx="168" cy="664" r="3.5" fill="none" stroke="#8B95A8" stroke-width="1"/>
+    <text x="178" y="668" font-size="10" fill="#2B3340" class="sans-body">暂无</text>
+  </g>
+
+  <!-- 脚注 -->
+  <text x="1224" y="668" text-anchor="end" font-size="11" fill="#8B95A8" font-style="italic" class="sans-body">
+    合同约定精度分层承诺已与项目组形成技术共识 · 建议与客户/海安研究院同步对齐
+  </text>
+
+  <!-- ===== 页脚 ===== -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">31 / 34</text>
+
+</svg>

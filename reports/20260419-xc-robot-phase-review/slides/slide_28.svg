@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 3 · 协调控制、任务理解与交互
+  </text>
+
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    异常处理与重规划分级
+  </text>
+
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Exception Handling and Replanning Tiers
+  </text>
+
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 左侧 4 类异常事件 ===== -->
+  <g>
+    <rect x="56" y="195" width="420" height="375" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="56" y="195" width="420" height="36" fill="#0A2540"/>
+    <text x="72" y="218" font-size="14" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="sans-body">4 类异常事件</text>
+    <text x="456" y="218" text-anchor="end" font-size="11" fill="#C9A961" font-weight="700" letter-spacing="1" class="en-sans">EVENT TYPES</text>
+
+    <!-- 事件 1: 物料缺失 -->
+    <g>
+      <!-- 图标: 三角形 + 中央横线（缺失） -->
+      <circle cx="96" cy="278" r="18" fill="none" stroke="#C9A961" stroke-width="1.5"/>
+      <rect x="88" y="270" width="16" height="3" fill="#C9A961"/>
+      <rect x="88" y="283" width="16" height="3" fill="#C9A961"/>
+      <text x="130" y="272" font-size="15" font-weight="700" fill="#0A2540" class="sans-body">物料缺失</text>
+      <text x="130" y="292" font-size="11" fill="#8B95A8" font-style="italic" class="en-serif">Material Missing</text>
+      <line x1="72" y1="310" x2="460" y2="310" stroke="#8B95A8" stroke-width="0.3" opacity="0.4"/>
+    </g>
+
+    <!-- 事件 2: 工位占用 -->
+    <g>
+      <!-- 图标: 方形内部 X -->
+      <rect x="82" y="334" width="28" height="28" fill="none" stroke="#C9A961" stroke-width="1.5"/>
+      <line x1="88" y1="340" x2="104" y2="356" stroke="#C9A961" stroke-width="1.5"/>
+      <line x1="104" y1="340" x2="88" y2="356" stroke="#C9A961" stroke-width="1.5"/>
+      <text x="130" y="348" font-size="15" font-weight="700" fill="#0A2540" class="sans-body">工位占用</text>
+      <text x="130" y="368" font-size="11" fill="#8B95A8" font-style="italic" class="en-serif">Station Occupied</text>
+      <line x1="72" y1="386" x2="460" y2="386" stroke="#8B95A8" stroke-width="0.3" opacity="0.4"/>
+    </g>
+
+    <!-- 事件 3: 力反馈异常 -->
+    <g>
+      <!-- 图标: 波形尖峰 -->
+      <polyline points="80,432 88,432 92,420 100,444 108,420 116,444 120,432 128,432" fill="none" stroke="#C9A961" stroke-width="1.5"/>
+      <text x="148" y="424" font-size="15" font-weight="700" fill="#0A2540" class="sans-body">力反馈异常</text>
+      <text x="148" y="444" font-size="11" fill="#8B95A8" font-style="italic" class="en-serif">Force Feedback Anomaly</text>
+      <line x1="72" y1="462" x2="460" y2="462" stroke="#8B95A8" stroke-width="0.3" opacity="0.4"/>
+    </g>
+
+    <!-- 事件 4: 急停触发 -->
+    <g>
+      <!-- 图标: 八边形（STOP）+ 内部矩形 -->
+      <polygon points="78,490 96,478 114,478 132,490 132,510 114,522 96,522 78,510" fill="none" stroke="#C9A961" stroke-width="1.5"/>
+      <rect x="90" y="490" width="30" height="20" fill="#C9A961"/>
+      <text x="150" y="500" font-size="15" font-weight="700" fill="#0A2540" class="sans-body">急停触发</text>
+      <text x="150" y="520" font-size="11" fill="#8B95A8" font-style="italic" class="en-serif">Emergency Stop</text>
+    </g>
+  </g>
+
+  <!-- ===== 右侧重规划三级 ===== -->
+  <g>
+    <rect x="496" y="195" width="728" height="375" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="496" y="195" width="728" height="36" fill="#0A2540"/>
+    <text x="512" y="218" font-size="14" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="sans-body">Replanning Tiers · 重规划三级</text>
+    <text x="1204" y="218" text-anchor="end" font-size="11" fill="#C9A961" font-weight="700" letter-spacing="1" class="en-sans">TIERS</text>
+
+    <!-- Tier 1 · 轻度 -->
+    <g>
+      <rect x="512" y="248" width="696" height="90" fill="none" stroke="#8B95A8" stroke-width="1" rx="3"/>
+      <!-- 左侧数字 -->
+      <rect x="512" y="248" width="64" height="90" fill="#C9A961" fill-opacity="0.3"/>
+      <text x="544" y="292" text-anchor="middle" font-size="18" font-weight="700" fill="#0A2540" class="en-sans">T1</text>
+      <text x="544" y="308" text-anchor="middle" font-size="10" fill="#0A2540" class="en-sans">LIGHT</text>
+      <!-- 标题 -->
+      <text x="592" y="276" font-size="15" font-weight="700" fill="#0A2540" class="sans-body">轻度 · 调整姿态</text>
+      <!-- 指标 -->
+      <text x="592" y="304" font-size="12" fill="#8B95A8" class="sans-body">延迟</text>
+      <text x="640" y="304" font-size="12" fill="#C9A961" font-weight="700" class="mono">&lt;=200 ms</text>
+      <text x="760" y="304" font-size="12" fill="#8B95A8" class="sans-body">触发</text>
+      <text x="808" y="304" font-size="12" fill="#2B3340" class="sans-body">BT 同节点内完成</text>
+      <!-- 描述 -->
+      <text x="592" y="324" font-size="11" fill="#8B95A8" font-style="italic" class="sans-body">局部姿态微调 · 不触发 Fallback</text>
+    </g>
+
+    <!-- 箭头 T1/T2 -->
+    <path d="M 860 344 L 860 354 L 856 350 M 860 354 L 864 350" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+    <!-- Tier 2 · 中度 -->
+    <g>
+      <rect x="512" y="360" width="696" height="90" fill="none" stroke="#8B95A8" stroke-width="1.2" rx="3"/>
+      <rect x="512" y="360" width="64" height="90" fill="#C9A961" fill-opacity="0.55"/>
+      <text x="544" y="404" text-anchor="middle" font-size="18" font-weight="700" fill="#0A2540" class="en-sans">T2</text>
+      <text x="544" y="420" text-anchor="middle" font-size="10" fill="#0A2540" class="en-sans">MEDIUM</text>
+      <text x="592" y="388" font-size="15" font-weight="700" fill="#0A2540" class="sans-body">中度 · 换抓取点</text>
+      <text x="592" y="416" font-size="12" fill="#8B95A8" class="sans-body">延迟</text>
+      <text x="640" y="416" font-size="12" fill="#C9A961" font-weight="700" class="mono">1-2 s</text>
+      <text x="760" y="416" font-size="12" fill="#8B95A8" class="sans-body">触发</text>
+      <text x="808" y="416" font-size="12" fill="#2B3340" class="sans-body">BT Fallback</text>
+      <text x="592" y="436" font-size="11" fill="#8B95A8" font-style="italic" class="sans-body">换抓取候选 · 仍在当前子任务范围</text>
+    </g>
+
+    <!-- 箭头 T2/T3 -->
+    <path d="M 860 456 L 860 466 L 856 462 M 860 466 L 864 462" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+    <!-- Tier 3 · 重度 -->
+    <g>
+      <rect x="512" y="472" width="696" height="90" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+      <rect x="512" y="472" width="64" height="90" fill="#C9A961"/>
+      <text x="544" y="516" text-anchor="middle" font-size="18" font-weight="700" fill="#0A2540" class="en-sans">T3</text>
+      <text x="544" y="532" text-anchor="middle" font-size="10" fill="#0A2540" class="en-sans">HEAVY</text>
+      <text x="592" y="500" font-size="15" font-weight="700" fill="#0A2540" class="sans-body">重度 · 重规整个任务</text>
+      <text x="592" y="528" font-size="12" fill="#8B95A8" class="sans-body">延迟</text>
+      <text x="640" y="528" font-size="12" fill="#C9A961" font-weight="700" class="mono">5-10 s</text>
+      <text x="760" y="528" font-size="12" fill="#8B95A8" class="sans-body">触发</text>
+      <text x="808" y="528" font-size="12" fill="#2B3340" font-weight="600" class="sans-body">全局重规划</text>
+      <text x="592" y="548" font-size="11" fill="#8B95A8" font-style="italic" class="sans-body">BT 根节点重启 · 场景理解重建</text>
+    </g>
+  </g>
+
+  <!-- ===== 底部可观察性 & 故障注入 ===== -->
+  <g>
+    <rect x="56" y="588" width="1168" height="80" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+
+    <!-- 左侧: Grafana -->
+    <text x="72" y="610" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">OBSERVABILITY · 可观察性</text>
+    <text x="72" y="630" font-size="12" font-weight="600" fill="#0A2540" class="sans-body">Grafana + InfluxDB 实时看板</text>
+    <text x="72" y="650" font-size="11" fill="#2B3340" class="sans-body">关节温度 / 电流 / 延迟 / 位置误差</text>
+
+    <!-- 中央分隔 -->
+    <line x1="408" y1="600" x2="408" y2="660" stroke="#8B95A8" stroke-width="0.4" opacity="0.5"/>
+
+    <!-- 中央核心指标 -->
+    <text x="640" y="610" text-anchor="middle" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">RECOVERY METRIC · 恢复率</text>
+    <text x="640" y="640" text-anchor="middle" font-size="17" fill="#0A2540" font-weight="700" class="sans-body">抓取失败 2 次内恢复率</text>
+    <text x="640" y="660" text-anchor="middle" font-size="13" class="mono">
+      <tspan fill="#C9A961" font-weight="700">>=50%</tspan>
+      <tspan fill="#8B95A8" dx="4">(RD2)</tspan>
+      <tspan fill="#C9A961" font-weight="700" dx="12">/</tspan>
+      <tspan fill="#C9A961" font-weight="700" dx="12">>=70%</tspan>
+      <tspan fill="#8B95A8" dx="4">(P1)</tspan>
+    </text>
+
+    <!-- 右侧分隔 -->
+    <line x1="872" y1="600" x2="872" y2="660" stroke="#8B95A8" stroke-width="0.4" opacity="0.5"/>
+
+    <!-- 右侧: 故障注入 -->
+    <text x="888" y="610" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">FAULT INJECTION · 故障注入</text>
+    <text x="888" y="630" font-size="12" font-weight="600" fill="#0A2540" class="sans-body">拔 CAN 线 / 遮挡相机 / 触发急停</text>
+    <text x="888" y="650" font-size="11" fill="#2B3340" class="sans-body">恢复能力验证 · 回归测试</text>
+  </g>
+
+  <!-- 页脚 -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">28 / 34</text>
+
+</svg>

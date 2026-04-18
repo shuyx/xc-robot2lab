@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>XC-Robot 2026-04 阶段汇报 · Transcribe Box Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- auth guard: 未登录跳 login -->
+  <script src="../../assets/js/auth-guard.js"></script>
+
+  <!-- Reveal.js 核心 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
+
+  <style>
+    :root {
+      --navy:  #0A2540;
+      --gold:  #C9A961;
+      --ivory: #F7F3EB;
+      --char:  #2B3340;
+      --muted: #8B95A8;
+      --side-w: 160px;
+      --top-h:  56px;
+    }
+    html, body { background: var(--navy); color: var(--ivory); height: 100%; overflow: hidden; margin: 0; font-family: 'Source Han Sans SC','PingFang SC','Inter',sans-serif; }
+
+    /* 顶部工具条 */
+    #topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--top-h);
+      background: var(--navy);
+      border-bottom: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 18px;
+      z-index: 100;
+      font-size: 0.82rem;
+    }
+    #topbar .brand {
+      font-family: 'Merriweather', Georgia, serif;
+      letter-spacing: 2px;
+      color: var(--ivory);
+    }
+    #topbar .brand em {
+      color: var(--gold); font-style: normal; margin-right: 10px;
+    }
+    #topbar .title {
+      color: var(--muted); font-size: 0.78rem; letter-spacing: 1.5px;
+    }
+    #topbar .actions { display: flex; gap: 14px; align-items: center; }
+    #topbar a, #topbar button {
+      background: transparent; color: var(--muted); border: 1px solid rgba(201,169,97,.4);
+      padding: 4px 10px; font-size: 0.72rem; letter-spacing: 1.5px;
+      font-family: 'Merriweather', Georgia, serif; cursor: pointer; text-decoration: none;
+    }
+    #topbar a:hover, #topbar button:hover { color: var(--ivory); border-color: var(--gold); }
+    #topbar .page-indicator {
+      color: var(--gold); font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem; letter-spacing: 1px;
+    }
+
+    /* 左侧缩略图栏 */
+    #thumbs {
+      position: fixed; top: var(--top-h); left: 0; bottom: 0;
+      width: var(--side-w);
+      background: #091E33;
+      border-right: 1px solid rgba(201,169,97,.25);
+      overflow-y: auto; overflow-x: hidden;
+      padding: 10px 8px 24px;
+      z-index: 50;
+    }
+    #thumbs::-webkit-scrollbar { width: 4px; }
+    #thumbs::-webkit-scrollbar-thumb { background: rgba(201,169,97,.3); border-radius: 2px; }
+    .thumb {
+      position: relative;
+      display: block;
+      width: 144px; height: 81px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      background: #fff;
+      border: 1px solid transparent;
+      transition: border-color .15s ease, transform .15s ease;
+      overflow: hidden;
+    }
+    .thumb:hover { transform: translateX(2px); border-color: rgba(201,169,97,.5); }
+    .thumb.active { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+    .thumb img {
+      width: 100%; height: 100%; display: block; object-fit: contain;
+      pointer-events: none;
+    }
+    .thumb .no {
+      position: absolute; top: 2px; left: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px; color: var(--navy);
+      background: var(--gold); padding: 1px 4px;
+      letter-spacing: 0;
+    }
+
+    /* 主舞台 */
+    .reveal-container {
+      position: absolute;
+      top: var(--top-h); left: var(--side-w); right: 0; bottom: 0;
+      background: #F7F3EB;
+    }
+    .reveal { width: 100% !important; height: 100% !important; }
+    .reveal .slides { text-align: left; }
+    .reveal .slides section {
+      padding: 0 !important;
+      height: 100%; width: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: transparent;
+    }
+    .reveal .slides section img.slide-svg {
+      width: 100%; height: 100%; object-fit: contain;
+      display: block;
+    }
+
+    /* 底部提示（快捷键） */
+    #hint {
+      position: fixed; bottom: 14px; left: calc(var(--side-w) + 18px);
+      color: var(--muted); font-size: 0.72rem; letter-spacing: 1.5px;
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(10,37,64,.7); padding: 6px 12px; border-radius: 2px;
+      z-index: 40;
+      pointer-events: none;
+      opacity: 0.75;
+    }
+
+    /* 全屏时隐藏侧栏 */
+    body.fs #topbar, body.fs #thumbs, body.fs #hint { display: none; }
+    body.fs .reveal-container { top: 0; left: 0; }
+
+    @media (max-width: 780px) {
+      #thumbs { width: 100px; }
+      .thumb { width: 84px; height: 48px; }
+      .reveal-container { left: 100px; }
+      #hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部工具条 -->
+  <div id="topbar">
+    <div class="brand">
+      <em>◆</em> XC-ROBOT · 2026-04 PHASE REVIEW
+    </div>
+    <div class="page-indicator" id="page-num">01 / 35</div>
+    <div class="actions">
+      <a href="../index.html" title="返回汇报列表">← 返回</a>
+      <button id="fs-btn" title="全屏 (F)">全屏</button>
+      <a href="../../index.html">首页</a>
+    </div>
+  </div>
+
+  <!-- 侧边缩略图栏（由 JS 填充） -->
+  <aside id="thumbs"></aside>
+
+  <!-- Reveal.js 主舞台 -->
+  <div class="reveal-container">
+    <div class="reveal">
+      <div class="slides" id="slides-root">
+        <!-- 35 个 section 由 JS 动态生成，或静态写好；此处静态写 -->
+        <section><img class="slide-svg" src="slides/slide_00.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_01.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_02.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_03.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_04.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_05.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_06.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_07.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_08.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_09.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_10.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_11.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_12.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_13.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_14.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_15.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_16.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_17.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_18.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_19.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_20.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_21.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_22.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_23.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_24.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_25.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_26.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_27.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_28.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_29.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_30.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_31.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_32.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_33.svg"></section>
+        <section><img class="slide-svg" src="slides/slide_34.svg"></section>
+      </div>
+    </div>
+  </div>
+
+  <!-- 快捷键提示 -->
+  <div id="hint">← → 翻页　·　F 全屏　·　ESC 总览</div>
+
+  <!-- Reveal.js 脚本 -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    const deck = new Reveal({
+      width:  1280,
+      height: 720,
+      margin: 0,
+      minScale: 0.3,
+      maxScale: 2.0,
+      controls: true,
+      controlsTutorial: false,
+      controlsLayout: 'bottom-right',
+      progress: false,
+      hash: true,
+      keyboard: true,
+      touch: true,
+      center: false,
+      navigationMode: 'linear',
+      transition: 'none',
+      backgroundTransition: 'none'
+    });
+
+    deck.initialize().then(() => {
+      const total = deck.getTotalSlides();
+      buildThumbs(total);
+      updateIndicator(deck.getIndices().h);
+    });
+
+    deck.on('slidechanged', e => {
+      updateIndicator(e.indexh);
+      setActiveThumb(e.indexh);
+    });
+
+    function buildThumbs(total) {
+      const box = document.getElementById('thumbs');
+      const slides = document.querySelectorAll('.slides section img.slide-svg');
+      for (let i = 0; i < total; i++) {
+        const a = document.createElement('a');
+        a.className = 'thumb' + (i === 0 ? ' active' : '');
+        a.dataset.idx = i;
+        const n = document.createElement('span');
+        n.className = 'no';
+        n.textContent = String(i).padStart(2, '0');
+        const img = document.createElement('img');
+        img.src = slides[i].src;
+        img.loading = 'lazy';
+        a.appendChild(n); a.appendChild(img);
+        a.addEventListener('click', () => deck.slide(i, 0, 0));
+        box.appendChild(a);
+      }
+    }
+
+    function setActiveThumb(idx) {
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      const cur = document.querySelector('.thumb[data-idx="' + idx + '"]');
+      if (cur) {
+        cur.classList.add('active');
+        cur.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+    }
+
+    function updateIndicator(idx) {
+      const total = deck.getTotalSlides();
+      document.getElementById('page-num').textContent =
+        String(idx + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    }
+
+    // 全屏
+    document.getElementById('fs-btn').addEventListener('click', toggleFs);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'f' || e.key === 'F') toggleFs();
+    });
+    function toggleFs() {
+      const el = document.documentElement;
+      if (!document.fullscreenElement) {
+        el.requestFullscreen && el.requestFullscreen();
+        document.body.classList.add('fs');
+      } else {
+        document.exitFullscreen && document.exitFullscreen();
+        document.body.classList.remove('fs');
+      }
+    }
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) document.body.classList.remove('fs');
+    });
+  </script>
+</body>
+</html>

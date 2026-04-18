@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <!-- 背景：象牙米白 -->
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+
+  <!-- 左侧章节竖线（学院金） -->
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- ===== 顶部章节标识 ===== -->
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART A · 项目背景 / P2 · 项目概览
+  </text>
+
+  <!-- ===== 主标题 ===== -->
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    项目概览
+  </text>
+
+  <!-- ===== 英文副标题 ===== -->
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Project Fact Sheet — Contract, Scope and Positioning
+  </text>
+
+  <!-- ===== 标题底部装饰线 ===== -->
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 2x3 细线框卡片矩阵 ===== -->
+  <!-- 卡片宽 380 高 180，水平间隙 14，垂直间隙 20；起点 x=56, y=204 -->
+
+  <!-- 卡 1：项目名称（左上） -->
+  <g>
+    <rect x="56" y="204" width="380" height="180" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="76" y="230" font-size="11" fill="#C9A961" letter-spacing="2" class="sans-body">01 · PROJECT NAME</text>
+    <text x="76" y="254" font-size="13" fill="#8B95A8" class="sans-body">项目名称</text>
+    <line x1="76" y1="266" x2="176" y2="266" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <text x="76" y="300" font-size="22" font-weight="700" fill="#0A2540" class="serif-title">XC-Robot</text>
+    <text x="76" y="326" font-size="14" fill="#2B3340" class="sans-body">祥承机器人</text>
+    <text x="76" y="358" font-size="13" fill="#8B95A8" class="sans-body">轮式双臂具身智能机器人</text>
+  </g>
+
+  <!-- 卡 2：合同经费（中上，关键数据金色加粗） -->
+  <g>
+    <rect x="450" y="204" width="380" height="180" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="470" y="230" font-size="11" fill="#C9A961" letter-spacing="2" class="sans-body">02 · CONTRACT FUND</text>
+    <text x="470" y="254" font-size="13" fill="#8B95A8" class="sans-body">合同经费</text>
+    <line x1="470" y1="266" x2="570" y2="266" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <!-- 金额金色加粗大字 -->
+    <text x="470" y="326" font-size="54" font-weight="700" fill="#C9A961" class="serif-title">¥45</text>
+    <text x="580" y="326" font-size="24" font-weight="600" fill="#0A2540" class="sans-body">万</text>
+    <text x="470" y="362" font-size="12" fill="#8B95A8" class="mono">CNY 450,000  ·  technical development</text>
+  </g>
+
+  <!-- 卡 3：项目类型（右上） -->
+  <g>
+    <rect x="844" y="204" width="380" height="180" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="864" y="230" font-size="11" fill="#C9A961" letter-spacing="2" class="sans-body">03 · PROJECT TYPE</text>
+    <text x="864" y="254" font-size="13" fill="#8B95A8" class="sans-body">项目类型</text>
+    <line x1="864" y1="266" x2="964" y2="266" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <text x="864" y="300" font-size="20" font-weight="700" fill="#0A2540" class="serif-title">闵行区揭榜挂帅</text>
+    <text x="864" y="330" font-size="14" fill="#2B3340" class="sans-body">技术开发合同</text>
+    <text x="864" y="360" font-size="12" fill="#8B95A8" font-style="italic" class="en-serif">Minhang District R&amp;D Grant</text>
+  </g>
+
+  <!-- 卡 4：承研单位（左下） -->
+  <g>
+    <rect x="56" y="404" width="380" height="180" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="76" y="430" font-size="11" fill="#C9A961" letter-spacing="2" class="sans-body">04 · LEAD INSTITUTION</text>
+    <text x="76" y="454" font-size="13" fill="#8B95A8" class="sans-body">承研单位</text>
+    <line x1="76" y1="466" x2="176" y2="466" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <text x="76" y="500" font-size="20" font-weight="700" fill="#0A2540" class="serif-title">祥承电子（上海）</text>
+    <text x="76" y="528" font-size="14" fill="#2B3340" class="sans-body">有限公司</text>
+    <text x="76" y="560" font-size="12" fill="#8B95A8" font-style="italic" class="en-serif">XC Electronics (Shanghai) Co., Ltd.</text>
+  </g>
+
+  <!-- 卡 5：合作单位（中下） -->
+  <g>
+    <rect x="450" y="404" width="380" height="180" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="470" y="430" font-size="11" fill="#C9A961" letter-spacing="2" class="sans-body">05 · PARTNER</text>
+    <text x="470" y="454" font-size="13" fill="#8B95A8" class="sans-body">合作单位</text>
+    <line x1="470" y1="466" x2="570" y2="466" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <text x="470" y="500" font-size="18" font-weight="700" fill="#0A2540" class="serif-title">海安智能装备研究院</text>
+    <text x="470" y="528" font-size="14" fill="#2B3340" class="sans-body">上海交通大学平台</text>
+    <text x="470" y="560" font-size="12" fill="#8B95A8" font-style="italic" class="en-serif">Hai&apos;an Institute  ·  SJTU Platform</text>
+  </g>
+
+  <!-- 卡 6：产品定位（右下） -->
+  <g>
+    <rect x="844" y="404" width="380" height="180" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="864" y="430" font-size="11" fill="#C9A961" letter-spacing="2" class="sans-body">06 · POSITIONING</text>
+    <text x="864" y="454" font-size="13" fill="#8B95A8" class="sans-body">产品定位</text>
+    <line x1="864" y1="466" x2="964" y2="466" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <text x="864" y="494" font-size="14" fill="#2B3340" class="sans-body">
+      <tspan x="864" dy="0">面向 3C 工厂</tspan>
+      <tspan x="864" dy="22">办公递送</tspan>
+      <tspan x="864" dy="22">中央仓物流</tspan>
+    </text>
+    <text x="864" y="572" font-size="13" fill="#C9A961" font-weight="600" class="sans-body">"移动 + 操作" 复合机器人</text>
+  </g>
+
+  <!-- ===== 底部分隔线 ===== -->
+  <line x1="56" y1="612" x2="1224" y2="612" stroke="#8B95A8" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- ===== 底部一句话总结 ===== -->
+  <text x="56" y="644" font-size="11" fill="#C9A961" letter-spacing="2" class="sans-body">ONE-LINER · 核心理念</text>
+  <text x="640" y="644" font-size="14" fill="#2B3340" font-style="italic" text-anchor="middle" class="serif-title">
+    以克制的成本实现接近人形机器人的感知 - 决策 - 操作闭环
+  </text>
+
+  <!-- ===== 页脚 ===== -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">02 / 34</text>
+
+</svg>

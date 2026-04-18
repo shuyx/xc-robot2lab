@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 3 · 协调控制、任务理解与交互
+  </text>
+
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    语义交互 · 从语音到动作
+  </text>
+
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    From Voice to ROS 2 Action — Wake / ASR / NLU Stack
+  </text>
+
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- 硬件小方框（右上角） -->
+  <g>
+    <rect x="1040" y="85" width="184" height="70" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="1052" y="102" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">HARDWARE · 硬件</text>
+    <text x="1052" y="120" font-size="11" fill="#2B3340" class="sans-body">6 麦圆形阵列 · USB 声卡</text>
+    <text x="1052" y="136" font-size="11" fill="#2B3340" class="sans-body">3W 扬声器</text>
+    <text x="1052" y="152" font-size="11" fill="#2B3340" class="sans-body">6.2" LCD</text>
+  </g>
+
+  <!-- ===== 左侧三层语音栈 ===== -->
+  <!-- Layer 1 · 唤醒 -->
+  <g>
+    <rect x="56" y="195" width="720" height="110" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="56" y="195" width="52" height="110" fill="#C9A961"/>
+    <text x="82" y="246" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="en-sans">L1</text>
+    <text x="82" y="264" text-anchor="middle" font-size="10" fill="#0A2540" class="en-sans">WAKE</text>
+
+    <text x="128" y="222" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">唤醒 · Wake Word Detection</text>
+    <text x="128" y="242" font-size="12" fill="#8B95A8" class="en-sans">Porcupine (商业免费层)</text>
+    <line x1="128" y1="252" x2="748" y2="252" stroke="#C9A961" stroke-width="0.8" opacity="0.7"/>
+    <text x="128" y="272" font-size="13" fill="#2B3340" class="sans-body">唤醒词 "小承小承"</text>
+    <text x="128" y="292" font-size="12" fill="#2B3340" class="sans-body">唤醒率 ·</text>
+    <text x="200" y="292" font-size="12" fill="#C9A961" font-weight="600" class="mono">>95%</text>
+    <text x="240" y="292" font-size="12" fill="#8B95A8" class="sans-body">安静</text>
+    <text x="290" y="292" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="306" y="292" font-size="12" fill="#C9A961" font-weight="600" class="mono">>85%</text>
+    <text x="346" y="292" font-size="12" fill="#8B95A8" class="sans-body">85dB 背景</text>
+  </g>
+
+  <!-- 下行箭头 -->
+  <path d="M 416 308 L 416 318 L 412 314 M 416 318 L 420 314" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+  <!-- Layer 2 · ASR -->
+  <g>
+    <rect x="56" y="321" width="720" height="110" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="56" y="321" width="52" height="110" fill="#C9A961"/>
+    <text x="82" y="372" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="en-sans">L2</text>
+    <text x="82" y="390" text-anchor="middle" font-size="10" fill="#0A2540" class="en-sans">ASR</text>
+
+    <text x="128" y="348" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">语音识别 · Speech Recognition</text>
+    <text x="128" y="368" font-size="12" fill="#8B95A8" class="en-sans">Sherpa-ONNX + Paraformer-large-zh</text>
+    <line x1="128" y1="378" x2="748" y2="378" stroke="#C9A961" stroke-width="0.8" opacity="0.7"/>
+    <text x="128" y="398" font-size="13" fill="#2B3340" class="sans-body">离线推理 · 无需联网</text>
+    <text x="128" y="418" font-size="12" fill="#2B3340" class="sans-body">工业场景 WER · </text>
+    <text x="248" y="418" font-size="12" fill="#C9A961" font-weight="600" class="mono">10.9%</text>
+  </g>
+
+  <!-- 下行箭头 -->
+  <path d="M 416 434 L 416 444 L 412 440 M 416 444 L 420 440" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+  <!-- Layer 3 · NLU -->
+  <g>
+    <rect x="56" y="447" width="720" height="110" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <rect x="56" y="447" width="52" height="110" fill="#0A2540"/>
+    <text x="82" y="498" text-anchor="middle" font-size="13" font-weight="700" fill="#F7F3EB" class="en-sans">L3</text>
+    <text x="82" y="516" text-anchor="middle" font-size="10" fill="#F7F3EB" class="en-sans">NLU</text>
+
+    <text x="128" y="474" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">意图理解 · Natural Language Understanding</text>
+    <text x="128" y="494" font-size="12" fill="#8B95A8" class="en-sans">Keyword Routing + Entity Extraction</text>
+    <line x1="128" y1="504" x2="748" y2="504" stroke="#C9A961" stroke-width="0.8" opacity="0.7"/>
+    <text x="128" y="524" font-size="13" fill="#2B3340" class="sans-body">字典匹配 · 不走 LLM</text>
+    <text x="128" y="544" font-size="13" fill="#2B3340" font-weight="600" class="sans-body">闭集 6 条指令 · 工程可控</text>
+  </g>
+
+  <!-- ===== 右侧意图到 Action 映射表 ===== -->
+  <g>
+    <rect x="796" y="195" width="428" height="362" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="796" y="195" width="428" height="34" fill="#0A2540"/>
+    <text x="812" y="218" font-size="13" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="sans-body">意图 / Action 映射</text>
+    <text x="1030" y="218" font-size="11" fill="#C9A961" letter-spacing="1" class="en-sans">INTENT MAPPING</text>
+
+    <!-- 表头 -->
+    <text x="812" y="250" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">指令</text>
+    <text x="1020" y="250" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">ROS 2 Action</text>
+    <line x1="812" y1="256" x2="1208" y2="256" stroke="#C9A961" stroke-width="0.8"/>
+
+    <!-- 表行 6 条 -->
+    <text x="812" y="280" font-size="13" fill="#2B3340" class="sans-body">"去 {位点}"</text>
+    <text x="960" y="280" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="976" y="280" font-size="12" fill="#0A2540" font-weight="600" class="mono">/nav/go_to_pose</text>
+    <line x1="812" y1="292" x2="1208" y2="292" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+
+    <text x="812" y="314" font-size="13" fill="#2B3340" class="sans-body">"抓起 {物体}"</text>
+    <text x="960" y="314" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="976" y="314" font-size="12" fill="#0A2540" font-weight="600" class="mono">/skill/grasp</text>
+    <line x1="812" y1="326" x2="1208" y2="326" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+
+    <text x="812" y="348" font-size="13" fill="#2B3340" class="sans-body">"放到 {位点}"</text>
+    <text x="960" y="348" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="976" y="348" font-size="12" fill="#0A2540" font-weight="600" class="mono">/skill/place</text>
+    <line x1="812" y1="360" x2="1208" y2="360" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+
+    <text x="812" y="382" font-size="13" fill="#2B3340" class="sans-body">"停" / "急停"</text>
+    <text x="960" y="382" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="976" y="382" font-size="12" fill="#C9A961" font-weight="700" class="mono">/safety/estop</text>
+    <line x1="812" y1="394" x2="1208" y2="394" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+
+    <text x="812" y="416" font-size="13" fill="#2B3340" class="sans-body">"回家"</text>
+    <text x="960" y="416" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="976" y="416" font-size="12" fill="#0A2540" font-weight="600" class="mono">/nav/go_home</text>
+    <line x1="812" y1="428" x2="1208" y2="428" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+
+    <text x="812" y="450" font-size="13" fill="#2B3340" class="sans-body">"现在在哪"</text>
+    <text x="960" y="450" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="976" y="450" font-size="12" fill="#0A2540" font-weight="600" class="mono">TTS 回报</text>
+
+    <!-- 兜底说明 -->
+    <line x1="812" y1="490" x2="1208" y2="490" stroke="#C9A961" stroke-width="0.8" opacity="0.8"/>
+    <text x="812" y="512" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">FALLBACK · 未识别兜底</text>
+    <text x="812" y="534" font-size="12" fill="#2B3340" font-style="italic" class="sans-body">TTS 回 "请重新说"</text>
+    <text x="812" y="550" font-size="11" fill="#8B95A8" font-style="italic" class="sans-body">不做 LLM 兜底推理 · 工程可控性优先</text>
+  </g>
+
+  <!-- ===== 底部端到端指标 ===== -->
+  <g>
+    <rect x="56" y="574" width="1168" height="92" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <text x="72" y="595" font-size="12" font-weight="700" fill="#0A2540" letter-spacing="1" class="sans-body">端到端指标 · END-TO-END METRICS</text>
+    <line x1="72" y1="603" x2="1208" y2="603" stroke="#C9A961" stroke-width="0.8"/>
+
+    <!-- 5 列指标 -->
+    <g>
+      <text x="150" y="628" text-anchor="middle" font-size="11" fill="#8B95A8" class="sans-body">端到端延迟</text>
+      <text x="150" y="656" text-anchor="middle" font-size="22" fill="#C9A961" font-weight="700" class="mono">&lt;1.5 s</text>
+    </g>
+
+    <line x1="270" y1="615" x2="270" y2="660" stroke="#8B95A8" stroke-width="0.3" opacity="0.4"/>
+
+    <g>
+      <text x="380" y="628" text-anchor="middle" font-size="11" fill="#8B95A8" class="sans-body">安静环境唤醒率</text>
+      <text x="380" y="656" text-anchor="middle" font-size="22" fill="#C9A961" font-weight="700" class="mono">>95%</text>
+    </g>
+
+    <line x1="500" y1="615" x2="500" y2="660" stroke="#8B95A8" stroke-width="0.3" opacity="0.4"/>
+
+    <g>
+      <text x="630" y="628" text-anchor="middle" font-size="11" fill="#8B95A8" class="sans-body">85dB 背景唤醒率</text>
+      <text x="630" y="656" text-anchor="middle" font-size="22" fill="#C9A961" font-weight="700" class="mono">>85%</text>
+    </g>
+
+    <line x1="760" y1="615" x2="760" y2="660" stroke="#8B95A8" stroke-width="0.3" opacity="0.4"/>
+
+    <g>
+      <text x="880" y="628" text-anchor="middle" font-size="11" fill="#8B95A8" class="sans-body">完整指令识别率</text>
+      <text x="880" y="656" text-anchor="middle" font-size="22" fill="#C9A961" font-weight="700" class="mono">>90%</text>
+    </g>
+
+    <line x1="1010" y1="615" x2="1010" y2="660" stroke="#8B95A8" stroke-width="0.3" opacity="0.4"/>
+
+    <g>
+      <text x="1120" y="628" text-anchor="middle" font-size="11" fill="#8B95A8" class="sans-body">10 次端到端测试</text>
+      <text x="1120" y="656" text-anchor="middle" font-size="22" fill="#C9A961" font-weight="700" class="mono">>=8 / 10</text>
+    </g>
+  </g>
+
+  <!-- 页脚 -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">26 / 34</text>
+
+</svg>

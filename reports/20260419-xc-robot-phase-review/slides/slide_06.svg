@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <!-- 背景：象牙米白 -->
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+
+  <!-- 左侧章节竖线（学院金） -->
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- ===== 顶部标题区 ===== -->
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART B · 当前现状
+  </text>
+
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    2026-04 研发进度仪表盘
+  </text>
+
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Progress Dashboard — Done / In-Progress / Todo
+  </text>
+
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 三栏并列 ===== -->
+  <!-- 栏 1 DONE -->
+  <g>
+    <rect x="56" y="200" width="380" height="380" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="56" y="200" width="380" height="36" fill="#C9A961"/>
+    <text x="72" y="224" font-size="14" font-weight="700" fill="#0A2540" letter-spacing="2" class="en-sans">DONE · 已完成</text>
+    <text x="420" y="224" font-size="12" fill="#0A2540" text-anchor="end" class="mono">06</text>
+
+    <text x="76" y="268" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="76" dy="0">1. 底盘 ZLAC8015D 驱动器调参</tspan>
+      <tspan x="76" dy="36">2. 机械臂 URDF 动力学参数标定</tspan>
+      <tspan x="76" dy="36">3. 摩擦补偿模型</tspan>
+      <tspan x="76" dy="18" font-size="11" fill="#8B95A8" class="en-sans">   Coulomb + viscous + tanh</tspan>
+      <tspan x="76" dy="36">4. 重力补偿 + 阻抗控制算法</tspan>
+      <tspan x="76" dy="36">5. 手眼标定算法移植</tspan>
+      <tspan x="76" dy="18" font-size="11" fill="#8B95A8" class="en-sans">   Tsai-Lenz / Park-Martin / Horaud-Dornaika</tspan>
+      <tspan x="76" dy="36">6. Cartographer 20x20m 工位建图</tspan>
+    </text>
+  </g>
+
+  <!-- 栏 2 IN PROGRESS -->
+  <g>
+    <rect x="450" y="200" width="380" height="380" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="450" y="200" width="380" height="36" fill="#0A2540"/>
+    <text x="466" y="224" font-size="14" font-weight="700" fill="#F7F3EB" letter-spacing="2" class="en-sans">IN PROGRESS · 进行中</text>
+    <text x="814" y="224" font-size="12" fill="#F7F3EB" text-anchor="end" class="mono">03</text>
+
+    <text x="470" y="276" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="470" dy="0">1. EKF 融合（轮式 + IMU）</tspan>
+      <tspan x="470" dy="20" font-size="11" fill="#8B95A8" class="sans-body">   精度提升 · robot_localization</tspan>
+    </text>
+    <line x1="470" y1="326" x2="810" y2="326" stroke="#8B95A8" stroke-width="0.3" opacity="0.4"/>
+
+    <text x="470" y="360" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="470" dy="0">2. 视觉识别模型训练</tspan>
+      <tspan x="470" dy="20" font-size="11" fill="#8B95A8" class="sans-body">   YOLO / OpenVINO 部署</tspan>
+    </text>
+    <line x1="470" y1="410" x2="810" y2="410" stroke="#8B95A8" stroke-width="0.3" opacity="0.4"/>
+
+    <text x="470" y="444" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="470" dy="0">3. 机械臂标定工装</tspan>
+      <tspan x="470" dy="20" font-size="11" fill="#8B95A8" class="sans-body">   外协加工中 · 预计 2 周到货</tspan>
+    </text>
+
+    <!-- 进度条装饰 -->
+    <text x="470" y="530" font-size="11" fill="#8B95A8" letter-spacing="1" class="en-sans">PROGRESS</text>
+    <rect x="470" y="540" width="340" height="4" fill="none" stroke="#8B95A8" stroke-width="0.5"/>
+    <rect x="470" y="540" width="204" height="4" fill="#C9A961"/>
+    <text x="810" y="540" font-size="11" fill="#C9A961" font-weight="600" text-anchor="end" class="mono">60%</text>
+  </g>
+
+  <!-- 栏 3 TODO -->
+  <g>
+    <rect x="844" y="200" width="380" height="380" fill="none" stroke="#8B95A8" stroke-width="1" stroke-dasharray="4 3" rx="3"/>
+    <rect x="844" y="200" width="380" height="36" fill="none" stroke="#8B95A8" stroke-width="1"/>
+    <text x="860" y="224" font-size="14" font-weight="700" fill="#8B95A8" letter-spacing="2" class="en-sans">TODO · 短期（4-6 周）</text>
+    <text x="1208" y="224" font-size="12" fill="#8B95A8" text-anchor="end" class="mono">05</text>
+
+    <text x="864" y="268" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="864" dy="0">1. 100 Hz / 500 Hz</tspan>
+      <tspan x="864" dy="18" font-size="11" fill="#8B95A8" class="sans-body">   + PREEMPT_RT 升级</tspan>
+      <tspan x="864" dy="34">2. 双臂 controller_manager</tspan>
+      <tspan x="864" dy="18" font-size="11" fill="#8B95A8" class="sans-body">   + 硬件 PTP 同步</tspan>
+      <tspan x="864" dy="34">3. 急停 / 心跳 / 软限位</tspan>
+      <tspan x="864" dy="18" font-size="11" fill="#8B95A8" class="sans-body">   + 力矩限制工程化</tspan>
+      <tspan x="864" dy="34">4. Nav2 + AMCL + ArUco</tspan>
+      <tspan x="864" dy="18" font-size="11" fill="#8B95A8" class="sans-body">   工位对接 ±5 mm</tspan>
+      <tspan x="864" dy="34">5. 整机装配</tspan>
+      <tspan x="864" dy="18" font-size="11" fill="#8B95A8" class="sans-body">   48V 主干 + CAN-FD + GbE</tspan>
+    </text>
+  </g>
+
+  <!-- ===== 底部时间轴 ===== -->
+  <line x1="56" y1="610" x2="1224" y2="610" stroke="#8B95A8" stroke-width="0.5" opacity="0.4"/>
+  <text x="56" y="628" font-size="12" fill="#8B95A8" letter-spacing="2" class="sans-body">项目时间轴 · TIMELINE</text>
+
+  <!-- 主时间线 -->
+  <line x1="110" y1="664" x2="1170" y2="664" stroke="#8B95A8" stroke-width="1"/>
+
+  <!-- 里程碑：2025Q2 / Q3 / Q4 / 2026Q1 / Q2 / Q3 -->
+  <!-- Q2 2025 -->
+  <circle cx="130" cy="664" r="4" fill="#8B95A8"/>
+  <text x="130" y="656" font-size="10" fill="#8B95A8" text-anchor="middle" class="en-sans">2025 Q2</text>
+  <text x="130" y="682" font-size="10" fill="#2B3340" text-anchor="middle" class="sans-body">需求</text>
+
+  <!-- Q3 2025 -->
+  <circle cx="340" cy="664" r="4" fill="#8B95A8"/>
+  <text x="340" y="656" font-size="10" fill="#8B95A8" text-anchor="middle" class="en-sans">Q3</text>
+  <text x="340" y="682" font-size="10" fill="#2B3340" text-anchor="middle" class="sans-body">MVP 1.0</text>
+
+  <!-- Q4 2025 -->
+  <circle cx="550" cy="664" r="4" fill="#8B95A8"/>
+  <text x="550" y="656" font-size="10" fill="#8B95A8" text-anchor="middle" class="en-sans">Q4</text>
+  <text x="550" y="682" font-size="10" fill="#2B3340" text-anchor="middle" class="sans-body">BOM v2.1</text>
+
+  <!-- Q1 2026 -->
+  <circle cx="760" cy="664" r="4" fill="#8B95A8"/>
+  <text x="760" y="656" font-size="10" fill="#8B95A8" text-anchor="middle" class="en-sans">2026 Q1</text>
+  <text x="760" y="682" font-size="10" fill="#2B3340" text-anchor="middle" class="sans-body">装配</text>
+
+  <!-- Q2 2026 当前（学院金大圆点） -->
+  <circle cx="970" cy="664" r="8" fill="#C9A961"/>
+  <circle cx="970" cy="664" r="12" fill="none" stroke="#C9A961" stroke-width="1" opacity="0.4"/>
+  <text x="970" y="650" font-size="11" fill="#C9A961" text-anchor="middle" font-weight="700" class="en-sans">2026 Q2 · NOW</text>
+  <text x="970" y="684" font-size="10" fill="#0A2540" text-anchor="middle" font-weight="700" class="sans-body">整机联调</text>
+
+  <!-- Q3 2026 -->
+  <circle cx="1150" cy="664" r="4" fill="none" stroke="#8B95A8" stroke-width="1"/>
+  <text x="1150" y="656" font-size="10" fill="#8B95A8" text-anchor="middle" class="en-sans">Q3</text>
+  <text x="1150" y="682" font-size="10" fill="#8B95A8" text-anchor="middle" class="sans-body">场景闭环</text>
+
+  <!-- ===== 页脚 ===== -->
+  <line x1="56" y1="696" x2="1224" y2="696" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="712" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="712" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">6 / 34</text>
+
+</svg>

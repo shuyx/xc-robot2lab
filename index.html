@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Transcribe Box Lab · 祥承智能机器人实验室</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="assets/js/auth-guard.js"></script>
+  <link rel="stylesheet" href="assets/css/academic.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      Transcribe Box Lab
+      <span class="sub">祥承智能机器人实验室</span>
+    </a>
+    <nav>
+      <a href="index.html" class="current">首页</a>
+      <a href="reports/index.html">汇报资料</a>
+      <a href="repos/index.html">代码仓库</a>
+      <a href="dev/index.html">开发内容</a>
+      <a href="about.html">关于</a>
+    </nav>
+    <button class="logout" onclick="sessionStorage.removeItem('tbl_auth');location.reload()">登出</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="en-tag">TRANSCRIBE BOX LAB</div>
+      <h1>具身智能机器人的<br>感知-决策-操作闭环研究</h1>
+      <div class="tagline">"以克制的成本，实现接近人形级的双臂操作"</div>
+      <p class="lead">
+        本实验室以开源与国产化为主基调，聚焦轮式双臂具身智能机器人的
+        感知、控制与任务理解关键技术，沉淀从硬件选型到控制算法的全栈能力。
+      </p>
+    </div>
+    <div>
+      <img src="assets/img/hero-robot.png" alt="XC-Robot 轮式双臂机器人">
+    </div>
+  </div>
+</section>
+
+<main class="container">
+  <div class="page-title">
+    <span class="en">RESEARCH PORTAL</span>
+    <h2>研究资料门户</h2>
+  </div>
+  <p class="page-intro">
+    分三个主要栏目：阶段性进展汇报、代码仓库索引、以及开发过程中的技术分析与架构决策。
+  </p>
+
+  <div class="section-grid">
+    <a href="reports/index.html" class="section-card">
+      <div class="tag">01 · REPORTS</div>
+      <h2>汇报资料</h2>
+      <p>项目阶段性进展汇报 · 课题组会议材料 · 评审演示稿，以幻灯片形式在线阅览。</p>
+      <div class="arrow">进入 →</div>
+    </a>
+
+    <a href="repos/index.html" class="section-card">
+      <div class="tag">02 · REPOSITORIES</div>
+      <h2>代码仓库</h2>
+      <p>自研与 fork 的 ROS 2 包、控制栈、硬件驱动、实验脚本的仓库索引与文档入口。</p>
+      <div class="arrow">进入 →</div>
+    </a>
+
+    <a href="dev/index.html" class="section-card">
+      <div class="tag">03 · DEVELOPMENT</div>
+      <h2>开发内容</h2>
+      <p>技术分析报告 · BOM 文档 · 架构决策记录 · 专题调研与竞品对比，深度技术资料汇总。</p>
+      <div class="arrow">进入 →</div>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:48px;align-items:start">
+    <div class="prose">
+      <span class="tag-inline">LATEST · 最新动态</span>
+      <h3 style="margin-bottom:12px">2026-04-19 · 阶段汇报</h3>
+      <p>
+        <a href="reports/20260419-xc-robot-phase-review/index.html">
+          <strong>《XC-Robot 轮式双臂具身智能机器人 · 双 X86 技术方案与核心问题讨论》</strong>
+        </a>
+        共 34 页，聚焦三大核心问题：底盘从半自研到商业化水平、机械臂关节稳定与手眼标定、协调控制与任务理解。
+      </p>
+      <p>
+        详见 <a href="reports/index.html">汇报资料</a>。
+      </p>
+    </div>
+    <aside>
+      <span class="tag-inline">AFFILIATION · 合作机构</span>
+      <div class="partner-row" style="margin-top:6px">
+        <div class="partner">祥承电子（上海）</div>
+        <div class="partner">海安智能装备研究院</div>
+        <div class="partner">上海交通大学</div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="line">— TRANSCRIBE BOX LAB —</div>
+    <div>轮式双臂具身智能 · Wheeled Dual-Arm Embodied Intelligence</div>
+    <div class="mini">© 2026 Transcribe Box Lab · 祥承智能机器人实验室 · Internal Research Portal</div>
+  </div>
+</footer>
+
+</body>
+</html>

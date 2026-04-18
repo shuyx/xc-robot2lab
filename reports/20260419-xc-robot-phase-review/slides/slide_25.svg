@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 3 · 协调控制、任务理解与交互
+  </text>
+
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    柔性任务调度 · BT + FSM 双层
+  </text>
+
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Behavior Tree + State Machine — Two-Layer Orchestration
+  </text>
+
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- 右上角揭榜挂帅标签 -->
+  <rect x="780" y="88" width="400" height="32" fill="#C9A961" fill-opacity="0.2" stroke="#C9A961" stroke-width="1"/>
+  <text x="800" y="109" font-size="13" font-weight="700" fill="#0A2540" letter-spacing="1" class="sans-body">揭榜挂帅 · 核心创新点 2 / Innovation Highlight</text>
+
+  <!-- Groot 2 badge -->
+  <rect x="1196" y="88" width="28" height="32" fill="#C9A961"/>
+  <text x="1210" y="109" text-anchor="middle" font-size="14" font-weight="700" fill="#0A2540" class="en-sans">G</text>
+
+  <!-- ===== Layer 2 · BT ===== -->
+  <g>
+    <rect x="56" y="188" width="1168" height="195" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <!-- 标签 -->
+    <rect x="56" y="188" width="130" height="28" fill="#C9A961"/>
+    <text x="66" y="208" font-size="12" font-weight="700" fill="#0A2540" letter-spacing="1" class="en-sans">LAYER 2 · BT</text>
+    <text x="196" y="208" font-size="12" fill="#8B95A8" class="sans-body">BehaviorTree.CPP v4 · 管任务流程 · Sequence + Fallback</text>
+
+    <!-- BT 树状图：根节点 Sequence -->
+    <!-- Root -->
+    <g>
+      <rect x="584" y="226" width="112" height="30" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.2" rx="3"/>
+      <text x="640" y="246" text-anchor="middle" font-size="12" font-weight="700" fill="#0A2540" class="sans-body">Sequence (/)</text>
+    </g>
+
+    <!-- 连接线 -->
+    <line x1="640" y1="256" x2="640" y2="272" stroke="#8B95A8" stroke-width="0.8"/>
+    <line x1="170" y1="272" x2="1110" y2="272" stroke="#8B95A8" stroke-width="0.8"/>
+    <line x1="170" y1="272" x2="170" y2="296" stroke="#8B95A8" stroke-width="0.8"/>
+    <line x1="485" y1="272" x2="485" y2="296" stroke="#8B95A8" stroke-width="0.8"/>
+    <line x1="815" y1="272" x2="815" y2="296" stroke="#8B95A8" stroke-width="0.8"/>
+    <line x1="1110" y1="272" x2="1110" y2="296" stroke="#8B95A8" stroke-width="0.8"/>
+
+    <!-- 子节点 1: NavigateToPose(A) -->
+    <g>
+      <rect x="90" y="296" width="160" height="30" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+      <text x="170" y="316" text-anchor="middle" font-size="11" fill="#2B3340" class="sans-body">NavigateToPose(A)</text>
+    </g>
+
+    <!-- 子节点 2: Fallback -->
+    <g>
+      <rect x="405" y="296" width="160" height="30" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.2" rx="3"/>
+      <text x="485" y="316" text-anchor="middle" font-size="11" font-weight="700" fill="#0A2540" class="sans-body">Fallback (?)</text>
+    </g>
+    <!-- Fallback 子节点连线 -->
+    <line x1="485" y1="326" x2="485" y2="340" stroke="#8B95A8" stroke-width="0.8"/>
+    <line x1="410" y1="340" x2="560" y2="340" stroke="#8B95A8" stroke-width="0.8"/>
+    <line x1="410" y1="340" x2="410" y2="352" stroke="#8B95A8" stroke-width="0.8"/>
+    <line x1="560" y1="340" x2="560" y2="352" stroke="#8B95A8" stroke-width="0.8"/>
+    <!-- Fallback 子节点 -->
+    <g>
+      <rect x="338" y="352" width="144" height="24" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+      <text x="410" y="368" text-anchor="middle" font-size="10" fill="#2B3340" class="sans-body">主 · GraspObject</text>
+    </g>
+    <g>
+      <rect x="488" y="352" width="144" height="24" fill="none" stroke="#8B95A8" stroke-width="0.8" stroke-dasharray="3 2" rx="2"/>
+      <text x="560" y="368" text-anchor="middle" font-size="10" fill="#8B95A8" class="sans-body">回退 · Retry(N=3)</text>
+    </g>
+
+    <!-- 子节点 3: NavigateToPose(B) -->
+    <g>
+      <rect x="735" y="296" width="160" height="30" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+      <text x="815" y="316" text-anchor="middle" font-size="11" fill="#2B3340" class="sans-body">NavigateToPose(B)</text>
+    </g>
+
+    <!-- 子节点 4: PlaceObject -->
+    <g>
+      <rect x="1030" y="296" width="160" height="30" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+      <text x="1110" y="316" text-anchor="middle" font-size="11" fill="#2B3340" class="sans-body">PlaceObject</text>
+    </g>
+  </g>
+
+  <!-- ===== Layer 1 · FSM ===== -->
+  <g>
+    <rect x="56" y="394" width="1168" height="185" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <rect x="56" y="394" width="140" height="28" fill="#0A2540"/>
+    <text x="66" y="414" font-size="12" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="en-sans">LAYER 1 · FSM</text>
+    <text x="206" y="414" font-size="12" fill="#8B95A8" class="sans-body">SMACH2 / yasmin · 管关键动作严格时序 · GRASP_FSM 示例</text>
+
+    <!-- 6 个状态横排 -->
+    <!-- 计算: 起始x=72, 每格宽 176, gap 16, 6 格总宽 176*6+16*5=1136 -->
+    <!-- APPROACH -->
+    <g>
+      <rect x="72" y="440" width="176" height="54" fill="none" stroke="#2B3340" stroke-width="1" rx="4"/>
+      <text x="160" y="468" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="sans-body">APPROACH</text>
+      <text x="160" y="485" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">接近</text>
+      <text x="160" y="428" text-anchor="middle" font-size="11" fill="#C9A961" font-weight="600" class="mono">timeout 5s</text>
+    </g>
+
+    <!-- 箭头 -->
+    <path d="M 252 467 L 264 467 L 260 463 M 264 467 L 260 471" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+    <!-- ALIGN -->
+    <g>
+      <rect x="268" y="440" width="176" height="54" fill="none" stroke="#2B3340" stroke-width="1" rx="4"/>
+      <text x="356" y="468" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="sans-body">ALIGN</text>
+      <text x="356" y="485" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">对齐</text>
+      <text x="356" y="428" text-anchor="middle" font-size="11" fill="#C9A961" font-weight="600" class="mono">timeout 3s</text>
+    </g>
+
+    <path d="M 448 467 L 460 467 L 456 463 M 460 467 L 456 471" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+    <!-- CONTACT -->
+    <g>
+      <rect x="464" y="440" width="176" height="54" fill="none" stroke="#2B3340" stroke-width="1" rx="4"/>
+      <text x="552" y="468" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="sans-body">CONTACT</text>
+      <text x="552" y="485" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">接触</text>
+      <text x="552" y="428" text-anchor="middle" font-size="11" fill="#C9A961" font-weight="600" class="mono">timeout 2s</text>
+    </g>
+
+    <path d="M 644 467 L 656 467 L 652 463 M 656 467 L 652 471" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+    <!-- CLOSE_GRIPPER -->
+    <g>
+      <rect x="660" y="440" width="176" height="54" fill="none" stroke="#2B3340" stroke-width="1" rx="4"/>
+      <text x="748" y="468" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="sans-body">CLOSE_GRIPPER</text>
+      <text x="748" y="485" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">闭合</text>
+      <text x="748" y="428" text-anchor="middle" font-size="11" fill="#8B95A8" class="mono">-</text>
+    </g>
+
+    <path d="M 840 467 L 852 467 L 848 463 M 852 467 L 848 471" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+    <!-- LIFT -->
+    <g>
+      <rect x="856" y="440" width="176" height="54" fill="none" stroke="#2B3340" stroke-width="1" rx="4"/>
+      <text x="944" y="468" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="sans-body">LIFT</text>
+      <text x="944" y="485" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">提起</text>
+      <text x="944" y="428" text-anchor="middle" font-size="11" fill="#8B95A8" class="mono">-</text>
+    </g>
+
+    <path d="M 1036 467 L 1048 467 L 1044 463 M 1048 467 L 1044 471" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+    <!-- VERIFY -->
+    <g>
+      <rect x="1052" y="440" width="156" height="54" fill="none" stroke="#C9A961" stroke-width="1.2" rx="4"/>
+      <text x="1130" y="468" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="sans-body">VERIFY</text>
+      <text x="1130" y="485" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">校验</text>
+      <text x="1130" y="428" text-anchor="middle" font-size="11" fill="#8B95A8" class="mono">-</text>
+    </g>
+
+    <!-- 异常转移虚线 -->
+    <line x1="160" y1="494" x2="420" y2="540" stroke="#8B95A8" stroke-width="0.6" stroke-dasharray="3 3"/>
+    <line x1="356" y1="494" x2="420" y2="540" stroke="#8B95A8" stroke-width="0.6" stroke-dasharray="3 3"/>
+    <line x1="552" y1="494" x2="640" y2="540" stroke="#8B95A8" stroke-width="0.6" stroke-dasharray="3 3"/>
+    <line x1="748" y1="494" x2="640" y2="540" stroke="#8B95A8" stroke-width="0.6" stroke-dasharray="3 3"/>
+    <line x1="944" y1="494" x2="860" y2="540" stroke="#8B95A8" stroke-width="0.6" stroke-dasharray="3 3"/>
+    <line x1="1130" y1="494" x2="860" y2="540" stroke="#8B95A8" stroke-width="0.6" stroke-dasharray="3 3"/>
+
+    <!-- 3 个末态 -->
+    <g>
+      <rect x="340" y="542" width="160" height="28" fill="none" stroke="#8B95A8" stroke-width="0.8" stroke-dasharray="3 2" rx="3"/>
+      <text x="420" y="561" text-anchor="middle" font-size="12" fill="#8B95A8" class="sans-body">REPLAN · 重规划</text>
+    </g>
+    <g>
+      <rect x="560" y="542" width="160" height="28" fill="none" stroke="#8B95A8" stroke-width="0.8" stroke-dasharray="3 2" rx="3"/>
+      <text x="640" y="561" text-anchor="middle" font-size="12" fill="#8B95A8" class="sans-body">RETRY · 重试</text>
+    </g>
+    <g>
+      <rect x="780" y="542" width="160" height="28" fill="none" stroke="#8B95A8" stroke-width="0.8" stroke-dasharray="3 2" rx="3"/>
+      <text x="860" y="561" text-anchor="middle" font-size="12" fill="#8B95A8" class="sans-body">ABORT · 终止</text>
+    </g>
+  </g>
+
+  <!-- ===== 底部事件触发表 ===== -->
+  <g>
+    <rect x="56" y="590" width="1168" height="78" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="72" y="610" font-size="12" font-weight="700" fill="#0A2540" letter-spacing="1" class="sans-body">事件触发表 · Event Trigger Matrix</text>
+    <line x1="72" y1="618" x2="1208" y2="618" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+
+    <!-- 2x2 布局 -->
+    <text x="72" y="640" font-size="12" fill="#8B95A8" class="sans-body">物料缺失</text>
+    <text x="190" y="640" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="206" y="640" font-size="12" fill="#2B3340" class="sans-body">BT Fallback 触发</text>
+
+    <text x="72" y="660" font-size="12" fill="#8B95A8" class="sans-body">工位占用</text>
+    <text x="190" y="660" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="206" y="660" font-size="12" fill="#2B3340" class="sans-body">BT 任务顺序重排</text>
+
+    <text x="640" y="640" font-size="12" fill="#8B95A8" class="sans-body">力反馈异常</text>
+    <text x="780" y="640" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="796" y="640" font-size="12" fill="#2B3340" class="sans-body">FSM 中断 + 回退</text>
+
+    <text x="640" y="660" font-size="12" fill="#8B95A8" class="sans-body">急停</text>
+    <text x="780" y="660" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="796" y="660" font-size="12" fill="#2B3340" font-weight="600" class="sans-body">全部中止 + home</text>
+  </g>
+
+  <!-- 页脚 -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">25 / 34</text>
+
+</svg>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <!-- 背景：象牙米白 -->
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+
+  <!-- 左侧章节竖线（学院金） -->
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- ===== 顶部标题区 ===== -->
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART D · 一期 P0 落地
+  </text>
+
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    一期 P0 · 五线并行
+  </text>
+
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Phase-1 Five Parallel Lines — Concurrent Execution, 12 Weeks
+  </text>
+
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 顶部总览框 ===== -->
+  <rect x="56" y="186" width="1168" height="60" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+  <text x="72" y="210" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">RD2 STAGE · 2026-05 / 2026-08</text>
+  <text x="72" y="232" font-size="14" fill="#2B3340" class="sans-body">
+    RD2 阶段 2026-05 至 2026-08 · <tspan fill="#0A2540" font-weight="600">"语音 / 导航 / 抓取 / 放置" 最小闭环 Demo</tspan> · <tspan fill="#C9A961" font-weight="700">10 次 &gt;=8 次成功</tspan> / 连续 4 小时不死机
+  </text>
+
+  <!-- ===== 5 条水平甘特条 ===== -->
+  <!-- 每条宽 1040（条主体），左端对齐 x=56，右端留 128 显示总周数 -->
+  <!-- 起始 y=266，每条高 56，间距 14 -->
+
+  <!-- P0-1 机械臂关节稳定控制（最关键，学院金边框） -->
+  <g>
+    <rect x="56" y="266" width="1040" height="56" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="2"/>
+    <rect x="56" y="266" width="6" height="56" fill="#C9A961"/>
+    <text x="76" y="290" font-size="14" font-weight="700" fill="#0A2540" class="sans-body">P0-1 · 机械臂关节稳定控制</text>
+    <text x="76" y="308" font-size="11" fill="#8B95A8" class="en-sans">Joint Stability Control · CRITICAL PATH</text>
+    <!-- 子里程碑（5 块） -->
+    <!-- 可用宽度从 280 至 1086 = 806px，共 5 格 -->
+    <rect x="300" y="276" width="150" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="375" y="293" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">M1 重力补偿</text>
+    <text x="375" y="307" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">2w</text>
+
+    <rect x="458" y="276" width="150" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="533" y="293" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">M2 摩擦补偿</text>
+    <text x="533" y="307" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">2w</text>
+
+    <rect x="616" y="276" width="150" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="691" y="293" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">M3 Ruckig</text>
+    <text x="691" y="307" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">1w</text>
+
+    <rect x="774" y="276" width="150" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="849" y="291" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">M4 PREEMPT_RT</text>
+    <text x="849" y="305" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">+500Hz · 1w</text>
+
+    <rect x="932" y="276" width="150" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="1007" y="293" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">M5 OMPL+JTC</text>
+    <text x="1007" y="307" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">1w</text>
+
+    <!-- 总周数 -->
+    <text x="1200" y="300" text-anchor="end" font-size="24" font-weight="700" fill="#C9A961" class="en-serif">7w</text>
+  </g>
+
+  <!-- P0-2 底盘点到点导航 -->
+  <g>
+    <rect x="56" y="336" width="1040" height="56" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+    <rect x="56" y="336" width="6" height="56" fill="#0A2540"/>
+    <text x="76" y="360" font-size="14" font-weight="700" fill="#0A2540" class="sans-body">P0-2 · 底盘点到点导航</text>
+    <text x="76" y="378" font-size="11" fill="#8B95A8" class="en-sans">Base P2P Navigation</text>
+    <!-- 5 个子里程碑 -->
+    <rect x="300" y="346" width="150" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="375" y="363" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">N1 里程计</text>
+    <text x="375" y="377" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">1w</text>
+
+    <rect x="458" y="346" width="150" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="533" y="363" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">N2 EKF 融合</text>
+    <text x="533" y="377" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">1w</text>
+
+    <rect x="616" y="346" width="150" height="36" fill="#F7F3EB" stroke="#8B95A8" stroke-width="0.8" stroke-dasharray="3 2" rx="2"/>
+    <text x="691" y="363" text-anchor="middle" font-size="11" fill="#8B95A8" font-weight="600" class="sans-body">N3 建图</text>
+    <text x="691" y="377" text-anchor="middle" font-size="10" fill="#C9A961" class="en-sans">已完成</text>
+
+    <rect x="774" y="346" width="150" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="849" y="363" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">N4 Nav2+AMCL</text>
+    <text x="849" y="377" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">1w</text>
+
+    <rect x="932" y="346" width="150" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="1007" y="363" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">N5 AprilTag</text>
+    <text x="1007" y="377" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">1w</text>
+
+    <text x="1200" y="370" text-anchor="end" font-size="24" font-weight="700" fill="#C9A961" class="en-serif">4w</text>
+  </g>
+
+  <!-- P0-3 视觉识别+抓取 -->
+  <g>
+    <rect x="56" y="406" width="1040" height="56" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+    <rect x="56" y="406" width="6" height="56" fill="#0A2540"/>
+    <text x="76" y="430" font-size="14" font-weight="700" fill="#0A2540" class="sans-body">P0-3 · 视觉识别+抓取</text>
+    <text x="76" y="448" font-size="11" fill="#8B95A8" class="en-sans">Vision Detection + Grasping</text>
+
+    <rect x="300" y="416" width="238" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="419" y="433" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">V1 手眼标定</text>
+    <text x="419" y="447" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">1w</text>
+
+    <rect x="546" y="416" width="238" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="665" y="433" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">V2 物料 6D + YOLO</text>
+    <text x="665" y="447" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">2w</text>
+
+    <rect x="792" y="416" width="290" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="937" y="433" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">V3 抓取策略</text>
+    <text x="937" y="447" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">1w</text>
+
+    <text x="1200" y="440" text-anchor="end" font-size="24" font-weight="700" fill="#C9A961" class="en-serif">4w</text>
+  </g>
+
+  <!-- P0-4 简单语音交互 -->
+  <g>
+    <rect x="56" y="476" width="1040" height="56" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+    <rect x="56" y="476" width="6" height="56" fill="#0A2540"/>
+    <text x="76" y="500" font-size="14" font-weight="700" fill="#0A2540" class="sans-body">P0-4 · 简单语音交互</text>
+    <text x="76" y="518" font-size="11" fill="#8B95A8" class="en-sans">Simple Voice Interaction</text>
+
+    <rect x="300" y="486" width="390" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="495" y="503" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">S1 唤醒 + ASR</text>
+    <text x="495" y="517" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">2w</text>
+
+    <rect x="698" y="486" width="384" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="890" y="503" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">S2 Action 联动 + TTS</text>
+    <text x="890" y="517" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">1w</text>
+
+    <text x="1200" y="510" text-anchor="end" font-size="24" font-weight="700" fill="#C9A961" class="en-serif">3w</text>
+  </g>
+
+  <!-- P0-5 基础安全框架 -->
+  <g>
+    <rect x="56" y="546" width="1040" height="56" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+    <rect x="56" y="546" width="6" height="56" fill="#0A2540"/>
+    <text x="76" y="570" font-size="14" font-weight="700" fill="#0A2540" class="sans-body">P0-5 · 基础安全框架</text>
+    <text x="76" y="588" font-size="11" fill="#8B95A8" class="en-sans">Safety Framework · Foundation</text>
+
+    <rect x="300" y="556" width="180" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="390" y="573" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">急停硬件</text>
+    <text x="390" y="587" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">E-Stop</text>
+
+    <rect x="488" y="556" width="180" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="578" y="573" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">心跳监听</text>
+    <text x="578" y="587" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">Heartbeat</text>
+
+    <rect x="676" y="556" width="180" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="766" y="573" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">软限位</text>
+    <text x="766" y="587" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">Soft Limits</text>
+
+    <rect x="864" y="556" width="218" height="36" fill="none" stroke="#2B3340" stroke-width="0.8" rx="2"/>
+    <text x="973" y="573" text-anchor="middle" font-size="11" fill="#0A2540" font-weight="600" class="sans-body">电流门限</text>
+    <text x="973" y="587" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">Current Threshold</text>
+
+    <text x="1200" y="580" text-anchor="end" font-size="24" font-weight="700" fill="#C9A961" class="en-serif">1w</text>
+  </g>
+
+  <!-- ===== 底部并行原则 ===== -->
+  <rect x="56" y="616" width="1168" height="60" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+  <line x1="640" y1="616" x2="640" y2="676" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+  <text x="72" y="638" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">PARALLEL PRINCIPLE · 并行原则</text>
+  <text x="72" y="660" font-size="14" fill="#2B3340" class="sans-body">
+    所有 P0 项目从 W1 同时启动 · <tspan fill="#0A2540" font-weight="600">无串行依赖</tspan>
+  </text>
+  <text x="656" y="638" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">RESOURCE ALLOCATION · 资源分配</text>
+  <text x="656" y="660" font-size="14" fill="#2B3340" class="sans-body">
+    总资源 <tspan fill="#C9A961" font-weight="700">12 周</tspan>并行完成 / 非 <tspan fill="#8B95A8">7+4+4+3+1 串行 19 周</tspan>
+  </text>
+
+  <!-- ===== 页脚 ===== -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">29 / 34</text>
+
+</svg>

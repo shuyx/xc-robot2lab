@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <!-- 背景：象牙米白 -->
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+
+  <!-- 左侧章节竖线（学院金） -->
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- ===== 顶部标题区 ===== -->
+  <!-- 章节标识（学院金小号 + 分节点） -->
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 2 · 机械臂关节稳定与低成本控制
+  </text>
+
+  <!-- 主标题（思源宋体，深靛蓝） -->
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    低成本控制方案 · 软件栈五步
+  </text>
+
+  <!-- 英文副标题（Merriweather, 暖灰斜体） -->
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Low-Cost Control Stack — No Hardware Change, Software-Only Path
+  </text>
+
+  <!-- 标题底部装饰线（2px 学院金） -->
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 成本约束 Banner（顶部右侧） ===== -->
+  <rect x="820" y="90" width="400" height="64" fill="none" stroke="#2B3340" stroke-width="1" rx="2"/>
+  <text x="840" y="112" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">COST CONSTRAINT · 成本约束</text>
+  <text x="840" y="138" font-size="16" fill="#2B3340" class="sans-body">
+    硬件已投入（达妙 DM 电机 + Intel Mini PC）<tspan fill="#0A2540" font-weight="600">，仅改软件栈</tspan>
+  </text>
+
+  <!-- ===== 中部 5 步 Pipeline ===== -->
+  <!-- 五个节点居中横排：节点宽 196px，间隙 30px，起点 x=56 -->
+  <!-- 中心 y=350，节点高 210 -->
+
+  <!-- 连接横线（穿过所有节点中轴） -->
+  <line x1="252" y1="300" x2="280" y2="300" stroke="#8B95A8" stroke-width="0.8" stroke-dasharray="5 3"/>
+  <line x1="478" y1="300" x2="506" y2="300" stroke="#8B95A8" stroke-width="0.8" stroke-dasharray="5 3"/>
+  <line x1="704" y1="300" x2="732" y2="300" stroke="#8B95A8" stroke-width="0.8" stroke-dasharray="5 3"/>
+  <line x1="930" y1="300" x2="958" y2="300" stroke="#8B95A8" stroke-width="0.8" stroke-dasharray="5 3"/>
+  <!-- 箭头（最后一段改为实线 + 箭头指向验收 banner，用 path） -->
+
+  <!-- 节点 1：PREEMPT_RT -->
+  <g>
+    <rect x="56" y="218" width="196" height="210" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <!-- 步骤编号徽章（左上角，学院金小方块 + 白字） -->
+    <rect x="56" y="218" width="42" height="28" fill="#C9A961"/>
+    <text x="77" y="238" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="en-sans">STEP 1</text>
+    <!-- 节点标题 -->
+    <text x="76" y="282" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">实时内核</text>
+    <text x="76" y="302" font-size="11" fill="#8B95A8" letter-spacing="0.5" class="en-sans">PREEMPT_RT Kernel</text>
+    <!-- 分隔细线 -->
+    <line x1="76" y1="314" x2="176" y2="314" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <!-- 要点 -->
+    <text x="76" y="340" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="76" dy="0">· Ubuntu 22.04 切</tspan>
+      <tspan x="76" dy="19">  PREEMPT_RT 6.1+</tspan>
+      <tspan x="76" dy="19">· isolcpus 隔离专核</tspan>
+      <tspan x="76" dy="19">· chrt -f 80 锁优先级</tspan>
+    </text>
+    <!-- 底部关键指标 -->
+    <text x="76" y="416" font-size="11" fill="#C9A961" font-weight="600" class="mono">cyclictest P99 &lt;100us</text>
+  </g>
+
+  <!-- 节点 2：500 Hz -->
+  <g>
+    <rect x="282" y="218" width="196" height="210" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="282" y="218" width="42" height="28" fill="#C9A961"/>
+    <text x="303" y="238" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="en-sans">STEP 2</text>
+    <text x="302" y="282" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">控制频率升级</text>
+    <text x="302" y="302" font-size="11" fill="#8B95A8" letter-spacing="0.5" class="en-sans">100 / 500 Hz</text>
+    <line x1="302" y1="314" x2="402" y2="314" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <text x="302" y="340" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="302" dy="0">· ros2_controllers.yaml</tspan>
+      <tspan x="302" dy="19">  update_rate 改 500</tspan>
+      <tspan x="302" dy="19">· 不上 1 kHz</tspan>
+      <tspan x="302" dy="19">  Mini PC 性价比考量</tspan>
+    </text>
+    <text x="302" y="416" font-size="11" fill="#C9A961" font-weight="600" class="mono">RD2 · 80% 目标值</text>
+  </g>
+
+  <!-- 节点 3：effort 接口 -->
+  <g>
+    <rect x="508" y="218" width="196" height="210" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="508" y="218" width="42" height="28" fill="#C9A961"/>
+    <text x="529" y="238" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="en-sans">STEP 3</text>
+    <text x="528" y="282" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">力矩接口开放</text>
+    <text x="528" y="302" font-size="11" fill="#8B95A8" letter-spacing="0.5" class="en-sans">effort Command Interface</text>
+    <line x1="528" y1="314" x2="628" y2="314" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <text x="528" y="340" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="528" dy="0">· command_interfaces</tspan>
+      <tspan x="528" dy="19">  从 [position] 扩为</tspan>
+      <tspan x="528" dy="19">  [position, velocity,</tspan>
+      <tspan x="528" dy="19">  effort] 三通道</tspan>
+    </text>
+    <text x="528" y="416" font-size="11" fill="#C9A961" font-weight="600" class="mono">MIT 模式直下力矩</text>
+  </g>
+
+  <!-- 节点 4：补偿控制器（核心，学院金边框） -->
+  <g>
+    <rect x="734" y="208" width="196" height="230" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <rect x="734" y="208" width="42" height="28" fill="#0A2540"/>
+    <text x="755" y="228" text-anchor="middle" font-size="13" font-weight="700" fill="#F7F3EB" class="en-sans">STEP 4</text>
+    <!-- CORE 标识 -->
+    <rect x="884" y="208" width="46" height="28" fill="#C9A961"/>
+    <text x="907" y="228" text-anchor="middle" font-size="10" font-weight="700" fill="#0A2540" class="en-sans">CORE</text>
+    <text x="754" y="272" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">补偿阻抗控制器</text>
+    <text x="754" y="292" font-size="11" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Compensated Impedance</text>
+    <line x1="754" y1="304" x2="912" y2="304" stroke="#C9A961" stroke-width="1.2"/>
+    <!-- 公式 -->
+    <text x="754" y="330" font-size="14" fill="#0A2540" font-weight="600" class="mono">T = PD</text>
+    <text x="754" y="352" font-size="13" fill="#2B3340" class="mono">
+      <tspan x="754" dy="0">    + T_g(q)  · 重力</tspan>
+      <tspan x="754" dy="19">    + T_c(q,q') · 科氏</tspan>
+      <tspan x="754" dy="19">    + T_f(q')  · 摩擦</tspan>
+    </text>
+    <text x="754" y="426" font-size="11" fill="#C9A961" font-weight="600" class="sans-body">Pinocchio RNEA · 3.5us</text>
+  </g>
+
+  <!-- 节点 5：Ruckig 平滑 -->
+  <g>
+    <rect x="960" y="218" width="196" height="210" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="960" y="218" width="42" height="28" fill="#C9A961"/>
+    <text x="981" y="238" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="en-sans">STEP 5</text>
+    <text x="980" y="282" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">轨迹在线整形</text>
+    <text x="980" y="302" font-size="11" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Ruckig Type V · Jerk-Limited</text>
+    <line x1="980" y1="314" x2="1080" y2="314" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+    <text x="980" y="340" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="980" dy="0">· 250 us 周期</tspan>
+      <tspan x="980" dy="19">· 防速度阶跃</tspan>
+      <tspan x="980" dy="19">  传到关节</tspan>
+      <tspan x="980" dy="19">· 末端轨迹连续</tspan>
+    </text>
+    <text x="980" y="416" font-size="11" fill="#C9A961" font-weight="600" class="mono">比 Reflexxes 快 2x</text>
+  </g>
+
+  <!-- ===== 底部分隔线 ===== -->
+  <line x1="56" y1="472" x2="1224" y2="472" stroke="#8B95A8" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- ===== 底部双栏：现状 vs 目标 / 验收判据 ===== -->
+
+  <!-- 左栏：当前 vs 目标对比 -->
+  <g>
+    <text x="56" y="510" font-size="13" fill="#8B95A8" letter-spacing="2" class="sans-body">现状 / 目标</text>
+    <text x="56" y="510" font-size="11" fill="#C9A961" text-anchor="start" dx="110" letter-spacing="1" class="en-sans">CURRENT vs TARGET</text>
+
+    <!-- 对比条（虚线=当前，实线=目标） -->
+    <!-- 控制频率 -->
+    <text x="56" y="544" font-size="13" fill="#2B3340" class="sans-body">控制频率</text>
+    <line x1="160" y1="540" x2="260" y2="540" stroke="#8B95A8" stroke-width="2" stroke-dasharray="5 3"/>
+    <text x="268" y="544" font-size="12" fill="#8B95A8" class="mono">100 Hz 当前</text>
+    <line x1="380" y1="540" x2="580" y2="540" stroke="#0A2540" stroke-width="2.5"/>
+    <text x="588" y="544" font-size="12" fill="#0A2540" font-weight="600" class="mono">500 Hz 目标</text>
+
+    <!-- 指令类型 -->
+    <text x="56" y="576" font-size="13" fill="#2B3340" class="sans-body">指令类型</text>
+    <line x1="160" y1="572" x2="240" y2="572" stroke="#8B95A8" stroke-width="2" stroke-dasharray="5 3"/>
+    <text x="248" y="576" font-size="12" fill="#8B95A8" class="mono">position only</text>
+    <line x1="380" y1="572" x2="560" y2="572" stroke="#0A2540" stroke-width="2.5"/>
+    <text x="568" y="576" font-size="12" fill="#0A2540" font-weight="600" class="mono">pos/vel/effort</text>
+
+    <!-- 动力学前馈 -->
+    <text x="56" y="608" font-size="13" fill="#2B3340" class="sans-body">动力学前馈</text>
+    <line x1="160" y1="604" x2="180" y2="604" stroke="#8B95A8" stroke-width="2" stroke-dasharray="5 3"/>
+    <text x="188" y="608" font-size="12" fill="#8B95A8" class="mono">无</text>
+    <line x1="380" y1="604" x2="600" y2="604" stroke="#0A2540" stroke-width="2.5"/>
+    <text x="608" y="608" font-size="12" fill="#0A2540" font-weight="600" class="mono">重力+科氏+摩擦三项</text>
+
+    <!-- 轨迹平滑 -->
+    <text x="56" y="640" font-size="13" fill="#2B3340" class="sans-body">轨迹平滑</text>
+    <line x1="160" y1="636" x2="200" y2="636" stroke="#8B95A8" stroke-width="2" stroke-dasharray="5 3"/>
+    <text x="208" y="640" font-size="12" fill="#8B95A8" class="mono">无平滑</text>
+    <line x1="380" y1="636" x2="600" y2="636" stroke="#0A2540" stroke-width="2.5"/>
+    <text x="608" y="640" font-size="12" fill="#0A2540" font-weight="600" class="mono">Ruckig jerk-limited</text>
+  </g>
+
+  <!-- 右栏：验收判据 -->
+  <g>
+    <!-- 分栏竖线 -->
+    <line x1="730" y1="500" x2="730" y2="660" stroke="#8B95A8" stroke-width="0.5" opacity="0.4"/>
+
+    <text x="758" y="510" font-size="13" fill="#8B95A8" letter-spacing="2" class="sans-body">验收判据</text>
+    <text x="758" y="510" font-size="11" fill="#C9A961" dx="80" letter-spacing="1" class="en-sans">ACCEPTANCE CRITERIA</text>
+
+    <!-- 判据 1：cyclictest P99 -->
+    <text x="758" y="544" font-size="13" fill="#2B3340" class="sans-body">实时性</text>
+    <text x="850" y="544" font-size="14" fill="#0A2540" font-weight="600" class="mono">cyclictest P99</text>
+    <text x="1120" y="544" font-size="18" fill="#C9A961" font-weight="700" text-anchor="end" class="mono">&lt;100us</text>
+
+    <!-- 判据 2：静止漂移 -->
+    <text x="758" y="576" font-size="13" fill="#2B3340" class="sans-body">悬空 60s</text>
+    <text x="850" y="576" font-size="14" fill="#0A2540" font-weight="600" class="mono">关节漂移</text>
+    <text x="1120" y="576" font-size="18" fill="#C9A961" font-weight="700" text-anchor="end" class="mono">&lt;0.05 rad</text>
+
+    <!-- 判据 3：绘圆偏差 -->
+    <text x="758" y="608" font-size="13" fill="#2B3340" class="sans-body">末端绘圆</text>
+    <text x="850" y="608" font-size="14" fill="#0A2540" font-weight="600" class="mono">10cm 路径偏差</text>
+    <text x="1120" y="608" font-size="18" fill="#C9A961" font-weight="700" text-anchor="end" class="mono">&lt;5 mm</text>
+
+    <!-- 判据 4：P2P 规划 -->
+    <text x="758" y="640" font-size="13" fill="#2B3340" class="sans-body">P2P 规划</text>
+    <text x="850" y="640" font-size="14" fill="#0A2540" font-weight="600" class="mono">20 次测试</text>
+    <text x="1120" y="640" font-size="18" fill="#C9A961" font-weight="700" text-anchor="end" class="mono">20 / 20</text>
+  </g>
+
+  <!-- ===== 页脚 ===== -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">17 / 34</text>
+
+</svg>

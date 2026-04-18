@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- 顶部标题 -->
+  <text x="56" y="54" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 2 · 机械臂关节稳定与低成本控制
+  </text>
+  <text x="56" y="98" font-size="32" font-weight="700" fill="#0A2540" class="serif-title">
+    动力学 &amp; 摩擦补偿 · 实施路径
+  </text>
+  <text x="56" y="124" font-size="15" fill="#8B95A8" font-style="italic" class="en-serif">
+    Dynamics &amp; Friction Identification
+  </text>
+  <line x1="56" y1="140" x2="220" y2="140" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="140" x2="560" y2="140" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ============= 上栏：动力学参数实测 ============= -->
+  <g>
+    <rect x="56" y="156" width="1168" height="238" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <!-- 栏目标签 -->
+    <rect x="56" y="156" width="160" height="26" fill="#0A2540"/>
+    <text x="136" y="175" text-anchor="middle" font-size="12" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="sans-body">01 · 动力学参数实测</text>
+    <text x="230" y="174" font-size="11" fill="#8B95A8" letter-spacing="1" class="en-sans">INERTIAL PARAM MEASUREMENT</text>
+
+    <!-- 左：工装清单 160x180 -->
+    <g>
+      <rect x="76" y="196" width="180" height="180" fill="none" stroke="#8B95A8" stroke-width="0.8" rx="2"/>
+      <text x="86" y="214" font-size="10" fill="#C9A961" letter-spacing="1" class="sans-body">TOOLKIT · 工装清单</text>
+      <line x1="86" y1="224" x2="246" y2="224" stroke="#C9A961" stroke-width="0.6" opacity="0.8"/>
+      <text x="86" y="248" font-size="13" fill="#2B3340" class="sans-body">
+        <tspan x="86" dy="0">· 两点悬挂工装</tspan>
+        <tspan x="86" dy="26">· 扭摆杆</tspan>
+        <tspan x="86" dy="26">· 激光位移传感器</tspan>
+        <tspan x="86" dy="26">· 电子天平 · 0.1 g</tspan>
+        <tspan x="86" dy="26">· 高速采集 · 2 kHz</tspan>
+      </text>
+    </g>
+
+    <!-- 中：三步流程示意图 -->
+    <g>
+      <!-- 步骤 1 悬挂法测质量 -->
+      <g transform="translate(296, 200)">
+        <rect x="0" y="0" width="180" height="170" fill="none" stroke="#8B95A8" stroke-width="0.6" stroke-dasharray="3 2" rx="2"/>
+        <text x="90" y="18" text-anchor="middle" font-size="11" fill="#C9A961" font-weight="600" class="sans-body">STEP 1 · 悬挂测质量</text>
+        <!-- 物理示意：天花板线 + 绳 + 块 + 弹簧秤 -->
+        <line x1="40" y1="40" x2="140" y2="40" stroke="#2B3340" stroke-width="1"/>
+        <!-- 斜阴影线表示天花 -->
+        <line x1="44" y1="34" x2="40" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="60" y1="34" x2="56" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="76" y1="34" x2="72" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="92" y1="34" x2="88" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="108" y1="34" x2="104" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="124" y1="34" x2="120" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="140" y1="34" x2="136" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <!-- 绳 -->
+        <line x1="90" y1="40" x2="90" y2="78" stroke="#2B3340" stroke-width="1"/>
+        <!-- 弹簧秤（矩形） -->
+        <rect x="80" y="78" width="20" height="30" fill="none" stroke="#0A2540" stroke-width="1.2"/>
+        <line x1="90" y1="108" x2="90" y2="120" stroke="#2B3340" stroke-width="1"/>
+        <!-- 连杆（被测件） -->
+        <rect x="64" y="120" width="52" height="28" fill="#C9A961" opacity="0.5" stroke="#0A2540" stroke-width="1"/>
+        <text x="90" y="138" text-anchor="middle" font-size="10" fill="#0A2540" font-weight="700" class="mono">m</text>
+        <text x="90" y="162" text-anchor="middle" font-size="10" fill="#8B95A8" class="mono">W = m·g</text>
+      </g>
+      <!-- 步骤 2 两点悬挂法测重心 -->
+      <g transform="translate(496, 200)">
+        <rect x="0" y="0" width="180" height="170" fill="none" stroke="#8B95A8" stroke-width="0.6" stroke-dasharray="3 2" rx="2"/>
+        <text x="90" y="18" text-anchor="middle" font-size="11" fill="#C9A961" font-weight="600" class="sans-body">STEP 2 · 两点悬挂测重心</text>
+        <line x1="30" y1="40" x2="150" y2="40" stroke="#2B3340" stroke-width="1"/>
+        <line x1="34" y1="34" x2="30" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="54" y1="34" x2="50" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="74" y1="34" x2="70" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="94" y1="34" x2="90" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="114" y1="34" x2="110" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="134" y1="34" x2="130" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <!-- 两根绳 -->
+        <line x1="50" y1="40" x2="60" y2="98" stroke="#2B3340" stroke-width="1"/>
+        <line x1="130" y1="40" x2="120" y2="98" stroke="#2B3340" stroke-width="1"/>
+        <!-- 连杆倾斜 -->
+        <polygon points="50,102 130,94 140,108 60,116" fill="#C9A961" opacity="0.4" stroke="#0A2540" stroke-width="1"/>
+        <!-- 重心标记 -->
+        <circle cx="99" cy="108" r="3" fill="#0A2540"/>
+        <line x1="99" y1="108" x2="99" y2="138" stroke="#C9A961" stroke-width="0.8" stroke-dasharray="2 2"/>
+        <text x="110" y="130" font-size="10" fill="#0A2540" font-weight="700" class="mono">CoM</text>
+        <text x="90" y="158" text-anchor="middle" font-size="10" fill="#8B95A8" class="mono">两位姿交点</text>
+      </g>
+      <!-- 步骤 3 扭摆法测惯量 -->
+      <g transform="translate(696, 200)">
+        <rect x="0" y="0" width="180" height="170" fill="none" stroke="#8B95A8" stroke-width="0.6" stroke-dasharray="3 2" rx="2"/>
+        <text x="90" y="18" text-anchor="middle" font-size="11" fill="#C9A961" font-weight="600" class="sans-body">STEP 3 · 扭摆法测惯量</text>
+        <!-- 固定点 -->
+        <line x1="40" y1="40" x2="140" y2="40" stroke="#2B3340" stroke-width="1"/>
+        <line x1="44" y1="34" x2="40" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="64" y1="34" x2="60" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="84" y1="34" x2="80" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="104" y1="34" x2="100" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="124" y1="34" x2="120" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <line x1="144" y1="34" x2="140" y2="40" stroke="#2B3340" stroke-width="0.5"/>
+        <!-- 扭摆轴 -->
+        <line x1="90" y1="40" x2="90" y2="100" stroke="#0A2540" stroke-width="1.2" stroke-dasharray="3 2"/>
+        <!-- 扭摆盘 -->
+        <ellipse cx="90" cy="100" rx="48" ry="10" fill="none" stroke="#0A2540" stroke-width="1.2"/>
+        <rect x="66" y="100" width="48" height="18" fill="#C9A961" opacity="0.5" stroke="#0A2540" stroke-width="1"/>
+        <!-- 旋转箭头 -->
+        <path d="M 40,130 Q 50,148 68,146" fill="none" stroke="#C9A961" stroke-width="1.2"/>
+        <path d="M 64,142 L 68,146 L 64,150" fill="none" stroke="#C9A961" stroke-width="1.2"/>
+        <path d="M 140,130 Q 130,148 112,146" fill="none" stroke="#C9A961" stroke-width="1.2"/>
+        <path d="M 116,142 L 112,146 L 116,150" fill="none" stroke="#C9A961" stroke-width="1.2"/>
+        <text x="90" y="160" text-anchor="middle" font-size="10" fill="#8B95A8" class="mono">T = 2pi sqrt(I/k)</text>
+      </g>
+    </g>
+
+    <!-- 右：产出 300x180 -->
+    <g>
+      <rect x="896" y="196" width="308" height="180" fill="none" stroke="#C9A961" stroke-width="1.2" rx="2"/>
+      <text x="906" y="214" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">OUTPUT · 产出</text>
+      <line x1="906" y1="224" x2="1194" y2="224" stroke="#C9A961" stroke-width="0.6" opacity="0.8"/>
+      <text x="906" y="248" font-size="13" fill="#2B3340" class="sans-body">
+        <tspan x="906" dy="0">· inertials.yaml</tspan>
+      </text>
+      <text x="920" y="264" font-size="11" fill="#8B95A8" class="sans-body">实测替换 CAD 估值</text>
+      <text x="906" y="288" font-size="13" fill="#2B3340" class="sans-body">
+        <tspan x="906" dy="0">· MuJoCo 仿真回放</tspan>
+      </text>
+      <text x="920" y="304" font-size="11" fill="#C9A961" font-weight="600" class="mono">误差 &lt; 5%</text>
+      <text x="906" y="328" font-size="13" fill="#2B3340" class="sans-body">
+        <tspan x="906" dy="0">· 动力学库 Pinocchio</tspan>
+      </text>
+      <text x="920" y="344" font-size="11" fill="#C9A961" font-weight="600" class="mono">RNEA · 3.5 us · Atlas 标准</text>
+      <text x="906" y="368" font-size="11" fill="#0A2540" class="sans-body">前馈三项 · 重力+科氏+摩擦</text>
+    </g>
+  </g>
+
+  <!-- ============= 下栏：摩擦辨识 ============= -->
+  <g>
+    <rect x="56" y="406" width="1168" height="228" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="56" y="406" width="160" height="26" fill="#0A2540"/>
+    <text x="136" y="425" text-anchor="middle" font-size="12" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="sans-body">02 · 摩擦辨识</text>
+    <text x="230" y="424" font-size="11" fill="#8B95A8" letter-spacing="1" class="en-sans">FRICTION IDENTIFICATION</text>
+
+    <!-- 左：扫频方法 180x170 -->
+    <g>
+      <rect x="76" y="446" width="180" height="170" fill="none" stroke="#8B95A8" stroke-width="0.8" rx="2"/>
+      <text x="86" y="464" font-size="10" fill="#C9A961" letter-spacing="1" class="sans-body">METHOD · 方法</text>
+      <line x1="86" y1="474" x2="246" y2="474" stroke="#C9A961" stroke-width="0.6" opacity="0.8"/>
+      <text x="86" y="498" font-size="13" fill="#2B3340" class="sans-body">
+        <tspan x="86" dy="0">· 单关节正弦扫频</tspan>
+      </text>
+      <text x="100" y="514" font-size="11" fill="#8B95A8" class="mono">10 点 · 0.05-2.5 rad/s</text>
+      <text x="86" y="538" font-size="13" fill="#2B3340" class="sans-body">
+        <tspan x="86" dy="0">· rosbag 记录</tspan>
+      </text>
+      <text x="100" y="554" font-size="11" fill="#8B95A8" class="mono">pos/vel/effort · 500 Hz</text>
+      <text x="86" y="578" font-size="13" fill="#2B3340" class="sans-body">
+        <tspan x="86" dy="0">· 离线最小二乘拟合</tspan>
+      </text>
+      <text x="100" y="594" font-size="11" fill="#8B95A8" class="mono">Stribeck 模型 4 参数</text>
+    </g>
+
+    <!-- 中：Stribeck 曲线示意 -->
+    <g transform="translate(296, 446)">
+      <rect x="0" y="0" width="460" height="170" fill="none" stroke="#8B95A8" stroke-width="0.6" stroke-dasharray="3 2" rx="2"/>
+      <text x="230" y="18" text-anchor="middle" font-size="12" fill="#C9A961" font-weight="600" class="sans-body">Stribeck 摩擦曲线</text>
+      <!-- 坐标轴 -->
+      <line x1="40" y1="140" x2="430" y2="140" stroke="#2B3340" stroke-width="0.8"/>
+      <line x1="40" y1="30" x2="40" y2="140" stroke="#2B3340" stroke-width="0.8"/>
+      <!-- 箭头 -->
+      <path d="M 425,135 L 432,140 L 425,145" fill="none" stroke="#2B3340" stroke-width="0.8"/>
+      <path d="M 35,35 L 40,28 L 45,35" fill="none" stroke="#2B3340" stroke-width="0.8"/>
+      <text x="436" y="144" font-size="10" fill="#8B95A8" class="mono">|v|</text>
+      <text x="28" y="40" font-size="10" fill="#8B95A8" class="mono">|T_f|</text>
+      <!-- Stribeck 曲线：静摩擦起点高 / 临界速度低谷 / 粘滞线性上升 -->
+      <path d="M 40,48 C 60,48 80,58 110,75 C 140,92 170,102 200,100 C 240,98 280,105 430,68" fill="none" stroke="#0A2540" stroke-width="1.8"/>
+      <!-- fs 静摩擦标注 -->
+      <line x1="40" y1="48" x2="60" y2="48" stroke="#C9A961" stroke-width="0.8" stroke-dasharray="2 2"/>
+      <text x="64" y="52" font-size="10" fill="#C9A961" font-weight="700" class="mono">fs · 静摩擦</text>
+      <!-- 临界速度 vs 标注 -->
+      <line x1="200" y1="100" x2="200" y2="140" stroke="#C9A961" stroke-width="0.8" stroke-dasharray="2 2"/>
+      <circle cx="200" cy="100" r="3" fill="#C9A961"/>
+      <text x="206" y="118" font-size="10" fill="#C9A961" font-weight="700" class="mono">vs · 临界速度</text>
+      <!-- fc 库伦摩擦 -->
+      <line x1="40" y1="100" x2="200" y2="100" stroke="#8B95A8" stroke-width="0.5" stroke-dasharray="2 2"/>
+      <text x="125" y="96" font-size="10" fill="#8B95A8" class="mono">fc · 库伦</text>
+      <!-- fv 粘滞斜率 -->
+      <text x="330" y="82" font-size="10" fill="#8B95A8" class="mono">fv · 粘滞（线性）</text>
+    </g>
+
+    <!-- 右：friction.yaml 300x170 -->
+    <g>
+      <rect x="796" y="446" width="408" height="170" fill="none" stroke="#C9A961" stroke-width="1.2" rx="2"/>
+      <text x="806" y="464" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">friction.yaml · 4 参数</text>
+      <line x1="806" y1="474" x2="1194" y2="474" stroke="#C9A961" stroke-width="0.6" opacity="0.8"/>
+      <!-- 表格样式列出 4 参数 -->
+      <text x="806" y="498" font-size="13" fill="#0A2540" font-weight="700" class="mono">fc</text>
+      <text x="850" y="498" font-size="13" fill="#2B3340" class="sans-body">库伦摩擦</text>
+      <text x="1194" y="498" font-size="11" fill="#8B95A8" text-anchor="end" class="mono">constant Coulomb</text>
+
+      <text x="806" y="524" font-size="13" fill="#0A2540" font-weight="700" class="mono">fs</text>
+      <text x="850" y="524" font-size="13" fill="#2B3340" class="sans-body">静摩擦</text>
+      <text x="1194" y="524" font-size="11" fill="#8B95A8" text-anchor="end" class="mono">stiction threshold</text>
+
+      <text x="806" y="550" font-size="13" fill="#0A2540" font-weight="700" class="mono">vs</text>
+      <text x="850" y="550" font-size="13" fill="#2B3340" class="sans-body">临界速度</text>
+      <text x="1194" y="550" font-size="11" fill="#8B95A8" text-anchor="end" class="mono">Stribeck velocity</text>
+
+      <text x="806" y="576" font-size="13" fill="#0A2540" font-weight="700" class="mono">fv</text>
+      <text x="850" y="576" font-size="13" fill="#2B3340" class="sans-body">粘滞摩擦</text>
+      <text x="1194" y="576" font-size="11" fill="#8B95A8" text-anchor="end" class="mono">viscous coefficient</text>
+
+      <line x1="806" y1="590" x2="1194" y2="590" stroke="#8B95A8" stroke-width="0.3" opacity="0.5"/>
+      <text x="806" y="606" font-size="11" fill="#0A2540" class="mono">T_f = fc·sign(v) + (fs-fc)·exp(-(v/vs)^2)·sign(v) + fv·v</text>
+    </g>
+  </g>
+
+  <!-- 验收判据 -->
+  <rect x="56" y="646" width="1168" height="36" fill="none" stroke="#C9A961" stroke-width="1.3" rx="2"/>
+  <text x="74" y="663" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">ACCEPTANCE · 验收判据</text>
+  <text x="74" y="675" font-size="12" fill="#0A2540" class="sans-body">
+    悬空静止 60 s · 关节漂移 <tspan fill="#C9A961" font-weight="700">&lt; 0.05 rad</tspan> &#160;/&#160; 末端绘圆 10 cm · 路径偏差 <tspan fill="#C9A961" font-weight="700">&lt; 5 mm</tspan>
+  </text>
+
+  <!-- 页脚 -->
+  <line x1="56" y1="690" x2="1224" y2="690" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="708" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="708" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">18 / 34</text>
+
+</svg>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- 顶部章节标识 -->
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 3 · 协调控制、任务理解与交互
+  </text>
+
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    多模态感知融合 · 三层架构
+  </text>
+
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Multi-Modal Perception Fusion — Sensor to Semantic Map
+  </text>
+
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- 右上角揭榜挂帅标签 -->
+  <rect x="820" y="88" width="400" height="32" fill="#C9A961" fill-opacity="0.2" stroke="#C9A961" stroke-width="1"/>
+  <text x="840" y="109" font-size="13" font-weight="700" fill="#0A2540" letter-spacing="1" class="sans-body">揭榜挂帅 · 核心创新点 1 / Innovation Highlight</text>
+
+  <!-- ===== Layer 3 · 语义场景表征（顶部，居中窄） ===== -->
+  <g>
+    <rect x="370" y="195" width="540" height="82" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <!-- 左侧标签 -->
+    <rect x="370" y="195" width="56" height="82" fill="#C9A961"/>
+    <text x="398" y="232" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="en-sans">L3</text>
+    <text x="398" y="250" text-anchor="middle" font-size="10" fill="#0A2540" class="en-sans">SEMANTIC</text>
+    <!-- 内容 -->
+    <text x="442" y="222" font-size="15" font-weight="700" fill="#0A2540" class="sans-body">语义场景表征 · Semantic Scene Map</text>
+    <text x="442" y="244" font-size="12" fill="#2B3340" class="mono">/scene/semantic_map · 统一输出</text>
+    <text x="442" y="264" font-size="12" fill="#2B3340" class="sans-body">工件 + 工位 + 工具列表 · 位姿 / 类别 / 置信度 / 接触态</text>
+  </g>
+
+  <!-- 箭头 L2/L3 -->
+  <path d="M 640 300 L 640 285 L 636 289 M 640 285 L 644 289" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+  <!-- ===== Layer 2 · 跨模态融合（中间） ===== -->
+  <g>
+    <rect x="260" y="305" width="760" height="82" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="260" y="305" width="56" height="82" fill="#C9A961"/>
+    <text x="288" y="342" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="en-sans">L2</text>
+    <text x="288" y="360" text-anchor="middle" font-size="10" fill="#0A2540" class="en-sans">FUSION</text>
+    <text x="332" y="332" font-size="15" font-weight="700" fill="#0A2540" class="sans-body">跨模态融合 · Cross-Modal Fusion</text>
+    <!-- 四个小要点 横排 -->
+    <text x="332" y="358" font-size="12" fill="#2B3340" class="mono">FusionNode (rclcpp_components)</text>
+    <text x="332" y="376" font-size="12" fill="#2B3340" class="sans-body">message_filters ApproxTime · 软同步 0.05s</text>
+    <text x="680" y="358" font-size="12" fill="#2B3340" class="mono">linuxptp PTP · 硬件时钟同步</text>
+    <text x="680" y="376" font-size="12" fill="#2B3340" class="sans-body">tf2 外参 · 置信度加权</text>
+  </g>
+
+  <!-- 箭头 L1/L2 -->
+  <path d="M 640 410 L 640 395 L 636 399 M 640 395 L 644 399" stroke="#C9A961" stroke-width="1.5" fill="none"/>
+
+  <!-- ===== Layer 1 · 模态适配层 ===== -->
+  <g>
+    <rect x="150" y="415" width="980" height="118" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="150" y="415" width="56" height="118" fill="#C9A961"/>
+    <text x="178" y="470" text-anchor="middle" font-size="13" font-weight="700" fill="#0A2540" class="en-sans">L1</text>
+    <text x="178" y="488" text-anchor="middle" font-size="10" fill="#0A2540" class="en-sans">ADAPTER</text>
+    <text x="220" y="438" font-size="15" font-weight="700" fill="#0A2540" class="sans-body">模态适配层 · Sensor Adapters</text>
+
+    <!-- 5 个传感器小方框 -->
+    <!-- 激光雷达 -->
+    <g>
+      <rect x="220" y="452" width="170" height="68" fill="none" stroke="#8B95A8" stroke-width="0.8" rx="2"/>
+      <text x="305" y="472" text-anchor="middle" font-size="12" font-weight="600" fill="#0A2540" class="sans-body">激光雷达 M10</text>
+      <text x="305" y="490" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">LiDAR</text>
+      <text x="305" y="510" text-anchor="middle" font-size="11" fill="#C9A961" font-weight="600" class="mono">/scan</text>
+    </g>
+
+    <!-- RGB-D -->
+    <g>
+      <rect x="398" y="452" width="170" height="68" fill="none" stroke="#8B95A8" stroke-width="0.8" rx="2"/>
+      <text x="483" y="472" text-anchor="middle" font-size="12" font-weight="600" fill="#0A2540" class="sans-body">RGB-D ROSEB43i</text>
+      <text x="483" y="490" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">Depth Camera</text>
+      <text x="483" y="510" text-anchor="middle" font-size="11" fill="#C9A961" font-weight="600" class="mono">/pointcloud</text>
+    </g>
+
+    <!-- 鱼眼 -->
+    <g>
+      <rect x="576" y="452" width="170" height="68" fill="none" stroke="#8B95A8" stroke-width="0.8" rx="2" stroke-dasharray="3 2"/>
+      <text x="661" y="472" text-anchor="middle" font-size="12" font-weight="600" fill="#0A2540" class="sans-body">鱼眼 IMX219</text>
+      <text x="661" y="490" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">Fisheye (占位)</text>
+      <text x="661" y="510" text-anchor="middle" font-size="11" fill="#8B95A8" font-weight="600" class="mono">/img</text>
+    </g>
+
+    <!-- 六维力 -->
+    <g>
+      <rect x="754" y="452" width="170" height="68" fill="none" stroke="#8B95A8" stroke-width="0.8" rx="2" stroke-dasharray="3 2"/>
+      <text x="839" y="472" text-anchor="middle" font-size="12" font-weight="600" fill="#0A2540" class="sans-body">六维力 · 宇立</text>
+      <text x="839" y="490" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">F/T Sensor (占位)</text>
+      <text x="839" y="510" text-anchor="middle" font-size="11" fill="#8B95A8" font-weight="600" class="mono">/wrench</text>
+    </g>
+
+    <!-- IMU -->
+    <g>
+      <rect x="932" y="452" width="180" height="68" fill="none" stroke="#8B95A8" stroke-width="0.8" rx="2"/>
+      <text x="1022" y="472" text-anchor="middle" font-size="12" font-weight="600" fill="#0A2540" class="sans-body">IMU CMP10A</text>
+      <text x="1022" y="490" text-anchor="middle" font-size="10" fill="#8B95A8" class="en-sans">Inertial Unit</text>
+      <text x="1022" y="510" text-anchor="middle" font-size="11" fill="#C9A961" font-weight="600" class="mono">/imu</text>
+    </g>
+  </g>
+
+  <!-- ===== 底部降级策略矩阵 ===== -->
+  <g>
+    <rect x="56" y="548" width="1168" height="112" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <!-- 标题条 -->
+    <text x="72" y="570" font-size="13" font-weight="700" fill="#0A2540" letter-spacing="1" class="sans-body">降级策略矩阵 · Degradation Strategy Matrix</text>
+
+    <line x1="72" y1="580" x2="1208" y2="580" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+
+    <!-- 4 行（两列布局） -->
+    <!-- 左列 -->
+    <text x="72" y="602" font-size="12" fill="#8B95A8" class="sans-body">RGB-D NaN >30%</text>
+    <text x="232" y="602" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="250" y="602" font-size="12" fill="#2B3340" class="sans-body">激光 + 鱼眼粗定位 + 力觉触探</text>
+
+    <text x="72" y="622" font-size="12" fill="#8B95A8" class="sans-body">激光漂移</text>
+    <text x="232" y="622" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="250" y="622" font-size="12" fill="#2B3340" class="sans-body">视觉 + Tag 重定位</text>
+
+    <!-- 右列 -->
+    <text x="640" y="602" font-size="12" fill="#8B95A8" class="sans-body">力觉超时</text>
+    <text x="800" y="602" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="818" y="602" font-size="12" fill="#2B3340" class="sans-body">纯视觉 + 限速</text>
+
+    <text x="640" y="622" font-size="12" fill="#8B95A8" class="sans-body">多模态同时失效</text>
+    <text x="800" y="622" font-size="12" fill="#C9A961" font-weight="700" class="mono">/</text>
+    <text x="818" y="622" font-size="12" fill="#2B3340" font-weight="600" class="sans-body">自动 home + 急停</text>
+
+    <!-- 底部分隔与说明 -->
+    <line x1="72" y1="636" x2="1208" y2="636" stroke="#8B95A8" stroke-width="0.3" opacity="0.4"/>
+    <text x="1208" y="654" text-anchor="end" font-size="11" fill="#8B95A8" font-style="italic" class="sans-body">RD2 覆盖 RGBD + 激光 + IMU · 鱼眼 / 力觉占位不实现</text>
+  </g>
+
+  <!-- 页脚 -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">24 / 34</text>
+
+</svg>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <!-- 背景：深靛蓝全底（封底反转风格） -->
+  <rect width="1280" height="720" fill="#0A2540"/>
+
+  <!-- 左侧章节竖线（学院金） -->
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- ===== 背景装饰大字 "XC" （右上角，极大，低 opacity） ===== -->
+  <text x="1280" y="560" text-anchor="end" font-size="500" font-weight="700" fill="#C9A961" opacity="0.06" class="en-serif">XC</text>
+
+  <!-- ===== 中央居中布局 ===== -->
+  <!-- 顶部装饰线（学院金 3px 长 200 居中） -->
+  <line x1="540" y1="222" x2="740" y2="222" stroke="#C9A961" stroke-width="3"/>
+
+  <!-- 主文字 THANK YOU（思源宋体 64pt 象牙米白 居中） -->
+  <text x="640" y="318" text-anchor="middle" font-size="64" font-weight="700" fill="#F7F3EB" letter-spacing="10" class="serif-title">
+    THANK YOU
+  </text>
+
+  <!-- 副文字 感谢聆听（思源宋体 32pt 学院金 居中） -->
+  <text x="640" y="376" text-anchor="middle" font-size="32" font-weight="600" fill="#C9A961" letter-spacing="8" class="serif-title">
+    感谢聆听
+  </text>
+
+  <!-- 再装饰线 -->
+  <line x1="540" y1="410" x2="740" y2="410" stroke="#C9A961" stroke-width="3"/>
+
+  <!-- 英文句子（Merriweather italic 18pt 暖灰 居中） -->
+  <text x="640" y="456" text-anchor="middle" font-size="18" fill="#8B95A8" font-style="italic" class="en-serif">
+    Embodied Intelligence, Crafted with Discipline.
+  </text>
+
+  <!-- ===== 右下角项目信息块 ===== -->
+  <g>
+    <!-- 装饰竖线 -->
+    <line x1="880" y1="558" x2="880" y2="636" stroke="#C9A961" stroke-width="1.5"/>
+
+    <!-- XC-Robot（Merriweather 24pt 学院金） -->
+    <text x="900" y="578" font-size="24" font-weight="700" fill="#C9A961" class="en-serif">
+      XC-Robot
+    </text>
+    <!-- 祥承电子（上海）· 海安智能装备研究院（思源黑体 14pt 暖灰） -->
+    <text x="900" y="604" font-size="14" fill="#8B95A8" class="sans-body">
+      祥承电子（上海）· 海安智能装备研究院
+    </text>
+    <!-- 日期（Inter 12pt 暖灰） -->
+    <text x="900" y="626" font-size="12" fill="#8B95A8" letter-spacing="2" class="en-sans">
+      2026-04-19
+    </text>
+  </g>
+
+  <!-- ===== 底部页脚 ===== -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#F7F3EB" stroke-width="0.3" opacity="0.2"/>
+  <text x="56" y="706" font-size="11" fill="#F7F3EB" opacity="0.5" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#F7F3EB" opacity="0.5" text-anchor="end" class="en-sans">34 / 34</text>
+
+</svg>

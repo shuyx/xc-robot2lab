@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <!-- 背景：深靛蓝全底（章节页反转） -->
+  <rect width="1280" height="720" fill="#0A2540"/>
+
+  <!-- 左侧章节竖线（学院金） -->
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- 右下角装饰：极大字 XC，作背景水印 -->
+  <text x="1240" y="680" font-size="300" font-weight="300" fill="#C9A961" opacity="0.08" text-anchor="end" class="en-serif">XC</text>
+
+  <!-- ===== 顶部组织线（章节标识位置，学院金小号） ===== -->
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    XC-ROBOT · STAGE REPORT · 2026-04
+  </text>
+
+  <!-- ===== 主标题上方装饰横线 ===== -->
+  <line x1="56" y1="236" x2="256" y2="236" stroke="#C9A961" stroke-width="3"/>
+
+  <!-- ===== 主标题（思源宋体 72pt 象牙米白） ===== -->
+  <text x="56" y="320" font-size="72" font-weight="700" fill="#F7F3EB" class="serif-title">
+    XC-Robot 轮式双臂
+  </text>
+  <text x="56" y="400" font-size="72" font-weight="700" fill="#F7F3EB" class="serif-title">
+    具身智能机器人
+  </text>
+
+  <!-- ===== 第二行主标（学院金 44pt） ===== -->
+  <text x="56" y="472" font-size="44" font-weight="600" fill="#C9A961" class="serif-title">
+    2026-04 阶段汇报
+  </text>
+
+  <!-- ===== 英文副标题（Merriweather italic 20pt 暖灰） ===== -->
+  <text x="56" y="510" font-size="20" fill="#8B95A8" font-style="italic" class="en-serif">
+    Wheeled Dual-Arm Embodied Intelligence  ·  Stage Report
+  </text>
+
+  <!-- ===== 副标题行（思源黑体 22pt 象牙米白） ===== -->
+  <text x="56" y="560" font-size="22" fill="#F7F3EB" class="sans-body">
+    双 X86 技术方案与核心问题讨论
+  </text>
+
+  <!-- ===== 装饰分隔细线 ===== -->
+  <line x1="56" y1="596" x2="560" y2="596" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 底部左：汇报人信息 ===== -->
+  <text x="56" y="632" font-size="11" fill="#C9A961" letter-spacing="2" class="sans-body">REPORTER · 汇报人</text>
+  <text x="56" y="660" font-size="14" fill="#F7F3EB" class="sans-body">
+    袁鑫  ·  项目负责人  ·  2026-04-19
+  </text>
+
+  <!-- ===== 底部右：机构线 ===== -->
+  <text x="1224" y="632" font-size="11" fill="#C9A961" text-anchor="end" letter-spacing="2" class="sans-body">INSTITUTIONS · 承研机构</text>
+  <text x="1224" y="660" font-size="12" fill="#F7F3EB" text-anchor="end" class="en-sans">
+    祥承电子（上海） · 海安智能装备研究院（上海交大）
+  </text>
+
+  <!-- ===== 页脚 ===== -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">00 / 34</text>
+
+</svg>

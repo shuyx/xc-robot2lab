@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 大问题 1 · 底盘 · 自动充电
+  </text>
+
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    自动充电方案 · 整体架构
+  </text>
+
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Auto-Docking Architecture — Trigger / Guide / Dock
+  </text>
+
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 触发-引导-对接三段式 ===== -->
+  <!-- 节点宽 340 高 400，起点 x=76，间隙 40 -->
+
+  <!-- 阶段 1 · TRIGGER -->
+  <g>
+    <rect x="76" y="200" width="340" height="400" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <!-- 顶部数字 + 标签 -->
+    <text x="96" y="240" font-size="54" font-weight="700" fill="#C9A961" opacity="0.25" class="en-serif">01</text>
+    <text x="170" y="228" font-size="11" fill="#C9A961" letter-spacing="2" class="en-sans">TRIGGER</text>
+    <text x="170" y="252" font-size="22" font-weight="700" fill="#0A2540" class="sans-body">触 发</text>
+    <line x1="96" y1="272" x2="396" y2="272" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+
+    <!-- 简化图标：电池 + 感叹号 -->
+    <g transform="translate(180, 304)">
+      <rect x="0" y="10" width="80" height="40" fill="none" stroke="#2B3340" stroke-width="1.5" rx="2"/>
+      <rect x="80" y="22" width="6" height="16" fill="#2B3340"/>
+      <rect x="6" y="16" width="20" height="28" fill="#C9A961"/>
+      <!-- 感叹号 -->
+      <text x="46" y="42" font-size="26" font-weight="700" fill="#C9A961" text-anchor="middle" class="en-sans">!</text>
+    </g>
+
+    <text x="96" y="414" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="96" dy="0">· BMS 低 SOC 事件</tspan>
+      <tspan x="96" dy="28">· 任务调度发起</tspan>
+      <tspan x="96" dy="19" class="mono">  return_to_dock Action</tspan>
+      <tspan x="96" dy="28">· 低优先级抢占</tspan>
+    </text>
+
+    <line x1="96" y1="540" x2="396" y2="540" stroke="#C9A961" stroke-width="0.8" opacity="0.5"/>
+    <text x="96" y="564" font-size="10" fill="#8B95A8" letter-spacing="1" class="en-sans">THRESHOLD</text>
+    <text x="96" y="584" font-size="17" font-weight="700" fill="#C9A961" class="mono">SOC &lt;20%</text>
+  </g>
+
+  <!-- 段间箭头 1 -->
+  <path d="M 420 400 L 460 400" stroke="#C9A961" stroke-width="2" fill="none"/>
+  <path d="M 452 393 L 460 400 L 452 407" stroke="#C9A961" stroke-width="2" fill="none"/>
+
+  <!-- 阶段 2 · GUIDE -->
+  <g>
+    <rect x="472" y="200" width="340" height="400" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="492" y="240" font-size="54" font-weight="700" fill="#C9A961" opacity="0.25" class="en-serif">02</text>
+    <text x="566" y="228" font-size="11" fill="#C9A961" letter-spacing="2" class="en-sans">GUIDE</text>
+    <text x="566" y="252" font-size="22" font-weight="700" fill="#0A2540" class="sans-body">引 导</text>
+    <line x1="492" y1="272" x2="792" y2="272" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+
+    <!-- 三档速度水平线 -->
+    <g transform="translate(492, 300)">
+      <!-- 快 -->
+      <line x1="0" y1="20" x2="280" y2="20" stroke="#2B3340" stroke-width="3"/>
+      <text x="290" y="25" font-size="12" fill="#2B3340" font-weight="600" class="mono">0.3 m/s</text>
+      <!-- 中 -->
+      <line x1="0" y1="48" x2="160" y2="48" stroke="#C9A961" stroke-width="2"/>
+      <text x="290" y="53" font-size="12" fill="#C9A961" font-weight="600" class="mono">0.05 m/s</text>
+      <!-- 慢 -->
+      <line x1="0" y1="76" x2="60" y2="76" stroke="#0A2540" stroke-width="1"/>
+      <text x="290" y="81" font-size="12" fill="#0A2540" font-weight="600" class="mono">0.02 m/s</text>
+    </g>
+
+    <text x="492" y="430" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="492" dy="0">· Nav2 规划到充电桩</tspan>
+      <tspan x="492" dy="19" font-size="11" fill="#8B95A8" class="sans-body">  ±10 cm 粗定位 · 地图坐标</tspan>
+      <tspan x="492" dy="30">· 末段切 AprilTag 视觉</tspan>
+      <tspan x="492" dy="19" font-size="11" fill="#8B95A8" class="sans-body">  相机 30 Hz 持续跟踪</tspan>
+      <tspan x="492" dy="30">· 三档速度分档切换</tspan>
+    </text>
+
+    <line x1="492" y1="564" x2="792" y2="564" stroke="#C9A961" stroke-width="0.8" opacity="0.5"/>
+    <text x="492" y="586" font-size="11" fill="#8B95A8" class="sans-body">远 · 中 · 近 · 逐档降速</text>
+  </g>
+
+  <!-- 段间箭头 2 -->
+  <path d="M 816 400 L 856 400" stroke="#C9A961" stroke-width="2" fill="none"/>
+  <path d="M 848 393 L 856 400 L 848 407" stroke="#C9A961" stroke-width="2" fill="none"/>
+
+  <!-- 阶段 3 · DOCK（学院金强调边框） -->
+  <g>
+    <rect x="868" y="200" width="340" height="400" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <text x="888" y="240" font-size="54" font-weight="700" fill="#C9A961" opacity="0.4" class="en-serif">03</text>
+    <text x="962" y="228" font-size="11" fill="#C9A961" letter-spacing="2" class="en-sans">DOCK</text>
+    <text x="962" y="252" font-size="22" font-weight="700" fill="#0A2540" class="sans-body">对 接</text>
+    <line x1="888" y1="272" x2="1188" y2="272" stroke="#C9A961" stroke-width="1.2"/>
+
+    <!-- 对接图标：两个咬合方块 -->
+    <g transform="translate(988, 298)">
+      <!-- 左块（机器人端） -->
+      <path d="M 0 0 L 50 0 L 50 20 L 60 20 L 60 40 L 50 40 L 50 60 L 0 60 Z" fill="none" stroke="#0A2540" stroke-width="1.5"/>
+      <!-- 右块（充电桩端） -->
+      <path d="M 72 0 L 122 0 L 122 60 L 72 60 L 72 40 L 62 40 L 62 20 L 72 20 Z" fill="none" stroke="#C9A961" stroke-width="1.5"/>
+      <!-- 中心接触点 -->
+      <circle cx="61" cy="30" r="3" fill="#C9A961"/>
+    </g>
+
+    <text x="888" y="414" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan x="888" dy="0">· DockingServer</tspan>
+      <tspan x="888" dy="19">  + external_detection_pose</tspan>
+      <tspan x="888" dy="30">· 位姿偏差</tspan>
+      <tspan x="888" dy="19">  <tspan fill="#C9A961" font-weight="700" class="mono">&lt; ±10 mm</tspan></tspan>
+      <tspan x="888" dy="30">· 充电电流 &gt;0.1 A</tspan>
+      <tspan x="888" dy="19">  确认对接成功</tspan>
+    </text>
+
+    <line x1="888" y1="564" x2="1188" y2="564" stroke="#C9A961" stroke-width="0.8" opacity="0.8"/>
+    <text x="888" y="586" font-size="15" font-weight="700" fill="#C9A961" class="sans-body">对接成功 · 开始充电</text>
+  </g>
+
+  <!-- 底部注 -->
+  <line x1="56" y1="632" x2="1224" y2="632" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="658" font-size="12" fill="#8B95A8" font-style="italic" class="sans-body">
+    蓝鲸 48V / 10A 自动回充桩 · 已在 BOM v2.1 · Tag ID 0x00 预留
+  </text>
+
+  <!-- 页脚 -->
+  <text x="56" y="702" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="702" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">12 / 34</text>
+
+</svg>

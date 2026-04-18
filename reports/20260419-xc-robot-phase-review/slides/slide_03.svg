@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <!-- 背景：象牙米白 -->
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+
+  <!-- 左侧章节竖线（学院金） -->
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- ===== 顶部章节标识 ===== -->
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART A · 项目背景 / P3 · 产品形态 · 三层硬件架构
+  </text>
+
+  <!-- ===== 主标题 ===== -->
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    产品形态 · 三层硬件架构
+  </text>
+
+  <!-- ===== 英文副标题 ===== -->
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    3-Layer Hardware Architecture — Perception / Real-Time Control / Execution
+  </text>
+
+  <!-- ===== 标题底部装饰线 ===== -->
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 左侧主体：三层水平堆叠（宽 850 x 高 130 x 3 层，y 起点 200，间距 28） ===== -->
+
+  <!-- 上层：感知与决策 -->
+  <g>
+    <rect x="56" y="200" width="850" height="130" fill="none" stroke="#0A2540" stroke-width="1.5" rx="3"/>
+    <!-- 左侧层号徽章 -->
+    <rect x="56" y="200" width="80" height="28" fill="#0A2540"/>
+    <text x="96" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="en-sans">LAYER 1</text>
+    <!-- 层标题 -->
+    <text x="152" y="222" font-size="17" font-weight="700" fill="#0A2540" class="sans-body">感知与决策</text>
+    <text x="300" y="222" font-size="12" fill="#8B95A8" font-style="italic" class="en-serif">Perception &amp; Decision</text>
+    <!-- 分隔线 -->
+    <line x1="76" y1="246" x2="886" y2="246" stroke="#C9A961" stroke-width="0.8" opacity="0.7"/>
+    <!-- 内容 -->
+    <text x="76" y="272" font-size="14" fill="#2B3340" class="sans-body">
+      <tspan font-weight="600" fill="#0A2540">X86 Mini PC (Intel i7)</tspan>
+      <tspan dx="10"> · </tspan>
+      <tspan dx="4">Ubuntu 22.04 + ROS 2 Humble</tspan>
+    </text>
+    <text x="76" y="300" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan>模块</tspan>
+      <tspan dx="8" fill="#8B95A8">·</tspan>
+      <tspan dx="8">MoveIt</tspan>
+      <tspan dx="4" fill="#8B95A8">/</tspan>
+      <tspan dx="4">Nav2</tspan>
+      <tspan dx="4" fill="#8B95A8">/</tspan>
+      <tspan dx="4">视觉</tspan>
+      <tspan dx="4" fill="#8B95A8">/</tspan>
+      <tspan dx="4">语音</tspan>
+      <tspan dx="4" fill="#8B95A8">/</tspan>
+      <tspan dx="4">VLA</tspan>
+      <tspan dx="4" fill="#8B95A8">/</tspan>
+      <tspan dx="4">Safety Manager</tspan>
+    </text>
+  </g>
+
+  <!-- 连接箭头：上层 to 中层（DDS 2.5GbE） -->
+  <g>
+    <line x1="481" y1="330" x2="481" y2="358" stroke="#8B95A8" stroke-width="1" stroke-dasharray="4 3"/>
+    <path d="M 477 354 L 481 362 L 485 354 Z" fill="#8B95A8"/>
+    <text x="494" y="350" font-size="11" fill="#8B95A8" class="mono">DDS / 2.5GbE</text>
+  </g>
+
+  <!-- 中层：实时控制 -->
+  <g>
+    <rect x="56" y="358" width="850" height="130" fill="none" stroke="#0A2540" stroke-width="1.5" rx="3"/>
+    <rect x="56" y="358" width="80" height="28" fill="#0A2540"/>
+    <text x="96" y="378" text-anchor="middle" font-size="12" font-weight="700" fill="#F7F3EB" letter-spacing="1" class="en-sans">LAYER 2</text>
+    <text x="152" y="380" font-size="17" font-weight="700" fill="#0A2540" class="sans-body">实时控制</text>
+    <text x="270" y="380" font-size="12" fill="#8B95A8" font-style="italic" class="en-serif">Real-Time Control</text>
+    <line x1="76" y1="404" x2="886" y2="404" stroke="#C9A961" stroke-width="0.8" opacity="0.7"/>
+    <text x="76" y="430" font-size="14" fill="#2B3340" class="sans-body">
+      <tspan font-weight="600" fill="#0A2540">X86 Mini PC (Intel i5)</tspan>
+      <tspan dx="10"> · </tspan>
+      <tspan dx="4">PREEMPT_RT Kernel</tspan>
+    </text>
+    <text x="76" y="458" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan>ros2_control 1 kHz</tspan>
+      <tspan dx="10" fill="#8B95A8">·</tspan>
+      <tspan dx="10">CAN 通信</tspan>
+      <tspan dx="10" fill="#8B95A8">·</tspan>
+      <tspan dx="10">Safety Watchdog</tspan>
+    </text>
+  </g>
+
+  <!-- 连接箭头：中层 to 下层 -->
+  <g>
+    <line x1="481" y1="488" x2="481" y2="516" stroke="#8B95A8" stroke-width="1" stroke-dasharray="4 3"/>
+    <path d="M 477 512 L 481 520 L 485 512 Z" fill="#8B95A8"/>
+    <text x="494" y="508" font-size="11" fill="#8B95A8" class="mono">USB-CAN / EtherCAT</text>
+  </g>
+
+  <!-- 下层：执行层（学院金边框 1.5px 强调） -->
+  <g>
+    <rect x="56" y="516" width="850" height="130" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <rect x="56" y="516" width="80" height="28" fill="#C9A961"/>
+    <text x="96" y="536" text-anchor="middle" font-size="12" font-weight="700" fill="#0A2540" letter-spacing="1" class="en-sans">LAYER 3</text>
+    <!-- CORE 标识 -->
+    <rect x="844" y="516" width="62" height="28" fill="#0A2540"/>
+    <text x="875" y="536" text-anchor="middle" font-size="10" font-weight="700" fill="#C9A961" class="en-sans">EXECUTION</text>
+    <text x="152" y="538" font-size="17" font-weight="700" fill="#0A2540" class="sans-body">执行层</text>
+    <text x="240" y="538" font-size="12" fill="#8B95A8" font-style="italic" class="en-serif">Actuators &amp; End-Effectors</text>
+    <line x1="76" y1="562" x2="886" y2="562" stroke="#C9A961" stroke-width="1" opacity="0.9"/>
+    <text x="76" y="588" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan font-weight="600" fill="#0A2540">双臂</tspan>
+      <tspan dx="4">OpenArmX + 达妙 DM x 10 关节</tspan>
+      <tspan dx="14" fill="#8B95A8">|</tspan>
+      <tspan dx="14" font-weight="600" fill="#0A2540">底盘</tspan>
+      <tspan dx="4">ZLAC8015D + 4WD 差速</tspan>
+    </text>
+    <text x="76" y="614" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan font-weight="600" fill="#0A2540">升降</tspan>
+      <tspan dx="4">米思米 400W EtherCAT</tspan>
+      <tspan dx="14" fill="#8B95A8">|</tspan>
+      <tspan dx="14" font-weight="600" fill="#0A2540">末端</tspan>
+      <tspan dx="4">智元 OmniPicker x 2</tspan>
+    </text>
+  </g>
+
+  <!-- ===== 右侧 BOM 汇总框（300 x 410，从 y=200 起） ===== -->
+  <g>
+    <rect x="930" y="200" width="294" height="446" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <!-- 徽章 -->
+    <rect x="930" y="200" width="70" height="28" fill="#C9A961"/>
+    <text x="965" y="220" text-anchor="middle" font-size="11" font-weight="700" fill="#0A2540" letter-spacing="1" class="en-sans">BOM</text>
+    <text x="950" y="254" font-size="16" font-weight="700" fill="#0A2540" class="sans-body">关键 BOM 汇总</text>
+    <text x="950" y="272" font-size="11" fill="#8B95A8" font-style="italic" class="en-serif">Bill of Materials</text>
+    <line x1="950" y1="288" x2="1204" y2="288" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+
+    <!-- BOM 行（6 行 + 总计） -->
+    <g font-size="13" class="sans-body">
+      <text x="950" y="318" fill="#8B95A8">主控 A / B</text>
+      <text x="1204" y="318" text-anchor="end" fill="#2B3340">X86 x 2</text>
+
+      <text x="950" y="346" fill="#8B95A8">电源</text>
+      <text x="1204" y="346" text-anchor="end" fill="#2B3340">48V / 20Ah x 2</text>
+
+      <text x="950" y="374" fill="#8B95A8">底盘</text>
+      <text x="1204" y="374" text-anchor="end" fill="#2B3340">轮毂电机 + LiDAR</text>
+
+      <text x="950" y="402" fill="#8B95A8">升降</text>
+      <text x="1204" y="402" text-anchor="end" fill="#2B3340">EtherCAT 伺服</text>
+
+      <text x="950" y="430" fill="#8B95A8">双臂</text>
+      <text x="1204" y="430" text-anchor="end" fill="#2B3340">OpenArmX + DM</text>
+
+      <text x="950" y="458" fill="#8B95A8">视觉</text>
+      <text x="1204" y="458" text-anchor="end" fill="#2B3340">ROSEB43i x 3</text>
+    </g>
+
+    <!-- 分隔细线 -->
+    <line x1="950" y1="484" x2="1204" y2="484" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+    <!-- 总计（学院金加粗强调） -->
+    <text x="950" y="520" font-size="12" fill="#C9A961" letter-spacing="2" class="sans-body">TOTAL · 总计</text>
+    <text x="1077" y="590" font-size="46" font-weight="700" fill="#C9A961" text-anchor="middle" class="serif-title">¥10.7</text>
+    <text x="1077" y="620" font-size="16" font-weight="600" fill="#0A2540" text-anchor="middle" class="sans-body">万</text>
+  </g>
+
+  <!-- ===== 页脚 ===== -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">03 / 34</text>
+
+</svg>

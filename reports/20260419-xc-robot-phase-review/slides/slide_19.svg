@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <!-- 顶部 -->
+  <text x="56" y="54" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 2 · 机械臂关节稳定与低成本控制
+  </text>
+  <text x="56" y="98" font-size="32" font-weight="700" fill="#0A2540" class="serif-title">
+    ±0.1 mm 精度承诺 · 关节层
+  </text>
+  <text x="56" y="124" font-size="15" fill="#8B95A8" font-style="italic" class="en-serif">
+    Joint-Level Servo Layer
+  </text>
+  <line x1="56" y1="140" x2="220" y2="140" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="140" x2="560" y2="140" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- 顶部警告框 -->
+  <rect x="56" y="156" width="1168" height="70" fill="none" stroke="#C9A961" stroke-width="1.3" rx="2"/>
+  <text x="74" y="178" font-size="10" fill="#C9A961" letter-spacing="2" font-weight="600" class="sans-body">PHYSICAL LIMIT · 物理极限</text>
+  <text x="74" y="202" font-size="15" fill="#2B3340" class="sans-body">
+    9:1 行星 QDD 电机 · 关节层自由空间回位精度 <tspan fill="#C9A961" font-weight="700">0.3 - 1 mm</tspan>
+  </text>
+  <text x="74" y="220" font-size="13" fill="#8B95A8" class="sans-body">
+    承诺不变 / 路径分层 · 关节层 + 任务层两段达标
+  </text>
+
+  <!-- 主体左：关节层达成 -->
+  <g>
+    <rect x="56" y="246" width="520" height="380" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="56" y="246" width="520" height="32" fill="#0A2540"/>
+    <text x="74" y="267" font-size="13" fill="#F7F3EB" font-weight="700" letter-spacing="1" class="sans-body">L1 · 关节层达成 · 本项目</text>
+    <text x="560" y="267" text-anchor="end" font-size="10" fill="#C9A961" letter-spacing="1" class="en-sans">JOINT LAYER</text>
+
+    <text x="76" y="310" font-size="18" font-weight="700" fill="#0A2540" class="sans-body">MIT 阻抗控制 + 三项前馈</text>
+    <text x="76" y="330" font-size="11" fill="#8B95A8" letter-spacing="0.5" class="en-sans">Compensated Impedance Control</text>
+    <line x1="76" y1="342" x2="556" y2="342" stroke="#C9A961" stroke-width="1" opacity="0.8"/>
+
+    <!-- 控制律公式块 -->
+    <rect x="76" y="358" width="480" height="144" fill="#FFFDF5" stroke="#C9A961" stroke-width="0.8" rx="2"/>
+    <text x="90" y="380" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">CONTROL LAW · 控制律</text>
+    <text x="90" y="408" font-size="16" fill="#0A2540" font-weight="700" class="mono">T = Kp·(q_d - q) + Kd·(q'_d - q')</text>
+    <text x="90" y="434" font-size="14" fill="#2B3340" class="mono">T += T_g(q)     · 重力项</text>
+    <text x="90" y="458" font-size="14" fill="#2B3340" class="mono">T += T_c(q,q')  · 科氏项</text>
+    <text x="90" y="482" font-size="14" fill="#2B3340" class="mono">T += T_f(q')    · 摩擦项</text>
+
+    <!-- 三指标 -->
+    <g transform="translate(76, 530)">
+      <text x="0" y="0" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">KEY METRICS · 关键指标</text>
+      <line x1="0" y1="10" x2="480" y2="10" stroke="#8B95A8" stroke-width="0.3" opacity="0.5"/>
+      <!-- 指标 1 -->
+      <text x="0" y="36" font-size="12" fill="#2B3340" class="sans-body">关节伺服精度</text>
+      <text x="480" y="36" text-anchor="end" font-size="16" fill="#C9A961" font-weight="700" class="mono">±0.3 - 0.5 mm</text>
+      <!-- 指标 2 -->
+      <text x="0" y="62" font-size="12" fill="#2B3340" class="sans-body">控制频率</text>
+      <text x="480" y="62" text-anchor="end" font-size="16" fill="#C9A961" font-weight="700" class="mono">500 Hz</text>
+      <!-- 指标 3 -->
+      <text x="0" y="88" font-size="12" fill="#2B3340" class="sans-body">实时延迟 (P99)</text>
+      <text x="480" y="88" text-anchor="end" font-size="16" fill="#C9A961" font-weight="700" class="mono">&lt; 100 us</text>
+    </g>
+  </g>
+
+  <!-- 中间分隔竖线 -->
+  <line x1="640" y1="246" x2="640" y2="626" stroke="#8B95A8" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- 主体右：同行参照 -->
+  <g>
+    <rect x="704" y="246" width="520" height="380" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="704" y="246" width="520" height="32" fill="#8B95A8" opacity="0.85"/>
+    <text x="722" y="267" font-size="13" fill="#F7F3EB" font-weight="700" letter-spacing="1" class="sans-body">BENCHMARK · 业界工业协作臂关节层参照</text>
+
+    <!-- 表格 -->
+    <g transform="translate(720, 298)">
+      <!-- 表头 -->
+      <text x="0" y="18" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">BRAND / MODEL</text>
+      <text x="220" y="18" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">关节伺服精度</text>
+      <text x="340" y="18" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">装配闭环路径</text>
+      <line x1="0" y1="26" x2="494" y2="26" stroke="#C9A961" stroke-width="0.8"/>
+
+      <!-- 行 1 UR5e -->
+      <text x="0" y="52" font-size="14" fill="#0A2540" font-weight="700" class="sans-body">UR5e</text>
+      <text x="0" y="68" font-size="10" fill="#8B95A8" class="en-sans">Universal Robots</text>
+      <text x="220" y="56" font-size="14" fill="#2B3340" font-weight="600" class="mono">±0.1 - 0.3 mm</text>
+      <text x="340" y="56" font-size="12" fill="#2B3340" class="sans-body">任务层 ForceMode</text>
+      <text x="340" y="72" font-size="10" fill="#8B95A8" class="sans-body">补齐装配</text>
+      <line x1="0" y1="88" x2="494" y2="88" stroke="#8B95A8" stroke-width="0.3" opacity="0.5"/>
+
+      <!-- 行 2 Franka -->
+      <text x="0" y="114" font-size="14" fill="#0A2540" font-weight="700" class="sans-body">Franka Emika Panda</text>
+      <text x="0" y="130" font-size="10" fill="#8B95A8" class="en-sans">libfranka impedance</text>
+      <text x="220" y="118" font-size="14" fill="#2B3340" font-weight="600" class="mono">±0.1 mm</text>
+      <text x="340" y="118" font-size="12" fill="#2B3340" class="sans-body">力控闭环</text>
+      <text x="340" y="134" font-size="10" fill="#8B95A8" class="sans-body">直接装配</text>
+      <line x1="0" y1="150" x2="494" y2="150" stroke="#8B95A8" stroke-width="0.3" opacity="0.5"/>
+
+      <!-- 行 3 JAKA Zu3 -->
+      <text x="0" y="176" font-size="14" fill="#0A2540" font-weight="700" class="sans-body">JAKA Zu3</text>
+      <text x="0" y="192" font-size="10" fill="#8B95A8" class="en-sans">节卡 · 3C 协作</text>
+      <text x="220" y="180" font-size="14" fill="#2B3340" font-weight="600" class="mono">±0.2 mm</text>
+      <text x="340" y="180" font-size="12" fill="#2B3340" class="sans-body">3C 场景</text>
+      <text x="340" y="196" font-size="10" fill="#8B95A8" class="sans-body">视觉 + 力觉</text>
+      <line x1="0" y1="214" x2="494" y2="214" stroke="#C9A961" stroke-width="0.8"/>
+    </g>
+
+    <!-- 底部结论 -->
+    <rect x="720" y="530" width="488" height="78" fill="#F7F3EB" stroke="#C9A961" stroke-width="0.8" stroke-dasharray="3 2" rx="2"/>
+    <text x="738" y="552" font-size="10" fill="#C9A961" letter-spacing="1" font-weight="600" class="sans-body">CONCLUSION · 关键结论</text>
+    <text x="738" y="578" font-size="13" fill="#0A2540" font-style="italic" class="serif-title">
+      关节伺服层不直接保证 ±0.1 mm
+    </text>
+    <text x="738" y="598" font-size="13" fill="#0A2540" font-style="italic" class="serif-title">
+      装配精度由任务层多模态闭环实现
+    </text>
+  </g>
+
+  <!-- 底部总结 -->
+  <rect x="56" y="644" width="1168" height="38" fill="#C9A961" fill-opacity="0.12" stroke="#C9A961" stroke-width="1.2" rx="2"/>
+  <text x="74" y="662" font-size="10" fill="#C9A961" letter-spacing="2" font-weight="600" class="sans-body">COMMITMENT · 承诺口径</text>
+  <text x="74" y="676" font-size="13" fill="#0A2540" class="sans-body">
+    关节层 <tspan fill="#C9A961" font-weight="700">±0.5 mm</tspan> &#160;+&#160; 任务层 <tspan fill="#C9A961" font-weight="700">±0.1 mm</tspan> &#160;=&#160; 合同履约完整
+  </text>
+
+  <!-- 页脚 -->
+  <line x1="56" y1="690" x2="1224" y2="690" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="708" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="708" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">19 / 34</text>
+
+</svg>

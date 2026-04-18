@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>关于 · Transcribe Box Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="assets/js/auth-guard.js"></script>
+  <link rel="stylesheet" href="assets/css/academic.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      Transcribe Box Lab
+      <span class="sub">祥承智能机器人实验室</span>
+    </a>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="reports/index.html">汇报资料</a>
+      <a href="repos/index.html">代码仓库</a>
+      <a href="dev/index.html">开发内容</a>
+      <a href="about.html" class="current">关于</a>
+    </nav>
+    <button class="logout" onclick="sessionStorage.removeItem('tbl_auth');location.reload()">登出</button>
+  </div>
+</header>
+
+<main class="container">
+  <div class="page-title">
+    <span class="en">ABOUT THE LAB</span>
+    <h1>关于实验室</h1>
+  </div>
+  <p class="page-intro">
+    Transcribe Box Lab · 祥承智能机器人实验室 · 聚焦具身智能机器人全栈研究与工程落地。
+  </p>
+
+  <div class="prose">
+    <span class="tag-inline">MISSION · 使命</span>
+    <h2 style="margin-bottom:12px">以克制的成本实现人形级操作</h2>
+    <p>
+      我们坚信：<strong>以克制的成本实现接近人形机器人的感知-决策-操作闭环</strong> ——
+      这条路线比追求"全身人形"更快落地、比传统 AGV 有更高价值、比单点协作臂有更广适用面。
+    </p>
+    <p>
+      实验室的核心使命是：<strong>在轮式双臂具身智能机器人方向上，建立从硬件选型到控制算法的全栈自主能力</strong>，
+      服务于 3C 制造、办公自动化、中央仓物流等多场景的复合操作任务。
+    </p>
+
+    <div class="spacer-32"></div>
+
+    <span class="tag-inline">RESEARCH FOCUS · 研究方向</span>
+    <h2 style="margin-bottom:12px">四条主线</h2>
+    <p>
+      <strong>1. 实时控制栈</strong> ·
+      PREEMPT_RT + ros2_control 1kHz 循环 · 准直驱 QDD 电机 MIT 模式 · Pinocchio 动力学前馈 · Ruckig 轨迹整形
+    </p>
+    <p>
+      <strong>2. 多模态感知融合</strong> ·
+      激光 SLAM + RGB-D + 鱼眼 + 六维力觉 · PTP 硬件时钟同步 · 置信度加权 · 分级降级
+    </p>
+    <p>
+      <strong>3. 精度分层承诺</strong> ·
+      关节伺服层 0.3-0.5 mm + 任务层视觉/力控闭环 0.1 mm · 对标 Franka / UR / JAKA 工业路径
+    </p>
+    <p>
+      <strong>4. 柔性任务调度</strong> ·
+      BehaviorTree + FSM 双层架构 · 异常事件驱动 · 三级重规划（轻/中/重）
+    </p>
+
+    <div class="spacer-32"></div>
+
+    <span class="tag-inline">TEAM · 团队</span>
+    <h2 style="margin-bottom:12px">成员</h2>
+    <div class="team-grid">
+      <div class="member-card">
+        <div class="role">PRINCIPAL INVESTIGATOR</div>
+        <div class="name">袁鑫 (Yuan Xin)</div>
+        <div class="bio">
+          项目负责人 · 整体技术路线与硬件选型 · 算法集成与工程落地。
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="role">CONTROL &amp; PLANNING</div>
+        <div class="name">（待补）</div>
+        <div class="bio">机械臂控制 · 动力学建模 · MoveIt 2 运动规划 · 力控柔顺。</div>
+      </div>
+      <div class="member-card">
+        <div class="role">PERCEPTION &amp; SLAM</div>
+        <div class="name">（待补）</div>
+        <div class="bio">激光 SLAM · 手眼标定 · 视觉识别 · 多模态融合。</div>
+      </div>
+      <div class="member-card">
+        <div class="role">RESEARCH COLLABORATOR</div>
+        <div class="name">（待补）</div>
+        <div class="bio">合作研究生 · 实验验证 · 数据采集 · 论文产出。</div>
+      </div>
+    </div>
+
+    <div class="spacer-32"></div>
+
+    <span class="tag-inline">AFFILIATION · 合作机构</span>
+    <h2 style="margin-bottom:12px">合作单位</h2>
+    <div class="partner-row">
+      <div class="partner">祥承电子（上海）有限公司</div>
+      <div class="partner">海安智能装备研究院</div>
+      <div class="partner">上海交通大学 · 机器人研究所平台</div>
+    </div>
+    <p style="margin-top:14px;font-size:0.9rem;color:var(--muted)">
+      项目类型 · 闵行区揭榜挂帅 · 技术开发合同 ¥45 万
+    </p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="line">— TRANSCRIBE BOX LAB —</div>
+    <div>轮式双臂具身智能 · Wheeled Dual-Arm Embodied Intelligence</div>
+    <div class="mini">© 2026 Transcribe Box Lab · 祥承智能机器人实验室 · Internal Research Portal</div>
+  </div>
+</footer>
+
+</body>
+</html>

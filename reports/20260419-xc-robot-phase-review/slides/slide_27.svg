@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      .serif-title { font-family: 'Source Han Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif; }
+      .sans-body   { font-family: 'Source Han Sans SC','Noto Sans CJK SC','PingFang SC','Microsoft YaHei',sans-serif; }
+      .en-serif    { font-family: 'Merriweather','Georgia','Times New Roman',serif; }
+      .en-sans     { font-family: 'Inter','Helvetica Neue','Arial',sans-serif; }
+      .mono        { font-family: 'JetBrains Mono','SF Mono','Menlo','Consolas',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F7F3EB"/>
+  <rect x="0" y="0" width="4" height="720" fill="#C9A961"/>
+
+  <text x="56" y="62" font-size="13" fill="#C9A961" letter-spacing="2" class="sans-body">
+    PART C · 核心问题剖析 / 大问题 3 · 协调控制、任务理解与交互
+  </text>
+
+  <text x="56" y="116" font-size="38" font-weight="700" fill="#0A2540" class="serif-title">
+    升降与双臂协同 · 本期决策
+  </text>
+
+  <text x="56" y="148" font-size="16" fill="#8B95A8" font-style="italic" class="en-serif">
+    Torso-Arm Coordination — RD2 Pragmatic Choice
+  </text>
+
+  <line x1="56" y1="168" x2="220" y2="168" stroke="#C9A961" stroke-width="2"/>
+  <line x1="220" y1="168" x2="560" y2="168" stroke="#8B95A8" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ===== 顶部决策框 ===== -->
+  <g>
+    <rect x="56" y="188" width="1168" height="64" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <text x="72" y="212" font-size="13" fill="#8B95A8" letter-spacing="1" class="sans-body">DECISION · 本期决策</text>
+    <text x="72" y="238" font-size="16" fill="#0A2540" class="sans-body">
+      <tspan font-weight="700">状态机优先</tspan>
+      <tspan fill="#C9A961" font-weight="700" dx="8">/</tspan>
+      <tspan dx="8">8-DOF 联合规划延后</tspan>
+      <tspan fill="#C9A961" font-weight="700" dx="8">·</tspan>
+      <tspan dx="8" font-weight="700" fill="#C9A961">场景覆盖率 >99%</tspan>
+    </text>
+  </g>
+
+  <!-- ===== 三栏对比 ===== -->
+  <!-- 栏 1: RD2 本期（强调） -->
+  <g>
+    <rect x="56" y="270" width="380" height="300" fill="#FFFDF5" stroke="#C9A961" stroke-width="1.5" rx="3"/>
+    <!-- 顶部条 -->
+    <rect x="56" y="270" width="380" height="36" fill="#C9A961"/>
+    <text x="72" y="293" font-size="14" font-weight="700" fill="#0A2540" class="sans-body">RD2 · 本期</text>
+    <text x="416" y="293" text-anchor="end" font-size="11" fill="#0A2540" font-weight="700" letter-spacing="1" class="en-sans">CURRENT</text>
+
+    <!-- 方案 -->
+    <text x="72" y="326" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">方案 · APPROACH</text>
+    <text x="72" y="348" font-size="13" fill="#2B3340" font-weight="600" class="sans-body">升降到位 / 再规划臂</text>
+    <text x="72" y="366" font-size="12" fill="#8B95A8" class="sans-body">（状态机串行）</text>
+
+    <line x1="72" y1="380" x2="420" y2="380" stroke="#C9A961" stroke-width="0.5" opacity="0.6"/>
+
+    <!-- 适用 -->
+    <text x="72" y="400" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">适用 · SCENARIOS</text>
+    <text x="72" y="422" font-size="13" fill="#2B3340" class="sans-body">3C 料盘 / 办公递送</text>
+    <text x="72" y="440" font-size="13" fill="#2B3340" class="sans-body">标准工位</text>
+
+    <line x1="72" y1="454" x2="420" y2="454" stroke="#C9A961" stroke-width="0.5" opacity="0.6"/>
+
+    <!-- 关键指标 -->
+    <text x="72" y="474" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">KEY METRICS</text>
+    <text x="72" y="495" font-size="12" fill="#2B3340" class="sans-body">工程复杂度</text>
+    <text x="240" y="495" font-size="12" fill="#C9A961" font-weight="700" class="mono">低 · 1 周</text>
+    <text x="72" y="515" font-size="12" fill="#2B3340" class="sans-body">速度耦合限幅</text>
+    <text x="72" y="533" font-size="11" fill="#8B95A8" class="mono">升降 >0.1 m/s 时臂速 &lt;0.5 rad/s</text>
+    <text x="72" y="555" font-size="12" fill="#2B3340" class="sans-body">OMPL 求解</text>
+    <text x="240" y="555" font-size="12" fill="#C9A961" font-weight="700" class="mono">&lt;200 ms</text>
+  </g>
+
+  <!-- 栏 2: RD3-RD4 升级 -->
+  <g>
+    <rect x="450" y="270" width="380" height="300" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <rect x="450" y="270" width="380" height="36" fill="#0A2540"/>
+    <text x="466" y="293" font-size="14" font-weight="700" fill="#F7F3EB" class="sans-body">RD3 - RD4 · 升级</text>
+    <text x="810" y="293" text-anchor="end" font-size="11" fill="#C9A961" font-weight="700" letter-spacing="1" class="en-sans">UPGRADE</text>
+
+    <text x="466" y="326" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">方案 · APPROACH</text>
+    <text x="466" y="348" font-size="13" fill="#2B3340" font-weight="600" class="sans-body">升降速度耦合限幅</text>
+    <text x="466" y="366" font-size="13" fill="#2B3340" class="sans-body">+ 安全包络</text>
+
+    <line x1="466" y1="380" x2="814" y2="380" stroke="#C9A961" stroke-width="0.5" opacity="0.6"/>
+
+    <text x="466" y="400" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">适用 · SCENARIOS</text>
+    <text x="466" y="422" font-size="13" fill="#2B3340" class="sans-body">升降中臂保持收臂姿态</text>
+    <text x="466" y="440" font-size="13" fill="#2B3340" class="sans-body">过渡到边升降边伸臂</text>
+
+    <line x1="466" y1="454" x2="814" y2="454" stroke="#C9A961" stroke-width="0.5" opacity="0.6"/>
+
+    <text x="466" y="474" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">KEY METRICS</text>
+    <text x="466" y="495" font-size="12" fill="#2B3340" class="sans-body">工程复杂度</text>
+    <text x="634" y="495" font-size="12" fill="#C9A961" font-weight="700" class="mono">中</text>
+    <text x="466" y="515" font-size="12" fill="#2B3340" class="sans-body">在 RD2 基础上增量扩展</text>
+    <text x="466" y="535" font-size="11" fill="#8B95A8" class="sans-body">不引入 8-DOF 求解器</text>
+  </g>
+
+  <!-- 栏 3: P1 / 二期（虚线暖灰） -->
+  <g>
+    <rect x="844" y="270" width="380" height="300" fill="none" stroke="#8B95A8" stroke-width="1" stroke-dasharray="4 3" rx="3"/>
+    <rect x="844" y="270" width="380" height="36" fill="none" stroke="#8B95A8" stroke-width="0.8" stroke-dasharray="3 2"/>
+    <text x="860" y="293" font-size="14" font-weight="700" fill="#8B95A8" class="sans-body">P1 · 二期（延后）</text>
+    <text x="1204" y="293" text-anchor="end" font-size="11" fill="#8B95A8" font-weight="700" letter-spacing="1" class="en-sans">FUTURE</text>
+
+    <text x="860" y="326" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">方案 · APPROACH</text>
+    <text x="860" y="348" font-size="13" fill="#8B95A8" font-weight="600" class="sans-body">arm_torso 8-DOF</text>
+    <text x="860" y="366" font-size="13" fill="#8B95A8" class="sans-body">MoveIt 联合规划</text>
+
+    <line x1="860" y1="380" x2="1208" y2="380" stroke="#8B95A8" stroke-width="0.3" opacity="0.5" stroke-dasharray="3 2"/>
+
+    <text x="860" y="400" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">适用 · SCENARIOS</text>
+    <text x="860" y="422" font-size="13" fill="#8B95A8" class="sans-body">狭窄工位</text>
+    <text x="860" y="440" font-size="13" fill="#8B95A8" class="sans-body">边升降边伸臂</text>
+
+    <line x1="860" y1="454" x2="1208" y2="454" stroke="#8B95A8" stroke-width="0.3" opacity="0.5" stroke-dasharray="3 2"/>
+
+    <text x="860" y="474" font-size="11" fill="#8B95A8" letter-spacing="1" class="sans-body">KEY METRICS</text>
+    <text x="860" y="495" font-size="12" fill="#8B95A8" class="sans-body">工程复杂度</text>
+    <text x="1028" y="495" font-size="12" fill="#8B95A8" font-weight="700" class="mono">高 · 4 周起</text>
+    <text x="860" y="515" font-size="12" fill="#8B95A8" class="sans-body">OMPL 求解</text>
+    <text x="1028" y="515" font-size="12" fill="#8B95A8" font-weight="700" class="mono">>500 ms</text>
+    <text x="860" y="535" font-size="11" fill="#8B95A8" class="sans-body">失败率偏高</text>
+  </g>
+
+  <!-- ===== 底部升级触发条件 ===== -->
+  <g>
+    <rect x="56" y="588" width="1168" height="80" fill="none" stroke="#2B3340" stroke-width="1" rx="3"/>
+    <text x="72" y="610" font-size="12" font-weight="700" fill="#0A2540" letter-spacing="1" class="sans-body">升级触发条件 · UPGRADE TRIGGERS</text>
+    <line x1="72" y1="618" x2="1208" y2="618" stroke="#C9A961" stroke-width="0.8"/>
+
+    <!-- 两行内容 -->
+    <text x="72" y="640" font-size="13" fill="#2B3340" class="sans-body">
+      <tspan font-weight="700">触发门槛 · </tspan>
+      <tspan>现场出现 </tspan>
+      <tspan fill="#C9A961" font-weight="700" class="mono">>=3 次</tspan>
+      <tspan> "状态机无解但 8-DOF 能解" 的实例 </tspan>
+      <tspan fill="#C9A961" font-weight="700">/</tspan>
+      <tspan> 启动 P1 升级</tspan>
+    </text>
+    <text x="72" y="660" font-size="12" fill="#8B95A8" font-style="italic" class="sans-body">参照 · TIAGo arm_torso 规划是 10+ 年工程打磨 / RD2 做不到同等质量</text>
+  </g>
+
+  <!-- 页脚 -->
+  <line x1="56" y1="686" x2="1224" y2="686" stroke="#8B95A8" stroke-width="0.3" opacity="0.3"/>
+  <text x="56" y="706" font-size="11" fill="#8B95A8" class="sans-body">XC-Robot · 2026-04 阶段汇报 · 袁鑫</text>
+  <text x="1224" y="706" font-size="11" fill="#8B95A8" text-anchor="end" class="en-sans">27 / 34</text>
+
+</svg>
