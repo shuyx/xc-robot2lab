@@ -474,3 +474,162 @@ code, pre, .mono {
 /* Reveal.js 演示页专用（被 reveal-embed.html 引用）              */
 /* 见各页 <style> 内联覆盖，此处仅留主题常量重写钩子              */
 /* ------------------------------------------------------------ */
+
+/* ============================================================== */
+/* Markdown 文档渲染（doc-renderer.js 输出）                       */
+/* ============================================================== */
+.doc-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 48px;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 48px 24px;
+  align-items: start;
+}
+
+.doc-toc {
+  position: sticky; top: 80px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding-right: 8px;
+  border-right: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.doc-toc::-webkit-scrollbar { width: 4px; }
+.doc-toc::-webkit-scrollbar-thumb { background: rgba(201,169,97,.3); }
+.doc-toc .en {
+  font-family: 'Merriweather', Georgia, serif;
+  letter-spacing: 3px;
+  font-size: 0.68rem;
+  color: var(--gold);
+  margin-bottom: 8px;
+  display: block;
+}
+.doc-toc ul { list-style: none; padding: 0; margin: 0; }
+.doc-toc li { padding: 4px 0; }
+.doc-toc li.toc-h3 { padding-left: 12px; font-size: 0.78rem; color: var(--muted); }
+.doc-toc a { color: var(--char); border: none; }
+.doc-toc a:hover { color: var(--link); border-bottom: 1px solid var(--gold); }
+
+.doc-prose {
+  max-width: none;
+  line-height: 1.75;
+  color: var(--char);
+}
+.doc-prose h1 {
+  font-size: 2rem;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+.doc-prose h2 {
+  font-size: 1.45rem;
+  margin-top: 40px;
+  margin-bottom: 14px;
+  padding-left: 12px;
+  border-left: 3px solid var(--gold);
+}
+.doc-prose h3 {
+  font-size: 1.15rem;
+  margin-top: 28px;
+  margin-bottom: 10px;
+  color: var(--link);
+}
+.doc-prose h4 { font-size: 1rem; margin-top: 20px; margin-bottom: 8px; }
+
+.doc-prose p { margin: 12px 0; }
+.doc-prose strong { color: var(--navy); }
+.doc-prose em { color: var(--link); font-style: italic; }
+
+.doc-prose ul, .doc-prose ol { padding-left: 24px; margin: 10px 0; }
+.doc-prose li { margin: 4px 0; }
+
+.doc-prose blockquote {
+  margin: 16px 0;
+  padding: 10px 18px;
+  border-left: 3px solid var(--gold);
+  background: rgba(201, 169, 97, 0.06);
+  color: var(--char);
+  font-size: 0.95rem;
+}
+.doc-prose blockquote p { margin: 4px 0; }
+
+.doc-prose a {
+  color: var(--link);
+  border-bottom: 1px dotted var(--gold);
+}
+.doc-prose a:hover { border-bottom-style: solid; }
+
+.doc-prose code {
+  font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: rgba(10, 37, 64, 0.06);
+  padding: 1px 6px;
+  border-radius: 2px;
+  color: var(--navy);
+}
+.doc-prose pre {
+  background: #091E33;
+  color: #F7F3EB;
+  border-left: 3px solid var(--gold);
+  padding: 14px 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.doc-prose pre code { background: none; padding: 0; color: inherit; }
+
+.doc-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.92rem;
+  background: var(--surface);
+}
+.doc-prose th, .doc-prose td {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+.doc-prose thead th {
+  background: var(--navy);
+  color: var(--ivory);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-color: var(--navy);
+}
+.doc-prose tbody tr:nth-child(even) { background: rgba(247, 243, 235, 0.6); }
+
+.doc-prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+}
+
+/* Mermaid 图表外观 */
+.doc-prose .mermaid {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  padding: 16px;
+  margin: 18px 0;
+  text-align: center;
+  overflow-x: auto;
+}
+.doc-prose .mermaid svg { max-width: 100%; height: auto; }
+
+/* 响应式 */
+@media (max-width: 900px) {
+  .doc-layout { grid-template-columns: 1fr; gap: 16px; }
+  .doc-toc {
+    position: static;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+  }
+}
