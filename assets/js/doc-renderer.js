@@ -1,7 +1,9 @@
-/* Transcribe Box Lab · Markdown + Mermaid 文档渲染器
-   Usage: 在 doc 页面引入本脚本 + CDN (marked + mermaid)，调用
+/* Transcribe Box Lab · Markdown + Mermaid + KaTeX 文档渲染器
+   Usage: 在 doc 页面引入本脚本 + CDN (marked + mermaid + katex + auto-render)，调用
      renderDoc('doc.md', document.getElementById('doc-root'))
-   自动把 ```mermaid 代码块渲染成 Mermaid 图，其余保持普通 Markdown。 */
+   - ```mermaid 代码块 → Mermaid 图
+   - $$...$$ 独立公式 / $...$ 行内公式 → KaTeX 渲染
+   - Excalidraw 图：导出 SVG 后 doc.md 里 ![alt](./fig.svg) 直接引用 */
 (function (global) {
   /** 剥离 YAML frontmatter（---...---） */
   function stripFrontmatter(md) {
@@ -59,7 +61,21 @@
     // 5. 生成 TOC
     buildTOC(container);
 
-    // 6. 渲染 Mermaid
+    // 6. 渲染数学公式（KaTeX auto-render）
+    //    需要页面已加载 katex.min.js + contrib/auto-render.min.js
+    if (global.renderMathInElement) {
+      global.renderMathInElement(container, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true  },
+          { left: '$',  right: '$',  display: false }
+        ],
+        throwOnError: false,
+        // 跳过代码块，避免误处理 `$var` 变量名
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option']
+      });
+    }
+
+    // 7. 渲染 Mermaid
     if (global.mermaid) {
       try {
         await global.mermaid.run({
