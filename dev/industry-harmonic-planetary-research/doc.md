@@ -122,21 +122,28 @@
 
 ## 五、RobStride RS04 代码分析
 
-### 5.1 编码器架构
+### 5.1 编码器架构——硬件双芯片 vs 驱动单通道
 
 ![RobStride 编码器架构](./fig/robstride-encoder.svg)
 
+**关键区分**：
+
+```
+硬件层（BOM 确认）:   2×AS5047P 磁编码器芯片
+寄存器层（代码确认）:  encoderRaw (0x3004) + encoder2raw (0x3007，RS03/RS04)
+驱动层（OpenARMX）:   只读 encoderRaw，未读 encoder2raw
+实际效果:             等同单编码器（mechPos 软件估算自 encoderRaw ÷ 9）
+```
+
 ### 5.2 代码层确认
 
-从 `Coding References/RobStride/` 代码分析：
-
-- **单物理编码器**：产品手册明确标注"编码器分辨率 14bit（单圈绝对值）"
-- **mechPos（0x7019）是软件估算值**：`mechPos = encoderRaw / 2^14 × ±4π / 9（减速比）`，**不是第二个物理编码器**
+- **mechPos（0x7019）当前是软件估算值**：`mechPos = encoderRaw / 2^14 × ±4π / 9（减速比）`，因为驱动未读 `encoder2raw`
 - **无 Backlash 补偿逻辑**：`MECHANICAL_OFFSET（0x2005）` 只用于归零校准，和背隙无关
+- **但硬件具备双编码器基础**：BOM 表列明 AS5047P × 2，RS03/RS04 的 `encoder2raw（0x3007）` 寄存器可用于输出侧独立位置读取
 
-<!-- 注意事项 -->
-<div class="callout callout-warn">
-⚠️ <strong>注意</strong>：RS04 只有运动中的 <code>status_magnetic_encoder_fault</code> 和 <code>fault_encoder_uncalibrated</code> 故障检测，<strong>没有主动的背隙补偿功能</strong>。代码中的 calibration 仅包含方向（direction）和零偏（homing_offset）。
+<!-- 关键结论 -->
+<div class="callout callout-key">
+🔑 <strong>关键结论</strong>：RS04 的编码器瓶颈<strong>不在硬件，在驱动层</strong>。硬件有 2 颗 AS5047P 芯片和 `encoder2raw` 寄存器，但 OpenARMX 驱动未启用独立回读。激活 encoder2 是未来精度优化的一条低成本路径。
 </div>
 
 ### 5.3 MIT 帧格式验证
