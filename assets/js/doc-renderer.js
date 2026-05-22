@@ -35,6 +35,21 @@
     // 1. 剥离 frontmatter（Obsidian 源文档通常含 ---...--- 头）
     md = stripFrontmatter(md);
 
+    // 1.5 在 marked 处理前，把数学公式块提取出来，
+    //     防止 marked 把 \{ \} \; 等当 Markdown 转义序列处理
+    const mathStore = [];
+    const MPRE = '⧫MATH', MPOST = 'MATH⧫'; // ⧫ 不在 Markdown 语法字符集中
+    // 先处理块公式 $$...$$（多行）
+    md = md.replace(/\$\$([\s\S]+?)\$\$/g, function (match) {
+      const i = mathStore.push(match) - 1;
+      return MPRE + i + MPOST;
+    });
+    // 再处理行内公式 $...$（单行）
+    md = md.replace(/\$([^\$\n]+?)\$/g, function (match) {
+      const i = mathStore.push(match) - 1;
+      return MPRE + i + MPOST;
+    });
+
     // 2. 自定义 renderer：把 ```mermaid 转为 <div class="mermaid">
     const renderer = new marked.Renderer();
     const origCode = renderer.code.bind(renderer);
@@ -51,6 +66,15 @@
 
     // 3. 渲染
     container.innerHTML = marked.parse(md);
+
+    // 3.5 还原被提取的数学公式（marked 处理完之后，KaTeX 之前）
+    if (mathStore.length > 0) {
+      let html = container.innerHTML;
+      mathStore.forEach(function (block, i) {
+        html = html.split(MPRE + i + MPOST).join(block);
+      });
+      container.innerHTML = html;
+    }
 
     // 4. 外链加 target=_blank
     container.querySelectorAll('a[href^="http"]').forEach(function(a) {
