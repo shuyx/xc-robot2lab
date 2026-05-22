@@ -1,0 +1,37 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+\begin{tikzpicture}[>=Stealth,font=\small]
+
+% Axes
+\draw[->,thick] (0,0) -- (6.5,0) node[right] {关节};
+\draw[->,thick] (0,0) -- (0,3.0) node[above] {成本 (\%)};
+
+% Joint bars grouped (current left, new right)
+\foreach \j/\name/\cur/\new in {
+  1/J1/14/26,
+  2/J2/14/26,
+  3/J3/14/10,
+  4/J4/14/10,
+  5/J5/14/5,
+  6/J6/14/5,
+  7/J7/14/2
+} {
+  % Current (red)
+  \fill[red!30] (\j-0.35,0) rectangle (\j-0.05,\cur/10);
+  % New (blue)
+  \fill[blue!30] (\j+0.05,0) rectangle (\j+0.35,\new/10);
+  
+  \node[font=\tiny] at (\j,-0.2) {\name};
+}
+
+% Legend
+\fill[red!30] (0.5,2.6) rectangle (0.9,2.8);
+\node[font=\tiny] at (1.1,2.7) {当前};
+\fill[blue!30] (1.8,2.6) rectangle (2.2,2.8);
+\node[font=\tiny] at (2.4,2.7) {新方案};
+
+\end{tikzpicture}
+\end{document}
