@@ -1,0 +1,33 @@
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[
+  box/.style={draw,rounded corners=4pt,minimum width=2cm,minimum height=0.6cm,font=\small,align=center},
+  >=Stealth
+]
+
+% Title
+\node[font=\small\bfseries] at (0,3.2) {RobStride RS04 编码器架构};
+
+% Flow
+\node[box,fill=blue!10] (enc) at (-2,2.0) {磁编码器\\14bit};
+\node[box,fill=orange!10] (mcu) at (0,2.0) {MCU 固件};
+\node[box,fill=green!10] (can) at (2,2.0) {CAN 帧};
+
+\draw[->,thick] (enc) -- (mcu) node[midway,above]{\tiny $\theta_m$};
+\draw[->,thick] (mcu) -- (can) node[midway,above]{\tiny MIT帧};
+
+% Internal calculation
+\node[font=\tiny,align=center,fill=gray!5,rounded corners] at (0,0.5) {encoderRaw $\div 2^{14} \times \pm 4\pi \rightarrow \theta_m$\\$\theta_{\text{out}} = \theta_m \div 9$ (减速比)\\mechPos (0x7019) 是软件估算值};
+
+% Fault detection
+\node[font=\tiny,align=center,fill=red!5,rounded corners] at (0,-0.8) {故障检测 (状态帧中):\\磁编码器故障 bit 11\\编码器未标定 bit 7};
+\node[font=\tiny,align=center,fill=yellow!5,rounded corners] at (0,-1.8) {可读写参数:\\MECHANICAL\_OFFSET (0x2005)\\MEASURED\_POSITION (0x3016)\\encoderRaw (0x3004)};
+
+% Conclusion
+\draw[decorate,decoration={brace,amplitude=4pt},thick] (-3.5,-2.5) -- (3.5,-2.5);
+\node[font=\small\color{red},align=center] at (0,-3.2) {结论: 单物理编码器, mechPos为软件估算\\无Backlash检测/补偿逻辑};
+\end{tikzpicture}
+\end{document}

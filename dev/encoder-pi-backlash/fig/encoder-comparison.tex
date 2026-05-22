@@ -1,0 +1,35 @@
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[
+  box/.style={draw,rounded corners=4pt,minimum width=2.8cm,minimum height=0.8cm,font=\small\bfseries,align=center},
+  val/.style={font=\small\ttfamily},
+  label/.style={font=\small,align=center},
+  >=Stealth
+]
+\node[box,fill=gray!8] (title) at (0,2.5) {编码器精度对比};
+
+\foreach \x/\name/\bits in {
+  0/{RS04(当前)}/{14bit},
+  2.8/{协作臂入门}/{17bit},
+  5.6/{中端协作臂}/{19bit},
+  8.4/{高端臂}/{24bit}
+} {
+  \node[box,fill=gray!15,minimum height=0.6cm] (b\x) at (\x,0.5) {\name};
+  \node[val] (v\x) at (\x,-0.6) {\bits};
+  \node[label] (c\x) at (\x,-1.3) {16384\\counts/rev};
+  \draw[->] (\x,1.1) -- (\x,1.5);
+}
+
+\draw[decorate,decoration={brace,amplitude=6pt},thick] (7.8,1.8) -- (0.6,1.8);
+\node[font=\small] at (4.2,2.3) {差值: 14bit $\rightarrow$ 24bit = 1024$\times$分辨率};
+
+\draw[decorate,decoration={brace,amplitude=6pt,mirror},thick] (0.6,-1.6) -- (1.4,-1.6);
+\node[font=\small,align=center] at (3.8,-2.0) {500mm末端: 14bit $\approx$ 0.18mm\\24bit $\approx$ 0.0003mm};
+
+\draw[dashed,gray] (-0.5,-1.8) -- (-0.5,1.8);
+\node[font=\small,rotate=90,gray] at (-1.0,0.5) {精度等级};
+\end{tikzpicture}
+\end{document}

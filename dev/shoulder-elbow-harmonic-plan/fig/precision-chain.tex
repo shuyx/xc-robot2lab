@@ -1,0 +1,39 @@
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[
+  box/.style={draw,rounded corners=4pt,minimum width=2.4cm,minimum height=0.6cm,font=\small,align=center},
+  >=Stealth
+]
+
+% Title
+\node[font=\small\bfseries] at (0,3.0) {背隙精度传递链};
+
+% Joint boxes
+\node[box,fill=red!20] (j1) at (-4.0,1.5) {J1背隙0.15$^\circ$};
+\node[box,fill=red!20] (j2) at (-1.5,1.5) {J2背隙0.15$^\circ$};
+\node[box,fill=orange!20] (j3) at (1.0,1.5) {J3背隙0.15$^\circ$};
+\node[box,fill=red!20] (j4) at (3.5,1.5) {J4背隙0.15$^\circ$};
+
+% Arm length amplifers
+\node[font=\tiny] at (-4.0,2.5) {$\times$500mm};
+\node[font=\tiny] at (-1.5,2.5) {$\times$500mm};
+\node[font=\tiny] at (1.0,2.5) {$\times$不放大};
+\node[font=\tiny] at (3.5,2.5) {$\times$250mm};
+
+% Result
+\draw[->,thick] (-4.0,0.7) -- ++(0,-0.5);
+\draw[->,thick] (-1.5,0.7) -- ++(0,-0.5);
+\draw[->,thick] (1.0,0.7) -- ++(0,-0.5);
+\draw[->,thick] (3.5,0.7) -- ++(0,-0.5);
+
+\node[font=\small\color{red},align=center,fill=red!5,rounded corners] at (-2.75,-0.2) {末端位置误差 $\approx$ $\pm$1.3mm};
+\node[font=\small\color{green!40!black},align=center,fill=green!5,rounded corners] at (1.0,-0.2) {末端角度偏差 $\approx$ $\pm$0.15$^\circ$};
+\node[font=\small\color{orange},align=center,fill=orange!5,rounded corners] at (3.5,-0.2) {末端位置误差 $\approx$ $\pm$0.65mm};
+
+% Formula
+\node[font=\small,align=center,fill=gray!5,rounded corners] at (0,-2.0) {$E_{\text{末端}} = L \cdot \tan(\theta_{\text{backlash}})$\\$L=500$mm时，$1$ arcmin $\rightarrow$ $0.15$mm};
+\end{tikzpicture}
+\end{document}

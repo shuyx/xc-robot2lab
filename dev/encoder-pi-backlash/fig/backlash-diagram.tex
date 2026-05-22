@@ -1,0 +1,37 @@
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[
+  gear/.style={draw,circle,minimum size=1.2cm,font=\small},
+  rim/.style={draw,circle,minimum size=2.4cm,font=\small},
+  >=Stealth
+]
+
+% Forward rotation
+\node[font=\small\bfseries] at (-1.5,2.8) {正转（咬合）};
+\node[gear,fill=blue!10] (d1) at (-2.5,0.8) {\tiny 主动齿};
+\node[gear,fill=orange!10] (d1o) at (-0.2,0.8) {\tiny 从动齿};
+\draw[->,blue,thick] (d1.west) -- ++(-0.5,0) node[left]{\tiny 输入};
+\draw[->,orange] (d1o.east) -- ++(0.5,0) node[right]{\tiny 输出};
+\node[font=\tiny] at (-1.35,0.3) {齿A紧贴齿B};
+\draw[<->,red,thick] (-2.1,0.8) -- (-0.6,0.8);
+
+% Reverse rotation - backlash
+\node[font=\small\bfseries] at (-1.5,-1.0) {反转（空行程/背隙）};
+\node[gear,fill=blue!10] (d2) at (-2.5,-2.0) {\tiny 主动齿};
+\node[gear,fill=orange!10] (d2o) at (-0.2,-2.0) {\tiny 从动齿};
+\draw[->,blue,thick] (d2.west) -- ++(-0.5,0) node[left]{\tiny 输入反转};
+\draw[->,orange,dashed] (d2o.east) -- ++(0.5,0) node[right]{\tiny 输出不动!};
+\draw[<->,red,thick,dashed] (-2.1,-2.0) -- ++(0.6,0) node[above]{\tiny 间隙};
+\draw[<->,red,thick] (-1.5,-2.0) -- ++(0.9,0);
+
+% Annotation
+\draw[decorate,decoration={brace,amplitude=8pt,mirror},thick] (-3.2,-2.8) -- (-3.2,1.6);
+\node[font=\small,align=center,rotate=90] at (-4.0,0) {背隙 = 正反转切换时主动齿空转、从动齿不跟随的角度};
+
+% Formula
+\node[font=\small,align=center,fill=gray!6,rounded corners] at (1.2,-3.5) {$E_{\text{末端}} \approx L \cdot \tan(\theta_{\text{backlash}})$\\$L=500\text{mm}, \theta=0.15^\circ \Rightarrow E\approx 1.3\text{mm}$};
+\end{tikzpicture}
+\end{document}

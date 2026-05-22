@@ -1,0 +1,42 @@
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[
+  box/.style={draw,rounded corners=3pt,minimum width=2.6cm,minimum height=0.5cm,font=\small,align=center},
+  big/.style={draw,rounded corners=5pt,minimum width=3.2cm,minimum height=1.2cm,align=center,font=\small},
+  label/.style={font=\small,align=center},
+  >=Stealth
+]
+
+% Arm outline
+\draw[fill=gray!3,rounded corners] (-4.5,-0.2) rectangle (4.5,2.5);
+\node[font=\small\bfseries] at (0,2.1) {7-DOF OpenARM 关节分配方案};
+
+% Joints
+\node[box,fill=red!20] (j1) at (-3,1.0) {J1 基座旋转};
+\node[box,fill=red!20] (j2) at (-0.5,1.0) {J2 肩俯仰};
+\node[box,fill=orange!20] (j3) at (2,1.0) {J3 上臂旋转};
+\node[box,fill=red!20] (j4) at (4.5,1.0) {J4 肘俯仰};
+\node[box,fill=green!20] (j5) at (-2,-0.8) {J5 腕旋转};
+\node[box,fill=green!20] (j6) at (0.5,-0.8) {J6 腕俯仰};
+\node[box,fill=green!20] (j7) at (3,-0.8) {J7 末端旋转};
+
+% Arrows linking joints
+\draw[->,thick] (j1) -- (j2);
+\draw[->,thick] (j2) -- (j3);
+\draw[->,thick] (j3) -- (j4);
+\draw[->,thick,dashed] (j4.south) -- ++(0,-0.3) -| (j5.north);
+\draw[->,thick] (j5) -- (j6);
+\draw[->,thick] (j6) -- (j7);
+
+% Legend
+\node[box,fill=red!20,minimum width=1.2cm,font=\tiny] at (-3.8,-2.2) {谐波};
+\node[box,fill=orange!20,minimum width=1.2cm,font=\tiny] at (-1.5,-2.2) {可选};
+\node[box,fill=green!20,minimum width=1.2cm,font=\tiny] at (0.8,-2.2) {行星双编码};
+
+% Precision note
+\node[font=\tiny\color{red},align=center] at (4.0,-2.2) {$\leftarrow$ 精度传递方向\\背隙$\times$臂长$\rightarrow$放大};
+\end{tikzpicture}
+\end{document}

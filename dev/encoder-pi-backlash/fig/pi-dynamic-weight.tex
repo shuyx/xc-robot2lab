@@ -1,0 +1,38 @@
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\begin{document}
+\begin{tikzpicture}[
+  >=Stealth,
+  every node/.style={font=\small}
+]
+
+% Axes
+\draw[->,thick] (0,0) -- (7,0) node[right] {时间 $\rightarrow$};
+\draw[->,thick] (0,0) -- (0,4.2) node[above] {出力占比 (\%)};
+
+% Phase labels
+\foreach \x/\name in {0.5/起步, 2.5/加速中, 4.5/接近目标, 6.0/停稳} {
+  \draw[dashed,gray] (\x,0) -- (\x,4.0);
+  \node[font=\tiny] at (\x,-0.3) {\name};
+}
+
+% P curve (starts high, drops to zero)
+\draw[blue,thick,variable=\x,samples=50,smooth] plot ({\x},{3.5*exp(-0.8*\x)+0.3}) node[right] {\color{blue}P项};
+
+% I curve (starts low, rises and holds)
+\draw[red,thick,variable=\x,samples=50,smooth] plot ({\x},{3.5*(1-exp(-0.8*\x))+0.3}) node[right] {\color{red}I项};
+
+% Shading between curves
+\fill[blue!10,domain=0:6.5,variable=\x] (0,0) -- plot ({\x},{3.5*exp(-0.8*\x)+0.3}) -- (6.5,0) -- cycle;
+\fill[red!10,domain=0:6.5,variable=\x] (0,0) -- plot ({\x},{3.5*(1-exp(-0.8*\x))+0.3}) -- (6.5,4.0) -- cycle;
+
+% Annotations
+\node[blue,fill=blue!8,rounded corners] at (1.5,3.2) {起步: P占95\%};
+\node[red,fill=red!8,rounded corners] at (5.0,2.8) {停稳: I持稳};
+
+% Formula
+\node[align=center,fill=gray!4,rounded corners] at (3.5,-2.0) {$\tau = K_p e + K_i \int e\,dt + K_d \dot{e}$\\P项$=K_p e$, I项$=K_i \int e\,dt$, D项$=K_d \dot{e}$};
+\end{tikzpicture}
+\end{document}

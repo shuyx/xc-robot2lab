@@ -1,0 +1,44 @@
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[
+  box/.style={draw,rounded corners=4pt,minimum width=2.8cm,minimum height=0.7cm,font=\small,align=center},
+  title/.style={font=\small\bfseries,align=center},
+  >=Stealth
+]
+
+% Left: Harmonic
+\node[title] at (-3,3.5) {谐波减速器};
+\draw[fill=red!10,rounded corners] (-5.2,2.8) rectangle (-0.8,-0.5);
+\node[font=\tiny,align=center] at (-3,2.3) {波发生器撑椭圆$\rightarrow$柔轮持续变形};
+\node[font=\tiny,align=center] at (-3,1.7) {$\sigma_{\text{prestress}} \approx 200-300$ MPa};
+\node[font=\tiny,align=center,fill=red!20,rounded corners] at (-3,1.0) {冲击$\rightarrow$Ratcheting跳齿 / Buckling屈曲};
+\node[font=\tiny,align=center] at (-3,0.3) {灾难性突发失效};
+\node[font=\tiny,align=center] at (-3,-0.2) {寿命: $\sim$7,000-10,000 hrs};
+
+% Right: Planetary
+\node[title] at (3,3.5) {行星减速器};
+\draw[fill=green!10,rounded corners] (0.8,2.8) rectangle (5.2,-0.5);
+\node[font=\tiny,align=center] at (3,2.3) {刚性齿轮多支点并联};
+\node[font=\tiny,align=center] at (3,1.7) {3-4行星轮$\times$2啮合面$=$6-8分担};
+\node[font=\tiny,align=center,fill=green!20,rounded corners] at (3,1.0) {冲击$\rightarrow$渐进性磨损};
+\node[font=\tiny,align=center] at (3,0.3) {可持续运行至维护周期};
+\node[font=\tiny,align=center] at (3,-0.2) {寿命: $>$100,000 hrs};
+
+% Comparison table
+\node[title] at (0,-1.2) {关键参数对比};
+\draw[fill=gray!5,rounded corners] (-4.5,-1.6) rectangle (4.5,-4.2);
+\node[font=\tiny] at (-3,-1.9) {回差: $<$1 arcmin};
+\node[font=\tiny] at (2,-1.9) {回差: 5-15 arcmin};
+\node[font=\tiny] at (-3,-2.4) {冲击耐受: 2-3$\times$额定};
+\node[font=\tiny] at (2,-2.4) {冲击耐受: 3-5$\times$额定};
+\node[font=\tiny] at (-3,-2.9) {效率: 85-90\%};
+\node[font=\tiny] at (2,-2.9) {效率: 96-98\%};
+\node[font=\tiny] at (-3,-3.4) {成本: 1.0$\times$基准};
+\node[font=\tiny] at (2,-3.4) {成本: 0.3-0.5$\times$};
+\node[font=\tiny] at (-3,-3.9) {扭矩密度: 30-122 Nm/kg};
+\node[font=\tiny] at (2,-3.9) {扭矩密度: 20-40 Nm/kg};
+\end{tikzpicture}
+\end{document}
