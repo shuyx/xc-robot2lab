@@ -1,0 +1,40 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning}
+\begin{document}
+\begin{tikzpicture}[>=Stealth,font=\small,box/.style={draw,rounded corners=3pt,minimum width=2.2cm,minimum height=0.5cm,align=center}]
+
+% Title
+\node[font=\small\bfseries] at (0,3.0) {灵足 RS04 编码器信号架构};
+
+% Physical layer
+\node[box,fill=blue!10] (magnet1) at (-2.5,1.8) {电机磁铁};
+\node[box,fill=blue!10] (magnet2) at (2.5,1.8) {输出轴磁铁};
+\node[box,fill=purple!15] (chip1) at (-2.5,0.8) {AS5047P\#1};
+\node[box,fill=purple!15] (chip2) at (2.5,0.8) {AS5047P\#2};
+
+\draw[->] (magnet1) -- (chip1);
+\draw[->] (magnet2) -- (chip2);
+
+% Register layer
+\node[box,fill=orange!15] (reg1) at (-2.5,-0.2) {0x3004\\encoderRaw};
+\node[box,fill=orange!15] (reg2) at (2.5,-0.2) {0x3007\\encoder2raw};
+
+\draw[->] (chip1) -- (reg1);
+\draw[->] (chip2) -- (reg2);
+
+% Firmware fusion
+\node[box,fill=green!15,minimum width=3cm] (fw) at (0,-1.2) {GD32 固件\\{\small chasu\_angle\_out}};
+\draw[->] (reg1) -- ++(0,-0.3) -| (fw);
+\draw[->] (reg2) -- ++(0,-0.3) -| (fw);
+
+% Driver reads
+\node[box,fill=red!15] (read) at (0,-2.2) {OpenARMX 当前读数\\mechPos (0x7019)};
+\draw[->] (fw) -- (read);
+
+% Note
+\node[font=\tiny\color{red},align=center] at (0,-3.0) {OpenARMX 读的是 mechPos，不是 chasu\_angle\_out\\固件融合是否启用? 待实验验证};
+
+\end{tikzpicture}
+\end{document}
