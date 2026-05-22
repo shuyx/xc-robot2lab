@@ -1,35 +1,32 @@
-\documentclass[tikz,border=8pt]{standalone}
+\documentclass[tikz,border=4pt]{standalone}
 \usepackage{ctex}
 \usepackage{amsmath}
-\usetikzlibrary{arrows.meta,positioning,shapes.geometric,decorations.pathreplacing}
+\usetikzlibrary{arrows.meta}
 \begin{document}
-\begin{tikzpicture}[
-  >=Stealth,
-  every node/.style={font=\small}
-]
+\begin{tikzpicture}[>=Stealth,font=\small]
 
 % Axes
-\draw[->,thick] (0,0) -- (6.5,0) node[right] {时间 $\rightarrow$};
-\draw[->,thick] (0,0) -- (0,3.6) node[above] {出力占比};
+\draw[->,thick] (0,0) -- (7.5,0) node[right] {时间};
+\draw[->,thick] (0,0) -- (0,2.6) node[above] {出力};
 
 % Phase labels
-\foreach \x/\name in {0.3/起步, 2.0/加速中, 4.0/接近, 5.8/停稳} {
-  \draw[dashed,gray] (\x,0) -- (\x,3.4);
-  \node[font=\tiny] at (\x,-0.3) {\name};
+\foreach \x/\name in {0.5/起步, 2.5/加速中, 4.5/接近, 6.2/停稳} {
+  \draw[dashed,gray!50] (\x,0) -- (\x,2.3);
+  \node[font=\tiny] at (\x,-0.2) {\name};
 }
 
-% Curves
-\draw[blue,thick,variable=\x,samples=30,smooth,domain=0:6.0] plot ({\x},{3.0*exp(-0.7*\x)+0.2}) node[right] {\color{blue}P项};
-\draw[red,thick,variable=\x,samples=30,smooth,domain=0:6.0] plot ({\x},{3.0*(1-exp(-0.7*\x))+0.2}) node[right] {\color{red}I项};
+% P: starts high, decays to near-zero
+\draw[blue,thick,variable=\x,samples=40,smooth,domain=0:6.5] plot ({\x},{1.8*exp(-0.6*\x)+0.25}) node[right] {\color{blue}P};
 
-% Annotations
-\draw[->,blue,thick] (0.6,2.5) -- (0.6,2.0);
-\node[blue,font=\tiny] at (0.6,2.7) {P占~95\%};
+% I: starts low, rises and plateaus
+\draw[red,thick,variable=\x,samples=40,smooth,domain=0:6.5] plot ({\x},{1.8*(1-exp(-0.6*\x))+0.25}) node[right] {\color{red}I};
 
-\draw[->,red,thick] (4.8,2.0) -- (4.8,2.6);
-\node[red,font=\tiny] at (4.8,1.7) {I持稳};
+% Labels
+\node[blue,font=\tiny,fill=blue!5] at (1.0,1.9) {P $\approx$ 95\%};
+\node[red,font=\tiny,fill=red!5] at (5.5,1.9) {I 持稳};
 
-% Formula
-\node[align=center,font=\small,fill=gray!5,rounded corners] at (3.1,-1.8) {$\tau = K_p e + K_i \int e\,dt + K_d \dot{e}$};
+% Formula at bottom
+\node[font=\small] at (3.6,-1.0) {$\tau = K_p e + K_i \int e\,dt + K_d \dot{e}$};
+
 \end{tikzpicture}
 \end{document}
