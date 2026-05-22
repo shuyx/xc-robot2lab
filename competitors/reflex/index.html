@@ -15,17 +15,34 @@
       Transcribe Box Lab
       <span class="sub">祥承智能机器人实验室</span>
     </a>
-    <nav>
+    <nav id="site-nav">
       <a href="../../index.html">首页</a>
       <a href="../../reports/index.html">汇报资料</a>
       <a href="../../repos/index.html">代码仓库</a>
       <a href="../../dev/index.html">开发内容</a>
       <a href="../index.html" class="current">竞品分析</a>
       <a href="../../about.html">关于</a>
+          <div class="header-logout-mobile">
+        <button class="logout" onclick="sessionStorage.removeItem('tbl_auth');location.reload()">登出</button>
+      </div>
     </nav>
     <button class="logout" onclick="sessionStorage.removeItem('tbl_auth');location.reload()">登出</button>
+    <button class="nav-toggle" id="nav-toggle" aria-label="菜单" aria-expanded="false">☰</button>
   </div>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById('nav-toggle');
+  var nav = document.getElementById('site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? '\u2715' : '\u2630';
+    });
+  }
+})();
+</script>
 
 <section class="competitor-hero">
   <img src="../_assets/reflex/reflex-hero.webp" alt="Reflex Robotics">

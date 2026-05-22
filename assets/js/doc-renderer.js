@@ -129,6 +129,32 @@
       ul.appendChild(li);
     });
     tocEl.appendChild(ul);
+
+    // 手机端可折叠 TOC：注入 toggle 按钮
+    injectTOCToggle(tocEl);
+  }
+
+  function injectTOCToggle(tocEl) {
+    // 避免重复注入
+    if (tocEl.querySelector('.toc-toggle')) return;
+
+    // 创建 toggle 行（点击展开/折叠）
+    const toggle = document.createElement('div');
+    toggle.className = 'toc-toggle';
+    toggle.innerHTML =
+      '<span class="toc-toggle-label">TABLE OF CONTENTS</span>' +
+      '<span class="toc-toggle-icon">▾</span>';
+
+    // 把 toggle 插在 tocEl 最前面
+    tocEl.insertBefore(toggle, tocEl.firstChild);
+
+    // 点击事件
+    toggle.addEventListener('click', function() {
+      tocEl.classList.toggle('open');
+    });
+
+    // 检测是否手机视口，若是则默认折叠（CSS 已做，这里确保逻辑对齐）
+    // 桌面端点击 toggle 也能折叠（备用）
   }
 
   global.renderDoc = renderDoc;

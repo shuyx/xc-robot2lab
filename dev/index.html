@@ -6,6 +6,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="../assets/js/auth-guard.js"></script>
   <link rel="stylesheet" href="../assets/css/academic.css">
+  <style>
+    /* ── 分类过滤 Chip 栏 ── */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 28px;
+      align-items: center;
+    }
+    .filter-label {
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-right: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .filter-chip {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--char);
+      padding: 5px 14px;
+      border-radius: 2px;
+      font-size: 0.78rem;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      cursor: pointer;
+      transition: background .15s ease, border-color .15s ease, color .15s ease;
+      letter-spacing: 0.5px;
+      user-select: none;
+      min-height: 32px;
+      white-space: nowrap;
+    }
+    .filter-chip:hover {
+      border-color: var(--gold);
+      color: var(--navy);
+    }
+    .filter-chip.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--ivory);
+    }
+    .filter-chip[data-cat="all"].active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy);
+    }
+
+    /* 过滤时隐藏的条目 */
+    .item[hidden] {
+      display: none !important;
+    }
+
+    /* 无结果提示 */
+    .filter-empty {
+      display: none;
+      padding: 32px 0 16px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-family: 'Merriweather', Georgia, serif;
+      font-style: italic;
+      letter-spacing: 1px;
+    }
+    .filter-empty.show {
+      display: block;
+    }
+
+    /* 手机端 chip 栏换行友好 */
+    @media (max-width: 600px) {
+      .filter-bar {
+        gap: 6px;
+        margin-bottom: 20px;
+      }
+      .filter-chip {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+        min-height: 36px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -15,17 +97,34 @@
       Transcribe Box Lab
       <span class="sub">祥承智能机器人实验室</span>
     </a>
-    <nav>
+    <nav id="site-nav">
       <a href="../index.html">首页</a>
       <a href="../reports/index.html">汇报资料</a>
       <a href="../repos/index.html">代码仓库</a>
       <a href="index.html" class="current">开发内容</a>
       <a href="../competitors/index.html">竞品分析</a>
       <a href="../about.html">关于</a>
+      <div class="header-logout-mobile">
+        <button class="logout" onclick="sessionStorage.removeItem('tbl_auth');location.reload()">登出</button>
+      </div>
     </nav>
     <button class="logout" onclick="sessionStorage.removeItem('tbl_auth');location.reload()">登出</button>
+    <button class="nav-toggle" id="nav-toggle" aria-label="菜单" aria-expanded="false">☰</button>
   </div>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById('nav-toggle');
+  var nav = document.getElementById('site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? '✕' : '☰';
+    });
+  }
+})();
+</script>
 
 <main class="container">
   <div class="page-title">
@@ -36,8 +135,27 @@
     项目关键技术分析报告、BOM 文档、架构决策记录与专题调研。深度技术资料，用于团队成员对齐技术路线。
   </p>
 
-  <ul class="item-list">
-    <li class="item">
+  <!-- 分类过滤 Chip 栏 -->
+  <div class="filter-bar" id="filter-bar">
+    <span class="filter-label">FILTER</span>
+    <button class="filter-chip active" data-cat="all">全部</button>
+    <button class="filter-chip" data-cat="电机控制">电机控制</button>
+    <button class="filter-chip" data-cat="调研">调研</button>
+    <button class="filter-chip" data-cat="方案">方案</button>
+    <button class="filter-chip" data-cat="评估">评估</button>
+    <button class="filter-chip" data-cat="OpenARM">OpenARM</button>
+    <button class="filter-chip" data-cat="AGV">AGV</button>
+    <button class="filter-chip" data-cat="BOM">BOM</button>
+    <button class="filter-chip" data-cat="P0">P0</button>
+    <button class="filter-chip" data-cat="报告 A">报告 A</button>
+    <button class="filter-chip" data-cat="报告 B">报告 B</button>
+    <button class="filter-chip" data-cat="报告 C">报告 C</button>
+    <button class="filter-chip" data-cat="INDEX">INDEX</button>
+  </div>
+
+  <ul class="item-list" id="item-list">
+
+    <li class="item" data-category="电机控制">
       <div class="date">2026-05-22</div>
       <div>
         <a class="title" href="robstride-encoder-analysis/index.html">
@@ -56,7 +174,7 @@
       </div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="评估">
       <div class="date">2026-05-22</div>
       <div>
         <a class="title" href="dual-encoder-cost-evaluation/index.html">
@@ -64,7 +182,7 @@
         </a>
         <p class="desc">
           代码库实证：OpenARM 原版=达妙双编码器，OpenARMX=灵足（硬件 2×AS5047P 但驱动未激活 encoder2）
-          · 方案A（谐波+达妙双编码）$\,$~¥18,200/臂 vs 方案B（全达妙双编码）$\,$~¥15,000/臂
+          · 方案A（谐波+达妙双编码）约¥18,200/臂 vs 方案B（全达妙双编码）约¥15,000/臂
           · 当前 RS04 基线 ¥8,400/臂 · 双臂 BOM 增量 ¥1.32-1.96万
           · 推荐分阶段实施：先全达妙双编码行星验证精度，按需再升谐波。
         </p>
@@ -75,7 +193,7 @@
       </div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="方案">
       <div class="date">2026-05-22</div>
       <div>
         <a class="title" href="shoulder-elbow-harmonic-plan/index.html">
@@ -94,7 +212,7 @@
       </div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="调研">
       <div class="date">2026-05-22</div>
       <div>
         <a class="title" href="industry-harmonic-planetary-research/index.html">
@@ -113,7 +231,7 @@
       </div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="电机控制">
       <div class="date">2026-05-22</div>
       <div>
         <a class="title" href="encoder-pi-backlash/index.html">
@@ -132,7 +250,7 @@
       </div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="电机控制">
       <div class="date">2026-05-22</div>
       <div>
         <a class="title" href="mit-pd-feedforward-signal-chain/index.html">
@@ -153,7 +271,7 @@
       </div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="电机控制">
       <div class="date">2026-05-21</div>
       <div>
         <a class="title" href="foc-mit-control-deep-dive/index.html">
@@ -172,7 +290,7 @@
       </div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="OpenARM">
       <div class="date">2026-04-19</div>
       <div>
         <a class="title" href="openarm-control-architecture/index.html">
@@ -190,7 +308,7 @@
       </div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="AGV">
       <div class="date">2026-04-19</div>
       <div>
         <a class="title" href="agv-navigation-architecture/index.html">
@@ -209,7 +327,7 @@
       </div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="报告 A">
       <div class="date">2026-04-16</div>
       <div>
         <a class="title" href="report-a-dual-x86/index.html">技术分析报告 A · 双 X86 方案</a>
@@ -222,7 +340,7 @@
       <div class="meta"><span class="badge">报告 A</span></div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="报告 B">
       <div class="date">2026-04-16</div>
       <div>
         <a class="title" href="report-b-dual-rdk/index.html">技术分析报告 B · 双 RDK 方案</a>
@@ -234,7 +352,7 @@
       <div class="meta"><span class="badge">报告 B</span></div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="报告 C">
       <div class="date">2026-04-16</div>
       <div>
         <a class="title" href="report-c-weekly-plan/index.html">两个月研发规划报告 · 周级（W1-W8）</a>
@@ -246,7 +364,7 @@
       <div class="meta"><span class="badge">报告 C</span></div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="P0">
       <div class="date">2026-04-17</div>
       <div>
         <a class="title" href="phase-1-p0-priority/index.html">一期 P0 优先级方案</a>
@@ -258,7 +376,7 @@
       <div class="meta"><span class="badge">P0</span></div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="BOM">
       <div class="date">2025-09-24</div>
       <div>
         <a class="title" href="bom-v21-hardware-baseline/index.html">BOM v2.1 · 硬件基线解析</a>
@@ -270,7 +388,7 @@
       <div class="meta"><span class="badge">BOM</span></div>
     </li>
 
-    <li class="item">
+    <li class="item" data-category="INDEX">
       <div class="date">持续更新</div>
       <div>
         <a class="title" href="project-knowledge-base/index.html">祥承项目知识库总览</a>
@@ -280,7 +398,10 @@
       </div>
       <div class="meta"><span class="badge">INDEX</span></div>
     </li>
+
   </ul>
+
+  <p class="filter-empty" id="filter-empty">该分类暂无文章。</p>
 
   <p style="margin-top:24px;font-size:0.82rem;color:var(--muted)">
     原文档位于 Obsidian Vault · <span class="mono">🔌 祥承电子/02｜研发进展跟踪/03｜2026-04报告三件套/</span>。
@@ -294,6 +415,48 @@
     <div class="mini">© 2026 Transcribe Box Lab · 祥承智能机器人实验室</div>
   </div>
 </footer>
+
+<script>
+(function () {
+  var chips = document.querySelectorAll('.filter-chip');
+  var items = document.querySelectorAll('#item-list .item');
+  var emptyMsg = document.getElementById('filter-empty');
+
+  function setFilter(cat) {
+    // Update chip active state
+    chips.forEach(function (c) {
+      c.classList.toggle('active', c.dataset.cat === cat);
+    });
+
+    // Show/hide items
+    var visibleCount = 0;
+    items.forEach(function (item) {
+      var match = (cat === 'all') || (item.dataset.category === cat);
+      if (match) {
+        item.removeAttribute('hidden');
+        visibleCount++;
+      } else {
+        item.setAttribute('hidden', '');
+      }
+    });
+
+    // Empty state
+    if (emptyMsg) {
+      emptyMsg.classList.toggle('show', visibleCount === 0);
+    }
+  }
+
+  // Bind click events
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      setFilter(chip.dataset.cat);
+    });
+  });
+
+  // Initialize: show all
+  setFilter('all');
+})();
+</script>
 
 </body>
 </html>

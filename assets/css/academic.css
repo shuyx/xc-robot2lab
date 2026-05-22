@@ -487,6 +487,11 @@ code, pre, .mono {
   padding: 48px 24px;
   align-items: start;
 }
+/* Grid children must not overflow their track */
+.doc-toc,
+.doc-prose {
+  min-width: 0;
+}
 
 .doc-toc {
   position: sticky; top: 80px;
@@ -623,7 +628,12 @@ code, pre, .mono {
 
 /* 响应式 */
 @media (max-width: 900px) {
-  .doc-layout { grid-template-columns: 1fr; gap: 16px; }
+  .doc-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    width: 100%;
+    overflow: hidden;
+  }
   .doc-toc {
     position: static;
     max-height: none;
@@ -631,6 +641,16 @@ code, pre, .mono {
     border-bottom: 1px solid var(--border);
     padding-bottom: 12px;
     margin-bottom: 12px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .doc-toc ul {
+    width: 100%;
+  }
+  .doc-toc li {
+    white-space: normal;
+    word-break: break-word;
+    overflow: hidden;
   }
 }
 
@@ -899,4 +919,406 @@ code, pre, .mono {
 }
 @media (max-width: 680px) {
   .video-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================== */
+/* 响应式断点系统                                                   */
+/* 断点约定：                                                       */
+/*   --bp-tablet: 820px  (iPad 竖屏)                               */
+/*   --bp-mobile: 600px  (手机横屏)                                */
+/*   --bp-xs    : 480px  (手机竖屏)                                */
+/* ============================================================== */
+
+/* ---- 全局图片自适应（所有 img 默认不溢出容器）---- */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---- 全局表格不溢出（文章内表格横滑容器）---- */
+.doc-prose table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  min-width: 0;
+}
+
+/* ---- 禁止 body 横向滚动 ---- */
+body {
+  overflow-x: hidden;
+}
+
+/* ============================================================== */
+/* 移动端汉堡菜单 JS Hook（由 HTML 内联 JS 控制 open/close 状态）    */
+/* ============================================================== */
+
+/* 汉堡按钮（默认隐藏，手机端显示） */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(201,169,97,.45);
+  color: var(--ivory);
+  cursor: pointer;
+  padding: 6px 10px;
+  font-size: 1.2rem;
+  line-height: 1;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.nav-toggle:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* 移动端登出按钮收进菜单 */
+.header-logout-mobile {
+  display: none;
+}
+
+/* ============================================================== */
+/* 平板断点 820px                                                  */
+/* ============================================================== */
+@media (max-width: 820px) {
+
+  /* ----- Header ----- */
+  .site-header .wrap {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 12px 16px;
+    gap: 8px;
+  }
+  .site-header nav {
+    gap: 16px;
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  /* ----- Hero ----- */
+  .hero {
+    padding: 48px 16px 40px;
+  }
+  .hero .wrap {
+    gap: 32px;
+  }
+
+  /* ----- Container ----- */
+  .container {
+    padding: 32px 16px;
+  }
+
+  /* ----- 首页两列布局 → 单列 ----- */
+  .container > div[style*="grid-template-columns:2fr 1fr"] {
+    display: block !important;
+  }
+  .container > div[style*="grid-template-columns:2fr 1fr"] > aside {
+    margin-top: 28px;
+  }
+
+  /* ----- 文章列表 item ----- */
+  .item {
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: auto auto;
+    gap: 12px 16px;
+  }
+  .item .meta {
+    grid-column: 2;
+    text-align: left;
+    padding-top: 4px;
+  }
+
+  /* ----- Doc layout ----- */
+  .doc-layout {
+    padding: 24px 16px;
+  }
+
+  /* ----- Competitor hero ----- */
+  .competitor-hero {
+    height: 240px;
+  }
+  .competitor-hero h1 {
+    font-size: 1.8rem;
+  }
+  .competitor-hero .inner {
+    padding: 48px 16px 24px;
+  }
+
+  /* ----- 竞品网格 ----- */
+  .competitor-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+/* ============================================================== */
+/* 手机断点 600px                                                   */
+/* ============================================================== */
+@media (max-width: 600px) {
+
+  /* ----- 字号调整 ----- */
+  :root {
+    --fz-h1: 1.75rem;
+    --fz-h2: 1.45rem;
+    --fz-h3: 1.15rem;
+  }
+
+  /* ----- Header：汉堡菜单模式 ----- */
+  .site-header .wrap {
+    position: relative;
+    padding: 10px 16px;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  /* 桌面登出按钮在手机隐藏 */
+  .site-header > .wrap > .logout {
+    display: none;
+  }
+  /* 导航折叠 */
+  .site-header nav {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    background: var(--navy);
+    border-top: 1px solid rgba(201,169,97,.2);
+    padding: 8px 0 4px;
+  }
+  .site-header nav.open {
+    display: flex;
+  }
+  .site-header nav a {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .site-header nav a:last-child {
+    border-bottom: none;
+  }
+  /* 登出按钮在菜单底部 */
+  .header-logout-mobile {
+    display: block;
+    padding: 10px 16px 14px;
+    border-top: 1px solid rgba(201,169,97,.2);
+  }
+  .header-logout-mobile .logout {
+    width: 100%;
+    text-align: left;
+  }
+
+  /* ----- Hero ----- */
+  .hero {
+    padding: 36px 16px 32px;
+  }
+  .hero h1 {
+    font-size: clamp(1.6rem, 6vw, 2.25rem);
+  }
+  .hero .tagline {
+    font-size: 1rem;
+  }
+  .hero p.lead {
+    font-size: 0.95rem;
+  }
+
+  /* ----- Container ----- */
+  .container {
+    padding: 24px 14px;
+  }
+
+  /* ----- 首页两列布局 → 单列 ----- */
+  .container > div[style*="grid-template-columns"] {
+    display: block !important;
+  }
+  .container > div[style*="grid-template-columns"] > * + * {
+    margin-top: 24px;
+  }
+
+  /* ----- 文章列表：移除日期列，改为行内 ----- */
+  .item {
+    display: block;
+    padding: 18px 0;
+  }
+  .item .date {
+    font-size: 0.78rem;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .item .meta {
+    margin-top: 8px;
+    text-align: left;
+  }
+  .item a.title {
+    font-size: 1rem;
+  }
+  .item p.desc {
+    font-size: 0.85rem;
+    margin-top: 6px;
+  }
+
+  /* ----- Section grid：强制单列 ----- */
+  .section-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* ----- Section card ----- */
+  .section-card {
+    padding: 24px 20px;
+  }
+
+  /* ----- Doc layout：TOC 移到顶部，可折叠 ----- */
+  .doc-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 16px 14px;
+  }
+  .doc-toc {
+    position: static;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+
+    /* 默认折叠 */
+    overflow: hidden;
+    max-height: 48px;
+    transition: max-height .25s ease;
+    padding-right: 0;
+  }
+  .doc-toc.open {
+    max-height: 1000px;
+  }
+  /* TOC 折叠/展开开关 */
+  .toc-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 10px 0 8px;
+    user-select: none;
+  }
+  .toc-toggle-label {
+    font-size: 0.75rem;
+    color: var(--gold);
+    font-family: 'Merriweather', Georgia, serif;
+    letter-spacing: 3px;
+  }
+  .toc-toggle-icon {
+    color: var(--gold);
+    font-size: 1rem;
+    transition: transform .2s ease;
+  }
+  .doc-toc.open .toc-toggle-icon {
+    transform: rotate(180deg);
+  }
+  /* 在 TOC open 时正文回链可见 */
+  .doc-toc .en {
+    display: none; /* 手机上 .en 由 toc-toggle 替代 */
+  }
+
+  /* ----- Doc prose 字号 ----- */
+  .doc-prose {
+    font-size: 0.97rem;
+  }
+  .doc-prose h1 {
+    font-size: 1.6rem;
+  }
+  .doc-prose h2 {
+    font-size: 1.25rem;
+  }
+  .doc-prose h3 {
+    font-size: 1.05rem;
+  }
+  .doc-prose pre {
+    font-size: 0.8rem;
+  }
+  /* 代码块不撑破容器 */
+  .doc-prose pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* 公式块不溢出 */
+  .doc-prose .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ----- Competitor ----- */
+  .competitor-hero {
+    height: 200px;
+  }
+  .competitor-hero h1 {
+    font-size: 1.5rem;
+  }
+  .competitor-hero .inner {
+    padding: 32px 14px 16px;
+  }
+  .competitor-grid {
+    grid-template-columns: 1fr;
+  }
+  .competitor-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* ----- Team grid ----- */
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ----- Partner row ----- */
+  .partner-row {
+    gap: 8px;
+  }
+  .partner {
+    font-size: 0.82rem;
+    padding: 8px 12px;
+  }
+
+  /* ----- Login card ----- */
+  .login-card {
+    padding: 28px 20px 24px;
+  }
+
+  /* ----- Footer ----- */
+  .site-footer {
+    padding: 24px 16px 20px;
+  }
+  .site-footer .wrap {
+    font-size: 0.75rem;
+  }
+
+  /* ----- Video grid ----- */
+  .video-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ============================================================== */
+/* 超小屏 480px                                                    */
+/* ============================================================== */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.45rem;
+  }
+  .hero .tagline {
+    font-size: 0.92rem;
+  }
+  .competitor-gallery {
+    grid-template-columns: 1fr;
+  }
+  .doc-prose .mermaid {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
