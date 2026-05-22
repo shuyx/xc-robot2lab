@@ -38,6 +38,27 @@
 
   <ul class="item-list">
     <li class="item">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="mit-pd-feedforward-signal-chain/index.html">
+          MIT 运控深析（二）：PD 参数、前馈补偿与完整信号链路
+        </a>
+        <p class="desc">
+          MIT 五元组 PD 控制律（Kp=弹簧/Kd=减震器）· 阻尼比联动调参公式 ζ=Kd/(2√KpJ)，目标 ζ∈[0.7,1.0]
+          · 轨迹规划器持续生成路径点 vs 终点 · 遥操作 vs 视觉规划数据质量对比
+          · openarmx_xc 前馈全缺失现状 + 动力学方程 M·ddq+C+g+τ_f
+          · 性价比标定四步法（摩擦辨识→质心→惯量→残差验证）
+          · PD+前馈 vs PID 哲学差异 · 三层控制环（FOC/PD/轨迹规划）与 CAN 1kHz 的正确解读
+          · Kp/Kd → τ → Iq_ref=τ/Kt → FOC 完整信号链路 · RobStride τ_ff MIT帧原生支持。
+        </p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span><br>
+        <span style="display:inline-block;margin-top:6px">PD调参 · 前馈补偿 · 信号链路</span>
+      </div>
+    </li>
+
+    <li class="item">
       <div class="date">2026-05-21</div>
       <div>
         <a class="title" href="foc-mit-control-deep-dive/index.html">

@@ -1,0 +1,74 @@
+\documentclass[tikz, border=12pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, backgrounds, fit, calc}
+
+\begin{document}
+\begin{tikzpicture}[
+  every node/.style={font=\small},
+  box/.style={draw, rounded corners=5pt, minimum width=5.8cm, minimum height=1.1cm,
+              align=center, fill=gray!8, line width=0.7pt},
+  formula/.style={draw, rounded corners=5pt, minimum width=3.8cm, minimum height=1.8cm,
+              align=center, fill=blue!5, line width=0.8pt},
+  statebox/.style={draw, rounded corners=5pt, minimum width=3.0cm, minimum height=2.6cm,
+              align=center, line width=0.7pt},
+  >=Stealth
+]
+
+% Top: PD control law
+\node[box] (pd) {
+  \textbf{PD 控制律} \\[5pt]
+  $\tau = K_p(p_r - p) + K_d(\dot{p}_r - \dot{p}) + \tau_{ff}$
+};
+
+% Middle: formula boxes
+\node[formula, below left=1.8cm and 0.6cm of pd] (omegan) {
+  \textbf{固有频率} \\[5pt]
+  $\omega_n = \sqrt{\dfrac{K_p}{J}}$
+};
+\node[formula, below right=1.8cm and 0.6cm of pd] (zeta) {
+  \textbf{阻尼比} \\[5pt]
+  $\zeta = \dfrac{K_d}{2\sqrt{K_p \cdot J}}$
+};
+
+\draw[->, line width=0.7pt] (pd.south) -- ++(0,-0.4) -| (omegan.north);
+\draw[->, line width=0.7pt] (pd.south) -- ++(0,-0.4) -| (zeta.north);
+
+% Bottom: three response state boxes
+\node[statebox, fill=red!6,
+      below left=2.0cm and 3.0cm of zeta] (under) {
+  $\zeta < 1$ \\[5pt]
+  \textbf{欠阻尼} \\[5pt]
+  \small 响应快\\[-2pt]\small 超调振荡\\[-2pt]\small 有损关节
+};
+\node[statebox, fill=green!6,
+      below=2.0cm of zeta] (critical) {
+  $\zeta \approx 1$ \\[5pt]
+  \textbf{临界阻尼} \\[5pt]
+  \small 最快到达\\[-2pt]\small 无超调\\[-2pt]\small \textbf{理想工作点}
+};
+\node[statebox, fill=yellow!18,
+      below right=2.0cm and 3.0cm of zeta] (over) {
+  $\zeta > 1$ \\[5pt]
+  \textbf{过阻尼} \\[5pt]
+  \small 无振荡\\[-2pt]\small 响应缓慢\\[-2pt]\small 末端爬行
+};
+
+\draw[->, line width=0.7pt] (zeta.south) -- ++(0,-0.5) -| (under.north);
+\draw[->, line width=0.7pt] (zeta.south) -- ++(0,-0.5) -- (critical.north);
+\draw[->, line width=0.7pt] (zeta.south) -- ++(0,-0.5) -| (over.north);
+
+% Target range annotation
+\node[below=0.35cm of critical, font=\footnotesize, text=gray!80] {
+  目标调参范围：$\zeta \in [0.7,\;1.0]$
+};
+
+% Key insight box
+\node[box, fill=orange!7,
+      below=5.8cm of pd] (insight) {
+  \small 调大 $K_p$ 不调 $K_d$：$\omega_n\uparrow$，$\zeta\downarrow$ → 必然振荡 \\[3pt]
+  \small 联动调参：$K_p \uparrow$ 时，$K_d$ 需同步增大约 $\sqrt{K_p}$ 倍
+};
+
+\end{tikzpicture}
+\end{document}

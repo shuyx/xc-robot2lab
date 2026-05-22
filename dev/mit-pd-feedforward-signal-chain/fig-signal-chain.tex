@@ -1,0 +1,86 @@
+\documentclass[tikz, border=12pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, backgrounds, fit}
+
+\begin{document}
+\begin{tikzpicture}[
+  every node/.style={font=\small},
+  mainbox/.style={draw, rounded corners=5pt, minimum width=5.0cm, minimum height=1.1cm,
+                  align=center, fill=blue!6, line width=0.7pt},
+  auxbox/.style={draw, dashed, rounded corners=4pt, minimum width=4.0cm, minimum height=0.9cm,
+                 align=center, fill=gray!6, line width=0.5pt, font=\footnotesize},
+  label/.style={font=\footnotesize, fill=white, inner sep=3pt, align=left},
+  >=Stealth,
+  node distance=1.3cm
+]
+
+% Main vertical chain
+\node[mainbox] (plan) {
+  \textbf{运动规划} \\[-1pt]
+  \small 上位机 · 100\,Hz
+};
+\node[mainbox, below=of plan] (can) {
+  \textbf{CAN 总线} \\[-1pt]
+  \small 1\,kHz · MIT 帧 8\,B
+};
+\node[mainbox, below=of can] (pd) {
+  \textbf{PD 控制器} \\[-1pt]
+  \small 驱动器固件 · 10–20\,kHz
+};
+\node[mainbox, below=of pd] (tau) {
+  $\tau$（Nm）\\[-1pt]
+  \small 目标力矩
+};
+\node[mainbox, below=of tau] (iq) {
+  $I_{q,\mathrm{ref}}$（Arms）\\[-1pt]
+  \small 目标 Q 轴电流
+};
+\node[mainbox, below=of iq] (foc) {
+  \textbf{FOC 电流环} \\[-1pt]
+  \small 驱动器固件 · 20–40\,kHz
+};
+\node[mainbox, below=of foc] (pwm) {
+  \textbf{PWM → 三相逆变器} \\[-1pt]
+  \small 电机执行端
+};
+
+% Arrows with formulas on right
+\draw[->, line width=0.8pt] (plan) -- (can)
+  node[midway, right=0.2cm, label] {$K_p,\;K_d,\;p_r,\;\dot{p}_r,\;\tau_{ff}$ 写入寄存器};
+\draw[->, line width=0.8pt] (can) -- (pd)
+  node[midway, right=0.2cm, label] {每帧更新参考值（不影响 PD/FOC 频率）};
+\draw[->, line width=0.8pt] (pd) -- (tau)
+  node[midway, right=0.2cm, label] {$\tau = K_p(p_r{-}p) + K_d(\dot{p}_r{-}\dot{p}) + \tau_{ff}$};
+\draw[->, line width=0.8pt] (tau) -- (iq)
+  node[midway, right=0.2cm, label] {$I_{q,\mathrm{ref}} = \tau\,/\,K_t \quad (K_t = 2.1\;\mathrm{Nm/A})$};
+\draw[->, line width=0.8pt] (iq) -- (foc);
+\draw[->, line width=0.8pt] (foc) -- (pwm);
+
+% Encoder feedback (left side)
+\node[auxbox, left=2.8cm of pd] (enc) {
+  编码器反馈 \\
+  $p_{\mathrm{actual}},\;\dot{p}_{\mathrm{actual}}$
+};
+\draw[->, dashed, line width=0.6pt] (enc) -- (pd);
+
+% Id branch (left side, into FOC)
+\node[auxbox, left=2.8cm of foc] (id) {
+  $I_{d,\mathrm{ref}}$ ← 弱磁策略 \\
+  与 $K_p,\,K_d$ \textbf{无关}
+};
+\draw[->, dashed, line width=0.6pt] (id) -- (foc);
+
+% Background region labels
+\begin{pgfonlayer}{background}
+  \node[draw, dashed, rounded corners=8pt, fill=blue!3, line width=0.4pt,
+        fit=(plan), inner sep=6pt] (bg1) {};
+  \node[above=0.05cm of bg1, font=\tiny, text=gray] {上位机软件层};
+
+  \node[draw, dashed, rounded corners=8pt, fill=orange!4, line width=0.4pt,
+        fit=(pd)(tau)(iq)(foc), inner sep=6pt] (bg2) {};
+  \node[above=0.05cm of bg2.north east, font=\tiny, text=gray, xshift=-0.5cm] {驱动器固件层};
+\end{pgfonlayer}
+
+\end{tikzpicture}
+\end{document}
