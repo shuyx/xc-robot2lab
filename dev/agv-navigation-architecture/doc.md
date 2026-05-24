@@ -93,17 +93,17 @@ graph TB
 
 ```mermaid
 graph LR
-    subgraph M10[M10 · 前向精准雷达]
-        M10a[30 m 射程<br/>1 mm 精度<br/>12 Hz<br/>前方 270度]
+    subgraph M10["M10 · 前向精准雷达"]
+        M10a["30m · 1mm 精度<br/>12Hz · 前向 270°"]
     end
-    subgraph MS200[MS200 · 全向避障雷达]
-        MS200a[360度 扫描<br/>200 Hz 高频<br/>中等精度]
+    subgraph MS200["MS200 · 全向避障雷达"]
+        MS200a["360° 扫描<br/>200Hz · 中等精度"]
     end
 
-    M10 -->|用于| U1[全局定位<br/>SLAM 建图基准]
-    M10 -->|用于| U2[AMCL 精定位<br/>工位对接前向校准]
-    MS200 -->|用于| U3[Nav2 local_costmap<br/>obstacle layer]
-    MS200 -->|用于| U4[安全急停<br/>近距离急停触发]
+    M10 -->|用于| U1["全局定位<br/>SLAM 建图基准"]
+    M10 -->|用于| U2["AMCL 精定位<br/>工位前向校准"]
+    MS200 -->|用于| U3["Nav2 obstacle layer"]
+    MS200 -->|用于| U4["安全急停"]
 
     style M10 fill:#C9A961,color:#0A2540
     style MS200 fill:#E5DFD0
@@ -404,15 +404,17 @@ graph TD
 
 ```mermaid
 flowchart LR
-    S1[Step 1 · 1 周<br/>里程计清洁化<br/>轮径+轴距实测<br/>直线 10m 漂移 &lt; 10 cm]
-    S2[Step 2 · 1 周<br/>EKF 融合<br/>轮式 + IMU 200Hz<br/>直角转弯 1s 内收敛]
-    S3[Step 3 · 已完成<br/>Cartographer→SLAM Toolbox<br/>20m 回原点 &lt; 10 cm]
-    S4[Step 4 · 1 周<br/>Nav2 + AMCL + AprilTag<br/>工位对接 &lt; 3 cm]
+    S1["Step 1 · 1 周<br/>里程计清洁化"]
+    S2["Step 2 · 1 周<br/>EKF 融合"]
+    S3["Step 3 · 已完成<br/>SLAM Toolbox"]
+    S4["Step 4 · 1 周<br/>Nav2 + AprilTag"]
 
     S1 --> S2 --> S3 --> S4
 
     style S4 fill:#C9A961,color:#0A2540
 ```
+
+> 各阶段详细做法与验收指标见下方表格。
 
 | 阶段 | 本期验收 |
 |---|---|

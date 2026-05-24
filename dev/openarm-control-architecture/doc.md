@@ -189,11 +189,11 @@ flowchart LR
 
 ```mermaid
 graph LR
-    S1[Step 1<br/>实时内核<br/>PREEMPT_RT 6.1+<br/>isolcpus + chrt -f 80]
-    S2[Step 2<br/>控制频率<br/>100 → 500 Hz]
-    S3[Step 3<br/>开放力矩接口<br/>position/velocity/effort]
-    S4[Step 4<br/>补偿阻抗控制器<br/>τ = PD + τ_g + τ_c + τ_f]
-    S5[Step 5<br/>轨迹在线整形<br/>Ruckig Type V<br/>jerk-limited]
+    S1["Step 1<br/>实时内核 PREEMPT_RT"]
+    S2["Step 2<br/>控制频率 100→500 Hz"]
+    S3["Step 3<br/>开放力矩接口"]
+    S4["Step 4<br/>补偿阻抗控制器"]
+    S5["Step 5<br/>Ruckig 轨迹整形"]
 
     S1 -.-> S2 -.-> S3 -.-> S4 -.-> S5
 
@@ -265,17 +265,19 @@ graph TD
 
 ```mermaid
 flowchart LR
-    Tools[工装清单<br/>扭摆杆<br/>悬挂夹具<br/>激光位移传感器]
-    M1[悬挂法<br/>测质量]
-    M2[两点悬挂法<br/>测重心]
-    M3[扭摆法<br/>测惯量]
-    Yaml[inertials.yaml<br/>实测替换 CAD 估值]
-    Sim[MuJoCo 仿真回放<br/>误差 < 5%]
+    Tools["工装清单<br/>扭摆杆+激光位移"]
+    M1["悬挂法<br/>测质量"]
+    M2["两点悬挂法<br/>测重心"]
+    M3["扭摆法<br/>测惯量"]
+    Yaml["inertials.yaml<br/>实测替换 CAD"]
+    Sim["MuJoCo 仿真回放<br/>误差 < 5%"]
 
     Tools --> M1 --> M2 --> M3 --> Yaml --> Sim
 
     style Yaml fill:#C9A961
 ```
+
+> 工装明细：扭摆杆 / 悬挂夹具 / 激光位移传感器。
 
 ### 6.2 摩擦辨识
 
@@ -324,13 +326,13 @@ OpenARM-X 在自由空间运动的极限精度由减速器决定：**9:1 行星�
 
 ```mermaid
 graph TD
-    L1[L1 电机电流环<br/>FOC 10 kHz · 驱动器内置]
-    L2[L2 关节 MIT 阻抗<br/>Kp/Kd/τ_ff<br/>静止漂移 &lt; 0.05 rad]
-    L3[L3 笛卡尔 IK<br/>FK/IK + URDF 标定<br/>±0.5 mm]
-    L4[L4 视觉粗定位<br/>YOLO 6D + ChArUco<br/>±5 mm]
-    L5[L5 力控柔顺接触<br/>力阈值 5N + Kp 动态降<br/>接触偏差 &lt; 0.1 mm]
-    L6[L6 视觉/力觉在线微调<br/>闭环迭代 2-3 次]
-    Task[任务层 · 绝对精度<br/>±0.1 mm ✅]
+    L1["L1 电机电流环<br/>FOC 10 kHz"]
+    L2["L2 关节 MIT 阻抗<br/>静止漂移 &lt; 0.05 rad"]
+    L3["L3 笛卡尔 IK<br/>±0.5 mm"]
+    L4["L4 视觉粗定位<br/>YOLO 6D · ±5 mm"]
+    L5["L5 力控柔顺接触<br/>接触偏差 &lt; 0.1 mm"]
+    L6["L6 视觉/力觉在线微调"]
+    Task["任务层 · ±0.1 mm ✅"]
 
     L1 --> L2 --> L3
     L3 --> L4 --> L5 --> L6 --> Task

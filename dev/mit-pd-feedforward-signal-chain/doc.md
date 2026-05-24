@@ -39,11 +39,13 @@ $$\tau = K_p(p_r - p) + K_d(\dot{p}_r - \dot{p}) + \tau_{ff}$$
 ```mermaid
 flowchart TD
     A["同一关节 · 同一固件"]
-    A --> B["Kp=200 Kd=5\n刚性位置控制\n精确到位"]
-    A --> C["Kp=0 Kd=5\n纯阻尼模式\n可被自由拖动"]
-    A --> D["Kp=0 Kd=0 τff=X\n纯力矩控制\n直接施加指定力矩"]
-    A --> E["Kp 随轨迹变化\n变刚度控制\n接触前软 接触后硬"]
+    A --> B["Kp=200 Kd=5<br/>刚性位置控制"]
+    A --> C["Kp=0 Kd=5<br/>纯阻尼模式"]
+    A --> D["Kp=0 Kd=0 τff=X<br/>纯力矩控制"]
+    A --> E["Kp 随轨迹变化<br/>变刚度控制"]
 ```
+
+> 各模式语义：刚性位置控制 = 精确到位；纯阻尼模式 = 可被自由拖动；纯力矩控制 = 直接施加指定力矩；变刚度控制 = 接触前软 / 接触后硬。
 
 这也是抖动的结构性根源之一：$K_p/K_d$ 只能以 CAN 的 1 kHz 帧率更新，指令离散性导致关节收到的"弹簧刚度"在跳变。对比 MIT Mini Cheetah 原版：关节 PD 控制在驱动板 MCU 以 **40 kHz** 运行，CAN 只传轨迹点——这才是低抖动的根本原因。
 
@@ -142,7 +144,7 @@ $$\omega_n = \sqrt{\frac{K_p}{J}}, \qquad \zeta = \frac{K_d}{2\sqrt{K_p \cdot J}
 
 当操作者动作突然加速时：
 
-```
+```text
 vel_actual 正在上升
 追踪延迟 → vel_ref 还停在旧的较低速度
 → e_vel = vel_ref - vel_actual < 0（负误差）
@@ -168,10 +170,10 @@ vel_actual 正在上升
 
 ```mermaid
 flowchart LR
-    subgraph 现状_裸PD
+    subgraph PD_current["现状：裸 PD"]
         A1["τ = Kp·e + Kd·ė"] --> A2["CAN → 关节电机"]
     end
-    subgraph 升级目标
+    subgraph PD_target["升级目标"]
         B1["τ = Kp·e + Kd·ė"] --> B3["求和"]
         B2["τ_ff = τ_g + τ_f + τ_i"] --> B3
         B3 --> B4["CAN → 关节电机"]
@@ -263,15 +265,15 @@ $$\tau_f = f_c \cdot \tanh(\omega/\omega_0) + f_v \cdot \omega$$
 
 ```mermaid
 flowchart TD
-    subgraph 上位机_100Hz
-        A["轨迹规划 + 前馈计算\n生成 p_ref · vel_ref · τ_ff"]
+    subgraph Host_100Hz["上位机 · 100Hz"]
+        A["轨迹规划 + 前馈计算<br/>p_ref · vel_ref · τ_ff"]
     end
-    subgraph CAN_1kHz
-        A --> B["MIT 帧\npos · vel · kp · kd · τ_ff"]
+    subgraph CAN_1kHz["CAN · 1kHz"]
+        A --> B["MIT 帧<br/>pos · vel · kp · kd · τ_ff"]
     end
-    subgraph 驱动器固件
-        B --> C["PD 控制器\n10–20 kHz"]
-        C --> D["FOC 电流环\n20–40 kHz"]
+    subgraph Driver_FW["驱动器固件"]
+        B --> C["PD 控制器 10–20 kHz"]
+        C --> D["FOC 电流环 20–40 kHz"]
         D --> E["PWM → 三相逆变器"]
     end
 ```
@@ -368,11 +370,13 @@ RobStride RS04 的 CAN 协议（`write_operation_frame`）直接实现了 MIT �
 
 ```mermaid
 flowchart LR
-    A["Step 1\n摩擦辨识\n半天·零成本"] --> B["Step 2\n质量+质心标定\n1天·约200元"]
-    B --> C["Step 3\n惯量缩放修正\n2天工时"]
-    C --> D["Step 4\n力矩残差验证\n半天·零成本"]
-    D --> E["启用 τ_ff\n写入 CAN 帧\nPD+前馈上线"]
+    A["Step 1<br/>摩擦辨识"] --> B["Step 2<br/>质量+质心标定"]
+    B --> C["Step 3<br/>惯量缩放修正"]
+    C --> D["Step 4<br/>力矩残差验证"]
+    D --> E["启用 τ_ff · 上线"]
 ```
+
+> 投入估算：Step 1 半天 / 零成本；Step 2 1 天 / ≈200 元；Step 3 2 天工时；Step 4 半天 / 零成本。
 
 摩擦辨识 + 质心标定完成后，重力补偿即可达可用水平，预期可消除当前静态垂降约 6° 的稳态误差（来自 `openarmx_gravity_comp/README_CN.md` 的分析：$\tau_{gravity}/K_p \approx 5.3/50 \approx 6°$）。
 

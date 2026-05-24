@@ -151,11 +151,528 @@
     <button class="filter-chip" data-cat="报告 B">报告 B</button>
     <button class="filter-chip" data-cat="报告 C">报告 C</button>
     <button class="filter-chip" data-cat="INDEX">INDEX</button>
+    <button class="filter-chip" data-cat="AI判断">AI 判断</button>
+    <button class="filter-chip" data-cat="关节抖动">关节抖动</button>
+    <button class="filter-chip" data-cat="重力补偿">重力补偿</button>
+    <button class="filter-chip" data-cat="轨迹规划">轨迹规划</button>
+    <button class="filter-chip" data-cat="产品定位">产品定位</button>
+    <button class="filter-chip" data-cat="项目管理">项目管理</button>
   </div>
 
   <ul class="item-list" id="item-list">
 
+    
+    <li class="item" data-category="AI判断">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-00-01/index.html">01-抖动诊断方法论</a>
+        <p class="desc">文档性质：本文件属于「00-我的AI判断」目录 —— 存放 xc-robot Agent 下的判断、假设与方法论草案，非验证结论。 来源：基于 KB 对比文档 06｜全库汇总总览/3-2OpenARM原版与xc架构对比.md + 用户口述的 8 条候选根因（见 xc-robot SKILL.md「判</p>
+      </div>
+      <div class="meta">
+        <span class="badge">AI判断</span>
+      </div>
+    </li>
+    <li class="item" data-category="AI判断">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-00-02/index.html">02-机械臂抖动诊断与控制优化</a>
+        <p class="desc">文档性质：本文是 01-抖动诊断方法论 的代码级深化 —— 把 8 条「经验候选根因」用 openarmxxcrobot2 实际代码逐条核验、定级。 v2 修正说明（2026-05-22）：v1 由 5 个并行子 Agent 调研产出后，与一份独立的 Codex 分析交叉复核。核验确认 Codex </p>
+      </div>
+      <div class="meta">
+        <span class="badge">AI判断</span>
+      </div>
+    </li>
+    <li class="item" data-category="AI判断">
+      <div class="date">2026-05-24</div>
+      <div>
+        <a class="title" href="thinking-00-03/index.html">03-07思考过程全量Review与轨迹控制器方案</a>
+        <p class="desc">本次覆盖： - 07｜思考过程/ 下全部 Markdown：共 54 篇。 - 外部资料库： - Coding References/Openarm Something/：OpenARM 原版与生态仓库。 - Coding References/OpenarmX/：采购回来的 OpenARMX 版本</p>
+      </div>
+      <div class="meta">
+        <span class="badge">AI判断</span>
+      </div>
+    </li>
+    <li class="item" data-category="AI判断">
+      <div class="date">2026-05-25</div>
+      <div>
+        <a class="title" href="thinking-00-04/index.html">04-07思考过程矛盾审查报告</a>
+        <p class="desc">- 审查范围：07｜思考过程/ 全部 ~62 篇技术笔记 + 06｜全库汇总总览/ 主控架构对照 - 审查方式：Sonnet 4.6 agent 通读 + Opus 4.7 主线程交叉验证（基线快照独立 agent 提供） - 审查日期：2026-05-25 - 结果：17 条矛盾，按 P0/P1/</p>
+      </div>
+      <div class="meta">
+        <span class="badge">AI判断</span>
+      </div>
+    </li>
+    <li class="item" data-category="AI判断">
+      <div class="date">2026-05-25</div>
+      <div>
+        <a class="title" href="thinking-00-05/index.html">05-Mermaid缺陷扫描与SKILLv2.3补丁</a>
+        <p class="desc">- 触发场景：用户在 OpenCode + DeepSeek-V4-Flash 生成 Mermaid 图时频繁遇到「文字展示不全 / 被遮挡」问题 - 扫描范围：祥承电子 Vault 全量 .md（995 个，含 Mermaid 块的 50 个，块数 105 个） - 审查方式：Sonnet 4.6</p>
+      </div>
+      <div class="meta">
+        <span class="badge">AI判断</span>
+      </div>
+    </li>
     <li class="item" data-category="电机控制">
+      <div class="date">2026-05-21</div>
+      <div>
+        <a class="title" href="thinking-01-01/index.html">01-电机控制</a>
+        <p class="desc">| 序号 | 文件 | 主题 | |------|------|------| | 01 | 01-电机控制.md | 本索引 | | 02 | 02-MIT-FOC中间层代码库调研.md | MIT-FOC中间层代码 | | 03 | 03-Robstride编码器与减速器结构.md | 编码器与</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-21</div>
+      <div>
+        <a class="title" href="thinking-01-02/index.html">02-MIT-FOC中间层代码库调研</a>
+        <p class="desc">灵足时代 RobStride 关节模组的 FOC 电流环跑在 GD32F103 MCU 内部（固件闭源），无法修改底层 FOC 逻辑。但 MIT 模式（运控模式）通过 CAN 总线接收五元组指令：pos, vel, Kp, Kd, torqueτff。其中 τff（力矩前馈）默认填 0，是突破上层控</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-21</div>
+      <div>
+        <a class="title" href="thinking-01-03/index.html">03-Robstride编码器与减速器结构</a>
+        <p class="desc">调试 OpenArmX 机械臂抖动问题，需厘清灵足关节模组的硬件结构：单编码器还是双编码器？单行星还是双行星齿轮？ 来源：robstride-kscale/python/parametermap.py 寄存器定义 | 寄存器 | RS00/RS02 | RS03/RS04 | 含义 | |-----</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-21</div>
+      <div>
+        <a class="title" href="thinking-01-04/index.html">04-MIT-五元组解释</a>
+        <p class="desc">有几个问题，我现在已经大概能理解 MIT 和 FOC 的关系了，也大概知道了 MIT 用户模式下“不言自明”的解释。 但是我想了解一下，这边提到上位机通过 CAN 帧实时注入 PD 参数，具体是什么意思： 1. 什么叫 PD 参数？是因为其中包含了 KP 和 KD 吗？ 2. 这里的“位置环比例增益</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-21</div>
+      <div>
+        <a class="title" href="thinking-01-05/index.html">05-DQ轴与FOC原理</a>
+        <p class="desc">接续 MIT 五元组讨论，继续深入 FOC 物理原理：D/Q 轴的含义、三相电流的产生机制、弱磁控制的目的。 - D 轴（直轴）：沿转子永磁体 N 极方向。id 0 → 强化磁阻（更抖但力矩大）；id = 0 → 正常模式（最常用）；id < 0 → 弱磁（削弱磁场，允许更高转速） - Q 轴（交轴</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-21</div>
+      <div>
+        <a class="title" href="thinking-01-06/index.html">06-传统vsMIT模式与扭矩生成</a>
+        <p class="desc">接续前两篇笔记，补充传统驱动器与 MIT 模式的控制架构对比，以及 τ = Kt × iq 的扭矩生成原理。 上位机只发「目标位置」，驱动器内部走完整的 PID 三环： 上位机 ──postarget──→ 位置环 ──→ 速度环 ──→ 电流环FOC ──→ 电机 封闭不可改 封闭不可改 可调参数</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-21</div>
+      <div>
+        <a class="title" href="thinking-01-07/index.html">07-弱磁机制深析</a>
+        <p class="desc">本篇接续 05-DQ轴与FOC原理 和 06-传统vsMIT模式与扭矩生成，深入回答一个具体困惑： "给负的 Id 能削弱转子磁场"——转子的磁场到底怎么来的？负 Id 如何与之相互作用？ PMSM（永磁同步电机）的转子磁场来自永磁体（NdFeB 钕铁硼），产生恒定磁链 ψf。</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-21</div>
+      <div>
+        <a class="title" href="thinking-01-08/index.html">08-FOC定子结构与弱磁速度理解</a>
+        <p class="desc">接续 07-弱磁机制深析。用户已理解 DQ 轴本质后，进一步提出两个问题： 弱磁（负 $Id$）为何让转速更高（而非更低）；以及定子线圈的物理形态是什么。 用户原始理解： 旋转磁场与转子永磁体保持 90° 正交，靠 $Iq$ 分量驱动旋转。那弱磁（负 $Id$）削弱总磁通后，转速为什么反而更高？正 </p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-21</div>
+      <div>
+        <a class="title" href="thinking-01-09/index.html">09-MIT-PD参数与位置速度环深析</a>
+        <p class="desc">接续 01-电机控制（抖动四层根因分析）。用户在理解 MIT 运控模式的基础上，进一步追问： "上位机通过 CAN 帧实时注入 PD 参数"具体是什么意思，Kp/Kd 分别代表什么，位置环和速度环如何区分。 用户原始问题： 什么叫 PD 参数？是因为其中包含了 Kp 和 Kd 吗？ MIT 运控模式</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-21</div>
+      <div>
+        <a class="title" href="thinking-01-10/index.html">10-位置规划与PD参数深析</a>
+        <p class="desc">接续 09-MIT-PD参数与位置速度环深析。用户理解了 Kp/Kd 的基本含义后，进一步追问： 系统如何持续确定目标位置、视觉规划 vs 遥操作的质量差异、Kp 过大为何导致振荡、Kd 是否来自惯性、过阻尼/欠阻尼的行为差异。 用户原始问题： 我从外部给它一个终端位置，经过规划后机器人靠近这个准确</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-01-11/index.html">11-前馈补偿与动力学模型</a>
+        <p class="desc">前 10 篇讨论了 MIT PD 参数、FOC 原理、位置规划，用户已理解 Kp刚度 + Kd阻尼 的基本含义。本次延续讨论两个新问题： 1. OPA / openarmxxc 是否实现了前馈（重力、惯性、离心、摩擦力）？ 2. 动力学模型是什么、如何判断其准确性？ 用户原始问题： 前馈指的是事前调</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-01-12/index.html">12-PD前馈逻辑标定方案与RobStride参数调研</a>
+        <p class="desc">继 11-前馈补偿与动力学模型（讨论 openarmxxc 前馈缺失现状 + 动力学模型定义）之后，本次延续讨论四个子话题： 1. PD+前馈 vs PID 的逻辑确认 2. 工业/协作机器人为什么效果好（标定投入差异） 3. 性价比标定方案 4. 三层环嵌套 + FOC 与 Kp/Kd 的关系 5</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-01-13/index.html">13-KpKd信号链与FOC解耦</a>
+        <p class="desc">前 12 篇讨论了 PD+前馈、MIT 协议、标定方案。用户已理解： - Kp = 刚度、Kd = 阻尼、τff = 前馈 - 动力学模型需要标定才能做准前馈 - 三层环：轨迹规划 → PD → FOC 本次整理的核心主题：Kp/Kd 调整最终影响的是什么东西？和 FOC 的 Iq/Id 是什么关系</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-01-14/index.html">14-编码器精度背隙与控制频率PvsI</a>
+        <p class="desc">续 13-KpKd信号链与FOC解耦，用户在理解了 Kp/Kd→τ→Iqref→FOC 的信号链后，提出三个新方向： 1. RobStride 编码器是单编码器还是双编码器？14bit 与 17-24bit 差距多大？ 2. 回差（背隙）是什么意思？行星减速器 vs 谐波减速器的差异？ 3. PD </p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-01-15/index.html">15-齿轮背隙双编码器与PI动态权重</a>
+        <p class="desc">续 14-编码器精度背隙与控制频率PvsI，用户纠正术语并追问： 1. Backlash 的空行程具体是什么？ 2. arcmin 单位是什么？ 3. 宇树双行星方案是否更好？ 4. P/I 权重中的 P/I 和 Kp/Ki 的关系？ 5. 双编码器的优势和原理 6. 编码器的输入/输出是什么？ B</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-01-16/index.html">16-行星双编码器谐波vs冲击与行业调研</a>
+        <p class="desc">续 15-齿轮背隙双编码器与PI动态权重，用户追问三个方向，启用三个并行 Agent 调研后汇总。 用户原始问题： 现在的行星减速器有没有采用双编码器方案的？除了灵足时代之外，像达妙电机这种是否有双编码器的产品？ 达妙（Damiao）全系 DM-J 行星模组标配双磁编码器。 型号后缀 -2EC 即为</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-01-17/index.html">17-编码器类型双编码器价值与Inx松延调研</a>
+        <p class="desc">续 16-行星双编码器谐波vs冲击与行业调研，用户追问编码器原理、50:1 行星方案、因克斯模组参数，并要求检查 RobStride 代码中的编码器实现。 用户原始问题： 双编码器尤其是关节端或输出端的编码器，其本质是不是通过读取实际输出时的编码效果，来分析背隙（Backlash）和回差造成的误差，</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-01-18/index.html">18-肩肘谐波方案与OpenARM关节分配设计</a>
+        <p class="desc">轮式双臂机器人不需要跑跳、无落地冲击。谐波在双臂上的价值来自背隙极小的精度优势。本方案回答： 1. 哪些厂商采用"肩肘谐波 + 其余行星" 2. 7-DOF OpenARM 关节映射与谐波分配 3. 最优方案设计与性价比分析 | 关节 | 运动 | 背隙放大因子 | 精度影响力 | |------|</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-01-19/index.html">19-达妙vs灵足与全方案成本评估</a>
+        <p class="desc">基于代码仓库调研，确认 OpenARM 原版与 XC-Robot 在电机选型上的关键差异。综合笔记 14-18 的讨论，给出两个可行升级方案的成本评估。 从 Coding References/Openarm Something/openarmdriver/src/openarmdriver/con</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-01-20/index.html">20-编码器事实纠正硬件双芯片vs驱动单通道</a>
+        <p class="desc">之前多次分析中我错误地将 RS04 描述为"单编码器"或"单磁编码器"。用户从技术资产库文档中发现 RS00/RS03/RS04 的电气特性都标注"磁编码器: 2 pcs"，要求重新检视。 精度修正 2026-05-25： - RS03/RS04：2×AS5047P 确认（BOM + 代码实证 en</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-01-21/index.html">21-AS5047P双芯片物理架构与encoder2raw分析</a>
+        <p class="desc">核心实际问题不是“有没有双编码器”本身，而是： 1. 输入端 / 输出端相关编码器量能否被外部读取？ 2. 如果能读，是否足以拿来做输出端回差闭环补偿？ 本笔记按 灵足官网产品页 + RobStride GitHub 官方手册 + AS5047P 官方手册 重新整理，并修正原文中已与当前证据不一致的</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-01-22/index.html">22-双编码器固件融合验证实验</a>
+        <p class="desc">确认以下事实： - 宇树、达妙 -2EC 的双编码器闭环补偿在 电机驱动板固件（MCU 层） 内完成，上层 ROS2 代码不需要额外处理 - 达妙手册明确 "2EC = dual encoder, enabling backlash estimation"——固件已做融合 - 灵足 RS04 硬件有</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-01-23/index.html">23-背隙补偿方法验证与误差源优先级</a>
+        <p class="desc">确认双编码器对抖动改善有限后，需要回答两个问题： 1. 不换硬件，有哪些方法可以补偿背隙误差？ 2. 在当前 XC-Robot 硬件架构下，精度最大瓶颈到底在哪里？ 行业标准做法，广泛使用。 始终从同一方向接近目标位置，背隙不影响最终精度。 - OpenPnP（开源贴片机）：实现为 OneSided</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-24</div>
+      <div>
+        <a class="title" href="thinking-01-24/index.html">24-力控原理与反向驱动分析</a>
+        <p class="desc">解释两个核心概念：① QDD 低减速比方案为什么天生适合力控和拖动示教（基于电流环）；② 不可反向驱动是什么意思，反向驱动的价值是什么。 是的。力控的核心就是基于电流环的转矩估算，完整信号链如下： $$ \tau{em} = Kt \cdot Iq $$ - $Iq$ — 电机转矩电流（电流环实时采</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-24</div>
+      <div>
+        <a class="title" href="thinking-01-25/index.html">25-MIT五元组与E前馈力矩的动态计算</a>
+        <p class="desc">解答：MIT 五元组是哪五个元素？E（Effort/torque）作为前馈力矩，为什么不是固定值，而是每个控制周期根据关节角度和速度动态计算。 | 参数 | 含义 | 符号 | |------|------|------| | Pos | 目标位置（rad）| $q{des}$ | | Vel | </p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-25</div>
+      <div>
+        <a class="title" href="thinking-01-26/index.html">26-达妙DMJ力控能力核查</a>
+        <p class="desc">用户要求核查达妙 DM-J 系列（DM-J8009P-2EC、DM-J4340-2EC、DM-J4310-2EC）三项核心问题： 1. 是否具备内置力/扭矩传感器（dedicated force/torque sensor）？还是仅靠电流环估算？ 2. 高带宽力控能力？带宽多少 Hz？ 3. -2E</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="电机控制">
+      <div class="date">2026-05-25</div>
+      <div>
+        <a class="title" href="thinking-01-27/index.html">27-Kt转矩常数物理原理与温漂饱和影响</a>
+        <p class="desc">解答：Kt（转矩常数）是什么参数？为什么受温度和电流影响？对 XC-Robot 力控精度的具体含义？ 全称：Torque Constant（转矩常数） 物理定义：电机每安培电流能产生多少牛顿·米的电磁力矩。 $$ \tau{em} = Kt \cdot Iq $$ | 符号 | 含义 | 单位 |</p>
+      </div>
+      <div class="meta">
+        <span class="badge">电机控制</span>
+      </div>
+    </li>
+    <li class="item" data-category="关节抖动">
+      <div class="date">2026-05-23</div>
+      <div>
+        <a class="title" href="thinking-02-00/index.html">00-关节抖动根源解析</a>
+        <p class="desc">本目录存放 XC-Robot 机械臂关节抖动问题的根因诊断与排查记录。 | 序号 | 文件 | 主题 | |------|------|------| | 01 | 01-关节抖动根源解析.md | 本索引 | | 02~ | 按讨论主题递增 | — | - 硬件：灵足 RobStride RS04</p>
+      </div>
+      <div class="meta">
+        <span class="badge">关节抖动</span>
+      </div>
+    </li>
+    <li class="item" data-category="关节抖动">
+      <div class="date">2026-05-23</div>
+      <div>
+        <a class="title" href="thinking-02-01/index.html">01-机械臂控制</a>
+        <p class="desc">本目录存放 XC-Robot 机械臂控制相关技术讨论记录。 | 序号 | 文件 | 主题 | |------|------|------| | 01 | 01-机械臂控制.md | 本索引 | | 02~ | 按讨论主题递增 | — | - 硬件：OpenARM 七自由度开源臂魔改版（灵足 RobS</p>
+      </div>
+      <div class="meta">
+        <span class="badge">关节抖动</span>
+      </div>
+    </li>
+    <li class="item" data-category="关节抖动">
+      <div class="date">2026-05-23</div>
+      <div>
+        <a class="title" href="thinking-02-02/index.html">02-关节抖动根源分析总纲</a>
+        <p class="desc">本文基于以下资料综合分析： - 07｜思考过程/01-电机控制/ 全部 23 篇笔记 - openarmxxcrobot2 代码实测（v10simplehardware.cpp / openarmxv10bimanualcontrollers.yaml / gravitycompnode.cpp）</p>
+      </div>
+      <div class="meta">
+        <span class="badge">关节抖动</span>
+      </div>
+    </li>
+    <li class="item" data-category="重力补偿">
+      <div class="date">2026-05-23</div>
+      <div>
+        <a class="title" href="thinking-03-01/index.html">01-重力补偿前馈</a>
+        <p class="desc">本目录存放 XC-Robot 机械臂重力补偿与前馈控制的设计与实现记录。 | 序号 | 文件 | 主题 | |------|------|------| | 01 | 01-重力补偿前馈.md | 本索引 | | 02~ | 按讨论主题递增 | — | - 前馈信号链（来自 01-电机控制 结论）：</p>
+      </div>
+      <div class="meta">
+        <span class="badge">重力补偿</span>
+      </div>
+    </li>
+    <li class="item" data-category="重力补偿">
+      <div class="date">2026-05-24</div>
+      <div>
+        <a class="title" href="thinking-03-02/index.html">02-OpenARM重力补偿架构与XC状态核查</a>
+        <p class="desc">本文基于对 openarmcan、openarmteleop、openarmxxcrobot2 三个仓库的代码审查， 厘清三个核心问题：OpenARM 原版的电机减速方案、重力补偿的实际实现位置、 以及 XC-Robot 当前是否真正启用了重力补偿。 错误预设（来自 B-3 对比表）：OpenARM</p>
+      </div>
+      <div class="meta">
+        <span class="badge">重力补偿</span>
+      </div>
+    </li>
+    <li class="item" data-category="轨迹规划">
+      <div class="date">2026-05-23</div>
+      <div>
+        <a class="title" href="thinking-04-01/index.html">01-轨迹规划</a>
+        <p class="desc">本目录存放 XC-Robot 机械臂轨迹规划与运动规划的设计与实现记录。 | 序号 | 文件 | 主题 | |------|------|------| | 01 | 01-轨迹规划.md | 本索引 | | 02 | 02-硬件精度上限与轨迹生成中间层.md | QDD论文→精度上限、中间层概念、</p>
+      </div>
+      <div class="meta">
+        <span class="badge">轨迹规划</span>
+      </div>
+    </li>
+    <li class="item" data-category="轨迹规划">
+      <div class="date">2026-05-24</div>
+      <div>
+        <a class="title" href="thinking-04-02/index.html">02-硬件精度上限与轨迹生成中间层</a>
+        <p class="desc">基于 14 篇 QDD 论文库（13｜QDD关节控制论文MD/）的知识蒸馏，聚焦三个核心问题： 硬件能做到什么、是否需要中间层、论文方案是否对口。 问题：现有硬件（9:1行星 + 灵足RobStride + 单编码器）能否达到有意义的精度？论文里的精度上限是多少？ Blue 臂与 XC-Robot </p>
+      </div>
+      <div class="meta">
+        <span class="badge">轨迹规划</span>
+      </div>
+    </li>
+    <li class="item" data-category="轨迹规划">
+      <div class="date">2026-05-24</div>
+      <div>
+        <a class="title" href="thinking-04-03/index.html">03-三臂横向对比-Blue臂vs宇树Z1vsXCRobot</a>
+        <p class="desc">核心结论：三者属于不同设计哲学，不是同类竞品。 来源：QDD-compliant-manipulation-1904.03815（UC Berkeley，Pieter Abbeel 实验室） | 参数 | Blue 臂 | |------|---------| | 自由度 | 7 DOF（3 肩 +</p>
+      </div>
+      <div class="meta">
+        <span class="badge">轨迹规划</span>
+      </div>
+    </li>
+    <li class="item" data-category="轨迹规划">
+      <div class="date">2026-05-24</div>
+      <div>
+        <a class="title" href="thinking-04-04/index.html">04-ROS2控制架构与轨迹执行工具链</a>
+        <p class="desc">解释三个核心概念：① JTC（Joint Trajectory Controller）是什么、是否为 ROS2 自带；② gravitycomp 重力补偿；③ Ruckig 在线轨迹生成库。以及 JTC 100Hz 是否太低、如何解决。 Cheetah（MIT Mini Cheetah 机器狗项目）</p>
+      </div>
+      <div class="meta">
+        <span class="badge">轨迹规划</span>
+      </div>
+    </li>
+    <li class="item" data-category="轨迹规划">
+      <div class="date">2026-05-24</div>
+      <div>
+        <a class="title" href="thinking-04-05/index.html">05-遥操数据类型与Ruckig平滑管道</a>
+        <p class="desc">解答：VR 遥操和同构遥操（Leader-Follower）的数据格式差异、各自是否有时间信息、Ruckig 到底解决了什么问题。 | 遥操方式 | 数据类型 | 输出格式 | 采样频率 | 时间信息 | |---------|---------|---------|---------|------</p>
+      </div>
+      <div class="meta">
+        <span class="badge">轨迹规划</span>
+      </div>
+    </li>
+    <li class="item" data-category="轨迹规划">
+      <div class="date">2026-05-24</div>
+      <div>
+        <a class="title" href="thinking-04-06/index.html">06-VR遥操精度与IK求解基础</a>
+        <p class="desc">解答：VR 追踪的标定精度、四元数与位姿的概念、位姿与关节角度的关系（IK 逆解）、IK 对 URDF 的依赖。 感觉是对的——VR 追踪确实不太准，误差随距离和环境变化。 | VR 系统 | 定位原理 | 位置精度 | 姿态精度 | 适用场景 | |---------|---------|----</p>
+      </div>
+      <div class="meta">
+        <span class="badge">轨迹规划</span>
+      </div>
+    </li>
+    <li class="item" data-category="轨迹规划">
+      <div class="date">2026-05-24</div>
+      <div>
+        <a class="title" href="thinking-04-07/index.html">07-运动学基础IK求解与URDF标定</a>
+        <p class="desc">解答：FK/IK 是否基于 DH 参数？DH 参数与 URDF 的关系？URDF 是否需要重新测量标定？IK 解不唯一时怎么选？涉及哪些约束逻辑（奇异点、避障、合理性）？ IK/FK 可以用 DH 参数解，但在 ROS2 生态里，更常见的做法是从 URDF 自动提取几何信息来解，不直接写 DH 表。</p>
+      </div>
+      <div class="meta">
+        <span class="badge">轨迹规划</span>
+      </div>
+    </li>
+    <li class="item" data-category="轨迹规划">
+      <div class="date">2026-05-25</div>
+      <div>
+        <a class="title" href="thinking-04-08/index.html">08-遥操模式与Ruckig读音</a>
+        <p class="desc">解答：直通模式（Pass-through）的含义、三种遥操模式（直通/限速平滑/双边力反馈）、Ruckig 的读法。 三种模式都是针对同构遥操（Leader-Follower）的，不适用于 VR 遥操。 | 遥操方式 | 数据流 | 适用的模式概念 | |---------|-------|----</p>
+      </div>
+      <div class="meta">
+        <span class="badge">轨迹规划</span>
+      </div>
+    </li>
+    <li class="item" data-category="产品定位">
+      <div class="date">2026-05-24</div>
+      <div>
+        <a class="title" href="thinking-05-01/index.html">01-产品定位与两轨技术路线</a>
+        <p class="desc">本文是 2026-05-24 会话定性讨论的完整记录，厘清了 XC-Robot 的产品定位、目标场景、硬件能力边界以及两轨技术策略。 XC-Robot 是企业级工业/商业场景机器人，不是遥操作数据采集工具。 目标场景（第一批验证任务）： | 任务 | 说明 | 精度需求 | |------|----</p>
+      </div>
+      <div class="meta">
+        <span class="badge">产品定位</span>
+      </div>
+    </li>
+    <li class="item" data-category="产品定位">
+      <div class="date">2026-05-25</div>
+      <div>
+        <a class="title" href="thinking-05-02/index.html">02-RD2阶段技术路线-基于12+13论文</a>
+        <p class="desc">- 来源：Sonnet 4.6 agent 通读 03｜技术资产库/02｜技术资产/12｜运动控制论文（3 篇）+ 13｜QDD关节控制论文MD（13 篇 + 1 综述）共 17 篇，结合 XC-Robot 硬件软件基线评估 - 目标：覆盖运动规划 / 控制架构 / 防抖 / 精度 4 个 RD2 </p>
+      </div>
+      <div class="meta">
+        <span class="badge">产品定位</span>
+      </div>
+    </li>
+    <li class="item" data-category="产品定位">
+      <div class="date">2026-05-22</div>
+      <div>
+        <a class="title" href="thinking-05-03/index.html">03-[codex]OpenArmX_XC_Robot_2_机械臂抖动与控制调研</a>
+        <p class="desc">本次调研基于 2026-05-22 本地代码与资料快照，重点覆盖以下来源： - 当前最新调试代码：/Users/mac-minishu/Obsidian/Coding References/Openarmxxcrobot/openarmxxcrobot2 - OpenArmX 多子仓库：/Users</p>
+      </div>
+      <div class="meta">
+        <span class="badge">产品定位</span>
+      </div>
+    </li>
+    <li class="item" data-category="项目管理">
+      <div class="date">2026-05-21</div>
+      <div>
+        <a class="title" href="thinking-09-01/index.html">01-xc-robot-skill建立</a>
+        <p class="desc">此前通过 OpenCode 的 primary mode agent 建立了 XC-Robot 项目的对话入口，但存在三个根本性不足：知识静态快照、无语义检索、跨工具孤岛。本次讨论确立了基于 Claude Code skill 的新机制。 方案 A（扩展 AGENTS.md + skill）优于 O</p>
+      </div>
+      <div class="meta">
+        <span class="badge">项目管理</span>
+      </div>
+    </li>
+    <li class="item" data-category="项目管理">
+      <div class="date">2026-05-21</div>
+      <div>
+        <a class="title" href="thinking-09-02/index.html">02-xc-robot-v2.1能力更新</a>
+        <p class="desc">v2.1 的核心变更： 1. 图示铁律：禁止 ASCII 拼图，一律 Mermaid 2. draw.io MCP 集成：先 Mermaid 确认 → 再生成 .drawio 3. 笔记规范：frontmatter 加 hasdiagrams 字段，ASCII 图入库前 MUST 转 Mermaid</p>
+      </div>
+      <div class="meta">
+        <span class="badge">项目管理</span>
+      </div>
+    </li>
+    <li class="item" data-category="项目管理">
+      <div class="date">2026-05-21</div>
+      <div>
+        <a class="title" href="thinking-09-03/index.html">03-xc-robot-v2.2能力更新</a>
+        <p class="desc">原 v2.1 规则：Mermaid 节点禁放公式，复杂图用 TikZ。但判断标准不清晰，存在"这个图要不要 TikZ"的歧义。 v2.2 新铁律：判断标准明确化—— 触发 TikZ 的条件（满足任一即走 TikZ）： - 节点/标注里有 τ、ζ、ω、下标、分式、= 等数学符号 - 必须公式 + 流程</p>
+      </div>
+      <div class="meta">
+        <span class="badge">项目管理</span>
+      </div>
+    </li>
+<li class="item" data-category="电机控制">
       <div class="date">2026-05-22</div>
       <div>
         <a class="title" href="robstride-encoder-analysis/index.html">
