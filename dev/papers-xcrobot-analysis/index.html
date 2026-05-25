@@ -2,23 +2,94 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>17篇论文对 XC-Robot 技术开发的参考价值 | XC-Robot Lab</title>
-  <link rel="stylesheet" href="../../css/doc.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({startOnLoad:true, theme:'default'});</script>
+  <title>17篇论文对 XC-Robot 技术开发的参考价值 · Transcribe Box Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../../assets/js/auth-guard.js"></script>
+  <link rel="stylesheet" href="../../assets/css/academic.css">
 </head>
 <body>
-  <div class="doc-header">
-    <a href="../" class="back-link">← 返回目录</a>
-    <span class="doc-date">2026-05-25</span>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../../index.html" class="brand">
+      Transcribe Box Lab
+      <span class="sub">祥承智能机器人实验室</span>
+    </a>
+    <nav id="site-nav">
+      <a href="../../index.html">首页</a>
+      <a href="../../reports/index.html">汇报资料</a>
+      <a href="../../repos/index.html">代码仓库</a>
+      <a href="../index.html" class="current">开发内容</a>
+      <a href="../../competitors/index.html">竞品分析</a>
+      <a href="../../about.html">关于</a>
+      <div class="header-logout-mobile">
+        <button class="logout" onclick="sessionStorage.removeItem('tbl_auth');location.reload()">登出</button>
+      </div>
+    </nav>
+    <button class="logout" onclick="sessionStorage.removeItem('tbl_auth');location.reload()">登出</button>
+    <button class="nav-toggle" id="nav-toggle" aria-label="菜单" aria-expanded="false">☰</button>
   </div>
-  <div id="doc-content" class="doc-body"></div>
-  <script src="../../js/doc-renderer.js"></script>
-  <script>renderDoc('doc.md');</script>
+</header>
+<script>
+(function(){
+  var btn = document.getElementById('nav-toggle');
+  var nav = document.getElementById('site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? '✕' : '☰';
+    });
+  }
+})();
+</script>
+
+<main class="doc-layout">
+  <aside class="doc-toc">
+    <span class="en">TABLE OF CONTENTS</span>
+    <div id="doc-toc"></div>
+    <div style="margin-top:20px;font-size:0.72rem;color:var(--muted)">
+      <a href="../index.html" style="border:none">← 返回开发内容</a>
+    </div>
+  </aside>
+  <article class="doc-prose" id="doc-root">加载中…</article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="line">— TRANSCRIBE BOX LAB —</div>
+    <div class="mini">© 2026 Transcribe Box Lab · 祥承智能机器人实验室</div>
+  </div>
+</footer>
+
+<!-- KaTeX 公式渲染（需在 doc-renderer 之前加载） -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<!-- Markdown + Mermaid 渲染栈 -->
+<script src="https://cdn.jsdelivr.net/npm/marked@14.1.3/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+<script src="../../assets/js/doc-renderer.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#F7F3EB',
+      primaryBorderColor: '#0A2540',
+      primaryTextColor: '#2B3340',
+      lineColor: '#8B95A8',
+      secondaryColor: '#E5DFD0',
+      tertiaryColor: '#C9A961',
+      background: '#FFFFFF',
+      mainBkg: '#F7F3EB',
+      fontFamily: "'Source Han Sans SC','PingFang SC','Inter',sans-serif"
+    },
+    securityLevel: 'loose',
+    flowchart: { htmlLabels: true, curve: 'basis' }
+  });
+  renderDoc('doc.md', document.getElementById('doc-root'));
+</script>
+
 </body>
 </html>
