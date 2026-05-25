@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>技术总结图谱 · Transcribe Box Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../../assets/js/auth-guard.js"></script>
+  <link rel="stylesheet" href="../../assets/css/academic.css">
+  <style>
+    .page-intro { margin: 12px 0 24px; font-size: 0.92rem; color: var(--muted); line-height: 1.7; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .gallery-item {
+      background: #fff;
+      border: 1px solid var(--rule, #e0e0e0);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: zoom-in;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .gallery-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      background: #fafafa;
+      display: block;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    .gallery-item .info {
+      padding: 14px 16px;
+      border-top: 1px solid var(--rule, #e0e0e0);
+    }
+    .gallery-item .info h3 {
+      margin: 0 0 6px;
+      font-size: 0.94rem;
+      color: var(--ink, #1a1a1a);
+      font-weight: 600;
+    }
+    .gallery-item .info p {
+      margin: 0;
+      font-size: 0.78rem;
+      color: var(--muted, #666);
+      line-height: 1.55;
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      cursor: zoom-out;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 96vw;
+      max-height: 92vh;
+      object-fit: contain;
+      box-shadow: 0 16px 64px rgba(0,0,0,0.5);
+      background: #fff;
+      border-radius: 4px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 2.2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+      opacity: 0.85;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 28px;
+      font-size: 0.82rem;
+      color: var(--muted, #666);
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../../index.html" class="brand">
+      Transcribe Box Lab
+      <span class="sub">祥承智能机器人实验室</span>
+    </a>
+    <nav>
+      <a href="../../index.html">首页</a>
+      <a href="../../reports/index.html">汇报资料</a>
+      <a href="../../repos/index.html">代码仓库</a>
+      <a href="../index.html" class="current">开发内容</a>
+      <a href="../../competitors/index.html">竞品分析</a>
+      <a href="../../about.html">关于</a>
+    </nav>
+    <button class="logout" onclick="sessionStorage.removeItem('tbl_auth');location.reload()">登出</button>
+  </div>
+</header>
+
+<main class="container">
+  <div class="page-title">
+    <span class="en">TECH DIAGRAMS · 技术总结图谱</span>
+    <h1>XC-Robot 技术总结图谱</h1>
+  </div>
+  <p class="page-intro">
+    基于 <span class="mono">07｜思考过程</span> wiki 整理的 12 张技术架构概念图（drawio 导出 SVG）。
+    涵盖三系架构对比、控制栈五层、关节抖动 9 层根因、三阶段升级路线、减速方案技术权衡、
+    重力补偿体系、URDF 标定方案、轨迹规划架构演进、力控原理与 DMJ 核查等核心技术视图。
+    点击任意缩略图可放大查看。
+  </p>
+
+  <a class="back-link" href="../index.html">← 返回开发内容</a>
+
+  <div class="gallery-grid">
+
+    <div class="gallery-item" onclick="openLightbox('images/01-三系架构对比.svg')">
+      <img src="images/01-三系架构对比.svg" alt="01 · OpenARM 三系架构对比" loading="lazy">
+      <div class="info">
+        <h3>01 · OpenARM 三系架构对比</h3>
+        <p>OpenARM 原版 / OpenARM X / XC-Robot 8 维对比矩阵</p>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/02-控制栈五层.svg')">
+      <img src="images/02-控制栈五层.svg" alt="02 · 控制栈五层架构" loading="lazy">
+      <div class="info">
+        <h3>02 · 控制栈五层架构</h3>
+        <p>应用层→平滑层→控制器层→硬件接口层→电机层，当前 vs Phase 1 改造对比</p>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/03-抖动9层根因.svg')">
+      <img src="images/03-抖动9层根因.svg" alt="03 · 抖动 9 层根因速览" loading="lazy">
+      <div class="info">
+        <h3>03 · 抖动 9 层根因速览</h3>
+        <p>三层分类（控制/规划/机械）+ 9 个根因优先级速览</p>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/04-三阶段升级路线图.svg')">
+      <img src="images/04-三阶段升级路线图.svg" alt="04 · 三阶段升级路线图" loading="lazy">
+      <div class="info">
+        <h3>04 · 三阶段升级路线图</h3>
+        <p>Phase 1/2/3 时间轴 + 精度演进 50→3→1→0.1mm + 决策点</p>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/05-项目背景与硬件参数.svg')">
+      <img src="images/05-项目背景与硬件参数.svg" alt="05 · 项目背景与硬件参数" loading="lazy">
+      <div class="info">
+        <h3>05 · 项目背景与硬件参数</h3>
+        <p>产品定位 + 双臂硬件架构 + 三臂横向对比矩阵</p>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/06-OpenARM系列演进.svg')">
+      <img src="images/06-OpenARM系列演进.svg" alt="06 · OpenARM 系列演进" loading="lazy">
+      <div class="info">
+        <h3>06 · OpenARM 系列演进</h3>
+        <p>原版 500 Hz vs X 100 Hz 三节点异步架构对比 + 4 条软件债清单</p>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/07-减速方案技术权衡.svg')">
+      <img src="images/07-减速方案技术权衡.svg" alt="07 · 减速方案技术权衡" loading="lazy">
+      <div class="info">
+        <h3>07 · 减速方案技术权衡</h3>
+        <p>行星 QDD / 谐波 / 多级行星 7 维矩阵 + 双编码器价值 + 成本矩阵</p>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/08-抖动9层根因深度.svg')">
+      <img src="images/08-抖动9层根因深度.svg" alt="08 · 抖动 9 层根因深度版" loading="lazy">
+      <div class="info">
+        <h3>08 · 抖动 9 层根因深度版</h3>
+        <p>含 L1/L2/L3 代码实证 + 物理推导公式</p>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/09-重力补偿体系.svg')">
+      <img src="images/09-重力补偿体系.svg" alt="09 · 重力补偿体系" loading="lazy">
+      <div class="info">
+        <h3>09 · 重力补偿体系</h3>
+        <p>物理原理 + 当前状态事实清单 + 优先级链 P0→P1→P2→P3</p>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/10-URDF标定方案.svg')">
+      <img src="images/10-URDF标定方案.svg" alt="10 · URDF 标定方案" loading="lazy">
+      <div class="info">
+        <h3>10 · URDF 标定方案</h3>
+        <p>DynamicParamID 三阶段流水线 + 高性价比 4 步标定法</p>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/11-轨迹规划架构演进.svg')">
+      <img src="images/11-轨迹规划架构演进.svg" alt="11 · 轨迹规划架构演进" loading="lazy">
+      <div class="info">
+        <h3>11 · 轨迹规划架构演进</h3>
+        <p>当前批量规划 vs 目标 MoveIt Servo 流式 + Ruckig + 三阶段升级</p>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('images/12-力控原理与DMJ核查.svg')">
+      <img src="images/12-力控原理与DMJ核查.svg" alt="12 · 力控原理与 DMJ 核查" loading="lazy">
+      <div class="info">
+        <h3>12 · 力控原理与 DMJ 核查</h3>
+        <p>QDD 电流环力控 + 达妙 -2EC 真相 + bilateral 力反馈代码实证</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="event.stopPropagation();closeLightbox()">×</button>
+  <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="line">— TRANSCRIBE BOX LAB —</div>
+    <div class="mini">© 2026 Transcribe Box Lab · 祥承智能机器人实验室</div>
+  </div>
+</footer>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.getElementById('lightbox-img').src = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>
